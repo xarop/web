@@ -16,6 +16,10 @@
   <meta property="og:type" content="{{ogType}}">
   <meta property="og:locale" content="ca_ES">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Asap:wght@700;800&display=swap" rel="stylesheet">
+
   <!-- Pico CSS (classless, minimalista) -->
   <!-- No el fem servir directament: en prenem prestada la filosofia. Si es vol, descomenta: -->
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"> -->
@@ -59,12 +63,21 @@
     </p>
     <ul class="flavor-picker" aria-label="Tria el sabor">
       <li><button type="button" data-flavor="maduixa" style="background:#ff0000" title="maduixa"></button></li>
+      <li><button type="button" data-flavor="nabiu" style="background:#3b4cca" title="nabiu"></button></li>
+      <li><button type="button" data-flavor="gerd" style="background:#cf255e" title="gerd"></button></li>
       <li><button type="button" data-flavor="menta" style="background:#00a878" title="menta"></button></li>
       <li><button type="button" data-flavor="llimona" style="background:#d4a300" title="llimona"></button></li>
-      <li><button type="button" data-flavor="mora" style="background:#5b2a86" title="móra"></button></li>
       <li><button type="button" data-flavor="taronja" style="background:#ff6b35" title="taronja"></button></li>
       <li><button type="button" data-flavor="regalessia" style="background:#1a1a1a" title="regalèssia"></button></li>
     </ul>
+    <button
+      type="button"
+      class="theme-toggle"
+      data-theme-preference="system"
+      title="Tema"
+      aria-label="Canvia entre tema clar i fosc"
+      role="switch"
+      aria-checked="false"></button>
     <p>
       <a href="https://github.com/xarop/web">codi</a> ·
       <a href="{{root}}feed.xml">RSS</a>

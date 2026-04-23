@@ -11,6 +11,20 @@
   --flavor-name: "maduixa";
 }
 
+:root[data-flavor="nabiu"] {
+  --color-accent: #3b4cca;
+  --color-accent-soft: #dfe3ff;
+  --color-accent-deep: #232f8f;
+  --flavor-name: "nabiu";
+}
+
+:root[data-flavor="gerd"] {
+  --color-accent: #cf255e;
+  --color-accent-soft: #ffdce8;
+  --color-accent-deep: #8b163e;
+  --flavor-name: "gerd";
+}
+
 :root[data-flavor="menta"] {
   --color-accent: #00a878;
   --color-accent-soft: #d9f5ea;
@@ -23,13 +37,6 @@
   --color-accent-soft: #fdf3c7;
   --color-accent-deep: #8a6a00;
   --flavor-name: "llimona";
-}
-
-:root[data-flavor="mora"] {
-  --color-accent: #5b2a86;
-  --color-accent-soft: #ebe0f5;
-  --color-accent-deep: #3a1a57;
-  --flavor-name: "móra";
 }
 
 :root[data-flavor="taronja"] {
