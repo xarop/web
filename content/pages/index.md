@@ -17,7 +17,7 @@ Aquí dins hi ha tres coses:
 
 *xarop* és un concentrat de sabor: és el *saft* suec, el *squash* britànic o el *jarabe* o *sirope* clàssic. Aquest lloc té sabors: <span class="flavor-name flavor-maduixa">maduixa</span>, <span class="flavor-name flavor-nabiu">nabiu</span>, <span class="flavor-name flavor-gerd">gerd</span>, <span class="flavor-name flavor-menta">menta</span>, <span class="flavor-name flavor-llimona">llimona</span>, <span class="flavor-name flavor-taronja">taronja</span> i <span class="flavor-name flavor-regalessia">regalèssia</span>. Tria'n un al peu de pàgina ↓ — la web es re-pinta sola.
 
-No hi ha base de dades. No hi ha JavaScript (tret de coses opcionals). Només HTML, CSS modern i una mica de Markdown. Allotjat a GitHub Pages, mantenible en un *push*.
+No hi ha base de dades. No hi ha JavaScript (tret de coses opcionals). Només HTML, CSS modern i una mica de Markdown. Allotjat a [GitHub Pages](https://github.com/xarop/web), mantenible en un *push*.
 
 ---
 
