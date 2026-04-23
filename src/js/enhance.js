@@ -44,7 +44,7 @@
         // View Transition API si està disponible
         const apply = () => {
           html.dataset.flavor = flavor;
-          try { localStorage.setItem(FLAVOR_KEY, flavor); } catch (_) {}
+          try { localStorage.setItem(FLAVOR_KEY, flavor); } catch (_) { }
           picker.querySelectorAll("button[data-flavor]").forEach(b => {
             b.setAttribute("aria-pressed", b.dataset.flavor === flavor ? "true" : "false");
           });
@@ -86,7 +86,7 @@
 
       const apply = () => {
         html.dataset.theme = nextTheme;
-        try { localStorage.setItem(THEME_KEY, nextTheme); } catch (_) {}
+        try { localStorage.setItem(THEME_KEY, nextTheme); } catch (_) { }
         syncThemeToggle();
       };
 

@@ -55,10 +55,12 @@
 
 /* Ajust de mode fosc: soft s'intensifica, deep s'aclareix */
 @media (prefers-color-scheme: dark) {
+
   :root:not([data-theme="light"])[data-flavor="regalessia"],
   :root:not([data-theme="light"]):not([data-flavor]) {
     /* regalèssia en dark mode usa blanc com accent */
   }
+
   :root:not([data-theme="light"])[data-flavor="regalessia"] {
     --color-accent: #f0efe9;
     --color-accent-soft: #2a2a27;
