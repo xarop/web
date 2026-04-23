@@ -1,0 +1,81 @@
+/* ============================================================
+   SABORS — paletes de color intercanviables
+   Activa amb data-flavor="maduixa" al <html>
+   ============================================================ */
+
+:root,
+:root[data-flavor="maduixa"] {
+  --color-accent: #ff0000;
+  --color-accent-soft: #ffe5e5;
+  --color-accent-deep: #b30000;
+  --flavor-name: "maduixa";
+}
+
+:root[data-flavor="menta"] {
+  --color-accent: #00a878;
+  --color-accent-soft: #d9f5ea;
+  --color-accent-deep: #006e4f;
+  --flavor-name: "menta";
+}
+
+:root[data-flavor="llimona"] {
+  --color-accent: #d4a300;
+  --color-accent-soft: #fdf3c7;
+  --color-accent-deep: #8a6a00;
+  --flavor-name: "llimona";
+}
+
+:root[data-flavor="mora"] {
+  --color-accent: #5b2a86;
+  --color-accent-soft: #ebe0f5;
+  --color-accent-deep: #3a1a57;
+  --flavor-name: "móra";
+}
+
+:root[data-flavor="taronja"] {
+  --color-accent: #ff6b35;
+  --color-accent-soft: #ffe3d6;
+  --color-accent-deep: #b84920;
+  --flavor-name: "taronja";
+}
+
+:root[data-flavor="regalessia"] {
+  --color-accent: #1a1a1a;
+  --color-accent-soft: #e5e5e5;
+  --color-accent-deep: #000000;
+  --flavor-name: "regalèssia";
+}
+
+/* Ajust de mode fosc: soft s'intensifica, deep s'aclareix */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"])[data-flavor="regalessia"],
+  :root:not([data-theme="light"]):not([data-flavor]) {
+    /* regalèssia en dark mode usa blanc com accent */
+  }
+  :root:not([data-theme="light"])[data-flavor="regalessia"] {
+    --color-accent: #f0efe9;
+    --color-accent-soft: #2a2a27;
+    --color-accent-deep: #ffffff;
+  }
+}
+
+:root[data-theme="dark"][data-flavor="regalessia"] {
+  --color-accent: #f0efe9;
+  --color-accent-soft: #2a2a27;
+  --color-accent-deep: #ffffff;
+}
+
+/* Aplicació global de l'accent */
+:root {
+  accent-color: var(--color-accent);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+:root[data-flavor="llimona"] ::selection,
+:root[data-flavor="regalessia"]:not([data-theme="dark"]) ::selection {
+  color: var(--color-bg);
+}

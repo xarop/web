@@ -1,0 +1,8 @@
+---
+title: 10º aniversario
+date: 2008-03-06
+categories: [Portfolio]
+originalUrl: "https://xarop.com/10aniversario/"
+---
+
+![xarop logo](http://farm3.static.flickr.com/2310/1827477560_8de23ae2b6_m.jpg "xarop logo")Este mes va ha hacer 10 años desde que mi amigo [desfase](http://www.desfase.com) y yo [registramos el dominio xarop.com](http://www.whois.net/whois_new.cgi?d=xarop&tld=com "ver el Who Is con los datos del registro"), justo al finalizar un curso de proyectos multimedia en ese ya lejano 1998 . Al principio sólo contratamos el correo electrónico pero pronto hicimos una web donde ofreciamos todo tipo de servicios (hosting, diseño, etc.), nunca hicimos grandes negocios y pronto mi compañero se dedicó a sus otros "business" y yo me quedé con [xarop.com](http://www.xarop.com). Estuve un tiempo haciendo de ISP (vendia productos como conexiones, registro de dominios y hostings siendo afiliado de [arsys](http://www.arsys.com) y otros proveedores). Mas tarde, mientras esperava que me viniese una gran inspiración para crear un "pelotazo" típico de esa época, me reconvertí en un portal al estilo de [Terra](http://www.terra.com) dónde tenia información de todo tipo y donde colgaba publicidad que tampoco generaron grandes beneficios. Finalmente, tra pasar por varios [hostings](http://www.xarop.com/category/hosting/) y varios intentos de [portales dinámicos](http://www.xarop.com/category/cms/ "CMS") (PHP-Nuke, Joomla o Drupal), reconvertí el dominio en este blog gracias a [WordPress](http://www.xarop.com/category/cms/wordpress/). Podeis ver la evolución de esta web gracias a servicios como el [Internet Archive Wayback Machine](http://web.archive.org/web/*/http://www.xarop.com "Vel el archivo de xarop.com desde 1998").

@@ -1,0 +1,22 @@
+---
+title: Usabilidad
+date: 2005-05-01
+categories: [Design]
+originalUrl: "https://xarop.com/usabilidad/"
+---
+
+## ¿Que es la usabilidad?
+
+### Técnicas que ayudan a los seres humanos a realizar tareas en entornos graficos de ordenador.
+
+3 conceptos muy importantes. Trabajamos para **seres humanos**, que quieren realizar una **tarea de una forma sencilla y eficaz** y en este caso particular, la deben realizar frente a un ordenador en un **entorno grafico, la web**. La usabilidad ayuda a que esta tarea se realize de una forma sencilla analizando el comportamiento humano, y los pasos necesarios para ejecutar la tarea de una forma eficaz. Quizas suene un poco a trabajo industrial, pero al hacer referencia al termino "tarea", estamos haciendo referencia a buscar un programa que queremos ver en la tele, a ver informacion sobre mi equipo de futbol favorito, a comprar un libro sobre artes marciales. **Realmente hace falta la usabilidad para hacer una web?**
+
+> Si. Sea tu web un portal o una pagina personal, no olvides que la gente que entra en tu web es por que basicamente busca algo. Hacerlo sencillo es decision tuya, pero seguro que entre todos podemos hacer de internet un sitio mejor donde la gente no se sienta perdida o extraviada o sencillamente defraudada.
+
+**Donde puedo encontrar mas informacion sobre este tema?**
+
+> Hay miles de direcciones que hablan sobre usabilidad en internet. En la pagina de [enlaces de interes](http://www.google.com/custom?domains=www.xarop.com&q=usabilidad+web&sa=Buscar&sitesearch=&client=pub-8162252435022913&forid=1&ie=ISO-8859-1&oe=ISO-8859-1&cof=&hl=es), disponible en este manual, podras encontrar una seleccion de paginas que me han ayudado a formarme y a estudiar sobre este tema.
+
+**Cuales son las 8 reglas de Oro sobre la usabilidad?**
+
+> Espero que te sirvan. Quizas mañana sean 10 reglas. **1.** **En internet el usuario es el que manda.** Esto quiere decir que sin usuarios tu pagina muere, asi que mas te vale que los cuides y les des lo que te piden, de lo contrario te quedaras solo. **2\.** E**n internet la calidad se basa en la rapidez y la fiabilidad.** En internet cuenta que tu pagina sea mas rapida que bonita, fiable que moderna, sencilla que compleja, directa. **3.** **Seguridad.** Si en el mundo real a veces nos cuesta fiarnos del banco de la esquina, imaginate como se siente la gente en internet cuando llega a tu site. Procura que todo funcione como un reloj para que la gente pueda fiarse de tu site. **4.** **La confianza es algo que cuesta mucho ganar y se pierde con un mal enlace**. Esto quiere decir que tal y como esta la competencia en internet, no puedes perder ni un solo visitante por tener un enlace mal hecho. Es mejor salir con algo sencillo e irlo complicando poco a poco, que salir con todo y ver "que es lo que pasa". Versiones 1.0 son buenas mientras lo que este puesto este bien asentado y genere confianza. Poco a poco y con el feedback de los usuarios, podras ir complicando la pagina. Pero asegura antes de arriesgar. **5\. Si quieres hacer una pagina decente, simplifica, reduce, optimiza.** La gente no se va a aprender tu site por mucho que insistas, asi que por lo menos hazlo sencillo, reutiliza todos los elementos que puedas, para que de este modo los usuarios se sientan comodos y no se pierdan cada vez que necesiten encontrar algo en tu site. **6\. Pon las conclusiones al principio.** El usuario se sentira mas comodo si ve las metas al principio. De esta forma no tendra que buscar lo que necesita y perdera menos tiempo en completar su tarea. Si completa su tarea en menos tiempo se sentira comodo y quizas se dedique a explorar tu site o quizas se lo recomiende a un amigo. **7\. No hagas perder el tiempo a la gente con cosas que no necesitan.** Cuidado con cruzar promociones, si lo haces por lo menos hazlo con cuidado. Procura que la seleccion de productos a cruzar sea consecuente y no lo quieras "vender todo" en todas las paginas. Segun avance el usuario en su navegacion procura dejarle mas espacio libre. Puede ocurrir que cuando este punto de comprar algo vea una oferta que le distraiga y pierdas esa venta. **8\. Buenos contenidos.** Escribir bien para internet es todo un arte. Pero siguiendo las reglas basicas de (1) poner las conclusiones al principio y (2) escribir como un 25% de lo que pondrias en un papel, se puede llegar muy lejos. Leer en pantalla cuesta mucho, por lo que, en el caso de textos para internet, reduce y simplifica todo lo que puedas.

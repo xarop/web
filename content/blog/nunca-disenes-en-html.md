@@ -1,0 +1,12 @@
+---
+title: Nunca diseñes en HTML
+date: 2004-05-01
+categories: [Design]
+originalUrl: "https://xarop.com/nunca-disenes-en-html/"
+---
+
+## Diseño interactivo: nunca diseñes en HTML
+
+### Es la garantía de que tus pensamientos no se limitarán a la tecnología vigente, piensa en comunicación, no en idioma.
+
+Puede sonar ridículo, Pero es absolutamente cierto. Cuando necesites diseñar páginas rechaza cualquier limitación que pueda someterte los editores de HTML, que no son más que automatas de lineas de código que limitan tu capacidad creativa y de comunicación. Lo mejor es pensar en los medios de expresión pictóricos y recurrir a los recursos habituales. Experimenta con lápiz y papel, diseña en PageMaker, Quark o Photoshop. No limites tus posibilidades. Lo último que tienes que hacer es limitar tus posibilidades al HTML. Al tiempo que el HTML tiene características fantásticas de portabilidad como medio de transmisión de información, es un pésimo medio de diseño. Sencillamente cosas como tablas, columnas y alineaciones son tan pobremente tratadas que no hacen más que limitar las posibilidades de cualquier diseño obligándonos a trabajar con imágenes bitmap al menor asomo de dificultad o salida d e la normalidad. Con la llegada de las capas empezamos a tener ciertas libertades, y por ahora lo más esperado es la transparecia real de 256 niveles. Diseña tus bocetos en papel y re-adáptalos en entornos de diseño orientado a web, por ej: Dreamweaver, Adobe GoLive, Fireworks, etc...si lo deseas hacer facilmente y con Photoshop y otros programas orientados al diseño tradicional si te sientes realmente profesional. No llegues a conclusiones de diseño simplemente porque es más fácil hacerlo en HTML, sino por que tu mensaje será más facil de recibir e interpretar. De este modo aseguras dar libertad a tu creatividad e imaginación, evitando ese parecido inevitable que tienen cada una de las páginas diseñadas en HTML y por lo tanto te diferenciarás en este medio. Cuando necesites inspiración puedes recurrir a cualquier cosa menos aquellas que te limiten. En un equipo de trabajo podrás además tener acceso a personas cuya única preocupación es la de trasladar imágenes y propuestas a un entorno compatible HTML o CD. Es preciso tener en cuenta que la tecnología no debe hacer que nuestra imaginación se fustre, ya que el medio ya nos tiene acostumbrados a multitud de cambios y avances, siendo permanente el proceso comunicativo y expresivo. Juan M. Estévez Dirección Artística de Linkz Multimedia
