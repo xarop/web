@@ -12,8 +12,7 @@ La manera més ràpida és un email:
 
 També em pots trobar a:
 
+- **LinkedIn** — [linkedin.com/in/xarop](https://www.linkedin.com/in/xarop)
 - **GitHub** — [github.com/xarop](https://github.com/xarop)
-- **Mastodon** — `@xarop@mastodon.social`
-- **LinkedIn** — si cal, però trigo més a respondre allà.
 
 Escriu-me en català, castellà o anglès. Sense preàmbuls: directament al gra.

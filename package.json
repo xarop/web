@@ -6,8 +6,8 @@
   "private": true,
   "scripts": {
     "build": "node scripts/build.js",
-    "serve": "npx --yes http-server dist -p 4000 -c-1 -o",
-    "dev": "npm run build && npm run serve",
+    "serve": "node scripts/serve.js",
+    "dev": "bun run build && bun run serve",
     "clean": "rm -rf dist"
   },
   "devDependencies": {

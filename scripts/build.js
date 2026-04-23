@@ -11,7 +11,7 @@
 
 import { readFile, writeFile, mkdir, readdir, copyFile, rm } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { join, dirname, basename, extname } from "node:path";
+import { join, dirname, basename, extname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import matter from "gray-matter";
 import { marked } from "marked";
@@ -90,8 +90,8 @@ async function readMarkdownDir(dir) {
 
 async function writePage(outPath, opts, template) {
   await ensureDir(dirname(outPath));
-  const depth = outPath.slice(DIST.length + 1).split("/").length - 1;
-  const root = depth === 0 ? "./" : "../".repeat(depth);
+  const relToDist = relative(dirname(outPath), DIST).replace(/\\/g, "/");
+  const root = relToDist === "" ? "./" : `${relToDist}/`;
   const nav = {
     navHome: opts.section === "home" ? 'aria-current="page"' : "",
     navBlog: opts.section === "blog" ? 'aria-current="page"' : "",

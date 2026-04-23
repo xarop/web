@@ -13,7 +13,7 @@ Aquí dins hi ha tres coses:
 
 - un **[blog](./blog/)** amb notes tècniques i reflexions sobre web,
 - un **[portfolio](./portfolio/)** amb projectes seleccionats,
-- i un **[cv](./cv/)** per si em vols contractar.
+- i un **[cv](https://xarop.com/cv/)** per si em vols contractar.
 
 *xarop* vol dir *xarop* en català. Aquest lloc té sabors: maduixa, menta, llimona, móra, taronja i regalèssia. Tria'n un al peu de pàgina ↓ — la web es re-pinta sola.
 
