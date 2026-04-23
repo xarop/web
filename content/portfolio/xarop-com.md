@@ -4,14 +4,14 @@ date: 2026-04-01
 year: 2026
 role: Tot
 description: Aquesta web. Sis sabors, zero base de dades, Markdown.
-url: https://xarop.com
+url: https://web.xarop.com
 tags: [html, css, node, github-pages]
 flavor: maduixa
 ---
 
 ## El projecte
 
-xarop.com és una web personal (blog + portfolio + CV) que funciona sense base de dades, sense runtime de servidor i sense JavaScript al client (opcional). La font de veritat és Markdown al repositori; un script de Node genera HTML estàtic.
+web.xarop.com és una web personal (blog + portfolio + CV) que funciona sense base de dades, sense runtime de servidor i sense JavaScript al client (opcional). La font de veritat és Markdown al repositori; un script de Node genera HTML estàtic.
 
 ## Característiques
 

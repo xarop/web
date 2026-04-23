@@ -6,13 +6,9 @@ section: contacte
 
 # Contacte
 
-La manera més ràpida és un email:
-
-## [ajl@xarop.com](mailto:ajl@xarop.com)
-
-També em pots trobar a:
-
+- **Email** [ajl@xarop.com](mailto:ajl@xarop.com)
+- **Whatsapp** [+34 620 58 26 26](https://wa.me/34620582626)
 - **LinkedIn** — [linkedin.com/in/xarop](https://www.linkedin.com/in/xarop)
 - **GitHub** — [github.com/xarop](https://github.com/xarop)
 
-Escriu-me en català, castellà o anglès. Sense preàmbuls: directament al gra.
+Escriu-me! Sense preàmbuls: directament al gra.

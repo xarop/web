@@ -45,6 +45,25 @@ function render(template, data) {
   return template.replace(/\{\{(\w+)\}\}/g, (_, k) => data[k] ?? "");
 }
 
+function addExternalLinkAttrs(html) {
+  return html.replace(/<a\s+([^>]*?)href="(https?:\/\/[^"#]+(?:#[^"]*)?)"([^>]*)>/gi, (full, before, href, after) => {
+    const attrs = `${before}${after}`;
+    if (/\btarget\s*=\s*"_blank"/i.test(attrs)) return full;
+
+    let relValue = "noopener noreferrer";
+    const relMatch = attrs.match(/\brel\s*=\s*"([^"]*)"/i);
+    if (relMatch) {
+      const parts = relMatch[1].split(/\s+/).filter(Boolean);
+      const merged = Array.from(new Set([...parts, "noopener", "noreferrer"]));
+      relValue = merged.join(" ");
+    }
+
+    const cleanedAttrs = attrs.replace(/\s+rel\s*=\s*"[^"]*"/i, "").trim();
+    const spacer = cleanedAttrs ? ` ${cleanedAttrs}` : "";
+    return `<a${spacer} href="${href}" target="_blank" rel="${relValue}">`;
+  });
+}
+
 function slugify(s) {
   return s.toString().toLowerCase()
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -108,7 +127,8 @@ async function writePage(outPath, opts, template) {
     root,
     ...nav,
   });
-  await writeFile(outPath, html, "utf8");
+  const htmlWithExternalTargets = addExternalLinkAttrs(html);
+  await writeFile(outPath, htmlWithExternalTargets, "utf8");
   console.log("  →", outPath.slice(DIST.length + 1) || "index.html");
 }
 
@@ -216,16 +236,60 @@ async function buildPortfolio(template) {
   return projects;
 }
 
-async function buildPages(template) {
+async function buildPages(template, posts = [], projects = []) {
   const pages = await readMarkdownDir(join(CONTENT, "pages"));
   console.log(`\n📄 Pàgines: ${pages.length}`);
 
   for (const p of pages) {
-    const body = htmlFromMarkdown(p.body);
+    let body = htmlFromMarkdown(p.body);
     const isHome = p.slug === "index" || p.slug === "home";
     const outPath = isHome
       ? join(DIST, "index.html")
       : join(DIST, p.slug, "index.html");
+
+    if (isHome) {
+      const recentPosts = posts.slice(0, 3).map(post => `
+        <li>
+          <a href="./blog/${post.slug}/">
+            <h3>${post.meta.title}</h3>
+            <time datetime="${formatDate(post.meta.date)}">${formatDate(post.meta.date)}</time>
+            ${post.meta.description ? `<p>${post.meta.description}</p>` : ""}
+          </a>
+        </li>`).join("");
+
+      const recentProjects = projects.slice(0, 3).map(project => `
+        <li>
+          <a href="./portfolio/${project.slug}/">
+            <h3>${project.meta.title}</h3>
+            ${project.meta.role ? `<p class="meta">${project.meta.role}${project.meta.year ? ` · ${project.meta.year}` : ""}</p>` : ""}
+            ${project.meta.description ? `<p>${project.meta.description}</p>` : ""}
+          </a>
+        </li>`).join("");
+
+      const aside = `
+<aside class="home-aside">
+  <section>
+    <h2>Darrers articles</h2>
+    <ol class="post-list" reversed>${recentPosts}</ol>
+    <p><a href="./blog/">tots els articles →</a></p>
+  </section>
+
+  <section>
+    <h2>Darrers projectes</h2>
+    <ul class="project-list">${recentProjects}</ul>
+    <p><a href="./portfolio/">tots els projectes →</a></p>
+  </section>
+</aside>`;
+
+      await writePage(outPath, {
+        title: p.meta.title,
+        section: p.meta.section || p.slug,
+        description: p.meta.description || "",
+        flavor: p.meta.flavor || SITE.defaultFlavor,
+        content: `<div class="home-layout"><article>${body}</article>${aside}</div>`,
+      }, template);
+      continue;
+    }
 
     await writePage(outPath, {
       title: p.meta.title,
@@ -246,34 +310,37 @@ async function buildHome(template, posts, projects) {
     <li><a href="./blog/${p.slug}/"><h3>${p.meta.title}</h3><time>${formatDate(p.meta.date)}</time></a></li>
   `).join("");
 
-  const featured = projects.slice(0, 4).map(p => `
+  const featured = projects.slice(0, 3).map(p => `
     <li><a href="./portfolio/${p.slug}/"><h3>${p.meta.title}</h3>${p.meta.description ? `<p>${p.meta.description}</p>` : ""}</a></li>
   `).join("");
+
+  const asideSections = `${posts.length ? `
+<section>
+  <h2>Darrers articles</h2>
+  <ol class="post-list">${recent}</ol>
+  <p><a href="./blog/">tots els articles →</a></p>
+</section>` : ""}
+${projects.length ? `
+<section>
+  <h2>Darrers projectes</h2>
+  <ul class="project-list">${featured}</ul>
+  <p><a href="./portfolio/">tots els projectes →</a></p>
+</section>` : ""}`;
 
   await writePage(indexPath, {
     title: SITE.title,
     section: "home",
     description: SITE.description,
     content: `
+<div class="home-layout">
 <article>
   <h1>hola, sóc <em>xarop</em>.</h1>
   <p>Front-end engineer. Escric codi, a vegades també paraules. Aquí trobaràs el meu <a href="./blog/">blog</a>, el meu <a href="./portfolio/">portfolio</a> i el meu <a href="./cv/">cv</a>.</p>
   <p class="meta">xarop vol dir <em>xarop</em> en català. Aquest lloc té sabors — tria'n un al peu ↓.</p>
 </article>
-
-${posts.length ? `
-<section>
-  <h2>Darrers articles</h2>
-  <ol class="post-list">${recent}</ol>
-  <p><a href="./blog/">tots els articles →</a></p>
-</section>` : ""}
-
-${projects.length ? `
-<section>
-  <h2>Projectes</h2>
-  <ul class="project-list">${featured}</ul>
-  <p><a href="./portfolio/">tots els projectes →</a></p>
-</section>` : ""}`,
+${asideSections ? `<aside class="home-aside">${asideSections}
+</aside>` : ""}
+</div>`,
   }, template);
 }
 
@@ -355,7 +422,7 @@ async function main() {
 
   const posts = await buildBlog(template);
   const projects = await buildPortfolio(template);
-  await buildPages(template);
+  await buildPages(template, posts, projects);
   await buildHome(template, posts, projects);
   await buildFeed(posts);
   await copyAssets();
