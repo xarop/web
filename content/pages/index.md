@@ -15,7 +15,7 @@ Aquí dins hi ha tres coses:
 - un **[portfolio](./portfolio/)** amb projectes seleccionats,
 - i un **[cv](https://xarop.com/cv/)** per si em vols contractar.
 
-*xarop* és un concentrat de sabor: és el *saft* suec, el *squash* britànic o el *jarabe* o *sirope* clàssic. Aquest lloc té sabors: <span class="flavor-name flavor-maduixa">maduixa</span>, <span class="flavor-name flavor-nabiu">nabiu</span>, <span class="flavor-name flavor-gerd">gerd</span>, <span class="flavor-name flavor-menta">menta</span>, <span class="flavor-name flavor-llimona">llimona</span>, <span class="flavor-name flavor-taronja">taronja</span> i <span class="flavor-name flavor-regalessia">regalèssia</span>. Tria'n un al peu de pàgina ↓ — la web es re-pinta sola.
+*xarop* és un concentrat de sabor: és el *saft* suec, el *squash* britànic o el *jarabe* o *sirope* clàssic. Aquest lloc té sabors: <button type="button" class="flavor-name flavor-maduixa" data-flavor="maduixa">maduixa</button>, <button type="button" class="flavor-name flavor-nabiu" data-flavor="nabiu">nabiu</button>, <button type="button" class="flavor-name flavor-gerd" data-flavor="gerd">gerd</button>, <button type="button" class="flavor-name flavor-menta" data-flavor="menta">menta</button>, <button type="button" class="flavor-name flavor-llimona" data-flavor="llimona">llimona</button>, <button type="button" class="flavor-name flavor-taronja" data-flavor="taronja">taronja</button> i <button type="button" class="flavor-name flavor-regalessia" data-flavor="regalessia">regalèssia</button>. Clica'n un — la web es re-pinta sola.
 
 No hi ha base de dades. No hi ha JavaScript (tret de coses opcionals). Només HTML, CSS modern i una mica de Markdown. Allotjat a [GitHub Pages](https://github.com/xarop/web), mantenible en un *push*.
 
@@ -31,8 +31,8 @@ La web hauria de ser ràpida, accessible i editable per qualsevol. He après que
 
 ## Contacte
 
-- **email** [ajl@xarop.com](mailto:ajl@xarop.com)
-- **whatsapp** [+34 620 58 26 26](https://wa.me/34620582626)
+- **Email** — [ajl@xarop.com](mailto:ajl@xarop.com)
+- **Whatsapp** — [+34 620 58 26 26](https://wa.me/34620582626)
 - **LinkedIn** — [linkedin.com/in/xarop](https://www.linkedin.com/in/xarop)
 - **GitHub** — [github.com/xarop](https://github.com/xarop)
 

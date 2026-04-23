@@ -240,11 +240,17 @@ body>.full {
 .site-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--space-6);
   flex-wrap: wrap;
   padding-block: var(--space-4);
   border-bottom: var(--border);
+}
+
+.header-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
 }
 
 .site-header .logo {
@@ -286,6 +292,10 @@ body>.full {
   border-bottom-color: var(--color-accent);
 }
 
+.site-header nav {
+  margin-left: auto;
+}
+
 @media (max-width: 740px) {
   .site-header {
     align-items: flex-start;
@@ -293,7 +303,13 @@ body>.full {
   }
 
   .site-header nav {
+    margin-left: 0;
     width: 100%;
+    order: 1;
+  }
+
+  .site-header .theme-toggle {
+    margin-left: auto;
   }
 
   .site-nav {
@@ -445,18 +461,6 @@ blockquote {
   color: inherit;
 }
 
-@media (max-width: 740px) {
-  .site-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-3);
-  }
-
-  .flavor-picker[data-enabled="true"] {
-    flex-wrap: wrap;
-  }
-}
-
 /* ----- Flavor text helpers ----- */
 .flavor-name {
   font-weight: 700;
@@ -500,72 +504,101 @@ blockquote {
   }
 }
 
-/* ----- Flavor picker (opcional, mostrat si hi ha JS) ----- */
+/* ----- Flavor picker — punt al header, s'expandeix al hover ----- */
+.flavor-picker-wrap {
+  display: inline-flex;
+  align-items: center;
+}
+
+.flavor-picker-wrap::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1.5px var(--color-border);
+}
+
 .flavor-picker {
-  display: none;
-  gap: var(--space-2);
+  display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
+  gap: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width 0.25s var(--ease), gap 0.2s var(--ease), margin-left 0.2s var(--ease);
 }
 
-.flavor-picker[data-enabled="true"],
-.theme-toggle[data-enabled="true"] {
-  display: inline-flex;
+.flavor-picker-wrap:hover .flavor-picker[data-enabled="true"],
+.flavor-picker-wrap:focus-within .flavor-picker[data-enabled="true"] {
+  max-width: 300px;
+  gap: var(--space-2);
+  margin-left: var(--space-2);
+  overflow: visible;
 }
 
-.flavor-picker button,
-.theme-toggle {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 2px solid var(--color-border);
-  cursor: pointer;
-  padding: 0;
-  transition: transform var(--duration) var(--ease);
-}
-
-.flavor-picker button:hover,
-.theme-toggle:hover {
-  transform: scale(1.08);
-}
-
-.flavor-picker button[aria-pressed="true"],
-.theme-toggle[aria-checked="true"] {
-  border-color: var(--color-text);
-}
-
-.theme-toggle {
-  display: none;
-  width: 32px;
-  height: 18px;
-  border-radius: 999px;
-  background: var(--color-bg-soft);
-  position: relative;
-  vertical-align: middle;
-}
-
-.theme-toggle::after {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
+.flavor-picker button {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 1px solid var(--color-border);
-  background: var(--color-bg);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: transform var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+
+.flavor-picker button:hover {
+  transform: scale(1.25);
+}
+
+.flavor-picker-wrap:hover li:has(button[aria-pressed="true"]),
+.flavor-picker-wrap:focus-within li:has(button[aria-pressed="true"]) {
+  display: none;
+}
+
+/* ----- Theme toggle — cercle simple al header ----- */
+.theme-toggle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-text);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: none;
+  flex-shrink: 0;
   transition: transform var(--duration) var(--ease);
 }
 
-.theme-toggle[aria-checked="true"] {
-  background: var(--color-accent-soft);
+.theme-toggle[data-enabled="true"] {
+  display: block;
 }
 
-.theme-toggle[aria-checked="true"]::after {
-  transform: translateX(14px);
-  background: var(--color-accent);
-  border-color: var(--color-accent-deep);
+.theme-toggle:hover {
+  transform: scale(1.25);
+}
+
+/* ----- Flavor names al home (botons inline) ----- */
+button.flavor-name {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-style: dotted;
+}
+
+button.flavor-name:hover {
+  text-decoration-thickness: 2px;
+  text-decoration-style: solid;
 }
 
 /* ----- View Transitions (si el navegador les suporta) ----- */
