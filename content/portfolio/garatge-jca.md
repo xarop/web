@@ -1,4 +1,5 @@
 ---
+image: assets/images/garatgejca.webp
 title: Garatge JCA
 date: 2020-01-21
 tags: [ACF, "custom-theme", Git, Gulp, Gutenberg, php, Sass, WebPack, WordPress]

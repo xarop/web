@@ -1,4 +1,5 @@
 ---
+image: assets/images/xarop1.webp
 title: ¿Qué es el diseño gráfico?
 date: 2011-02-23
 categories: [UI/UX, Video]

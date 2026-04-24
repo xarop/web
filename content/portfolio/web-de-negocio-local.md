@@ -1,4 +1,5 @@
 ---
+image: assets/images/etern-centre-wellness-wellness-estetica-Sant-Gervasi-Barcelona.webp
 title: Web de negocio local
 date: 2011-11-04
 tags: [CMS, css3, design, Facebook, foursquare, geolocalización, gps, html5, jQuery, php, plugins, SEO, theme, usabilidad, WordPress]

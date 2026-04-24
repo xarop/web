@@ -1,4 +1,5 @@
 ---
+image: assets/images/screenshot-605-1775044996.webp
 title: Enginyer Web a SomMobilitat
 date: 2023-06-14
 description: Desenvolupament escalable i integracions API personalitzades per als serveis de mobilitat cooperativa de SomMobilitat.

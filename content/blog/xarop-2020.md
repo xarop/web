@@ -1,4 +1,5 @@
 ---
+image: assets/images/xaropcom-1999.webp
 title: xarop 2020
 date: 2020-02-13
 description: "#EnCasaDeHerreroCuchilloDePalo"

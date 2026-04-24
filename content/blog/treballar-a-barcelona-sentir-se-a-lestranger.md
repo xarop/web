@@ -1,4 +1,5 @@
 ---
+image: assets/images/expatsbcn-scaled.webp
 title: "Treballar a Barcelona, sentir-se a l'estranger"
 date: 2026-03-25
 tags: [Barcelona, Català, expats]

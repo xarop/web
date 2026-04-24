@@ -1,4 +1,5 @@
 ---
+image: assets/images/ub-edu-mei_desktop.webp
 title: Master en Estudios internacionales
 date: 2013-01-30
 tags: [Barcelona, CMS, css3, design, Facebook, html, html5, jQuery, php, template, theme, WordPress]

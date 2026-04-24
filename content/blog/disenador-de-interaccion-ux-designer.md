@@ -1,4 +1,5 @@
 ---
+image: assets/images/ux.webp
 title: Diseñador de Interacción (UX Designer)
 date: 2011-01-26
 tags: [design, ILUVUXDESIGN, MySpace, ui, usabilidad, ux]

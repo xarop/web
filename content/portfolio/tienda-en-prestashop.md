@@ -1,4 +1,5 @@
 ---
+image: assets/images/ebk.webp
 title: Tienda en PrestaShop
 date: 2016-04-14
 tags: [bootstrap, CMS, CRM, css, design, jQuery, PrestaShop, responsive, smarty, theme, TPV]

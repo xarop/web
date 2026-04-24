@@ -1,4 +1,5 @@
 ---
+image: assets/images/dm.webp
 title: El Documental Del Mes
 date: 2016-07-20
 tags: [bootstrap, design, jQuery, less, php, polylang, responsive, theme, types, WordPress]

@@ -1,4 +1,5 @@
 ---
+image: assets/images/post55.webp
 title: Red Social para mayores
 date: 2010-06-08
 tags: [accesibility, design, Facebook, Flickr, post55, SocialMedia, socialtec, Twitter, ui, usabilidad, Youtube]

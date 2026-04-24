@@ -1,4 +1,5 @@
 ---
+image: assets/images/Facebook_Like_Icon_Vector.webp
 title: Gana dinero recomendando en tus redes sociales
 date: 2011-09-15
 tags: [CMS, Facebook, publicidad, Twitter, WordPress]

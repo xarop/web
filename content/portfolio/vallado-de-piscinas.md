@@ -1,4 +1,5 @@
 ---
+image: assets/images/valladodepiscinas.webp
 title: Vallado de piscinas
 date: 2010-10-29
 tags: [css, design, html, php, SEO, W3c]

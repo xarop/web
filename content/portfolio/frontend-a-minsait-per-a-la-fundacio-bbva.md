@@ -1,4 +1,5 @@
 ---
+image: assets/images/screenshot-602-1775045060.webp
 title: Frontend a Minsait per a la Fundació BBVA
 date: 2022-09-08
 description: "Desenvolupament avançat per a l&#x27;ecosistema OpenWeb de BBVA, amb Web Components, LitElement i integració amb el framework corporatiu Cells."

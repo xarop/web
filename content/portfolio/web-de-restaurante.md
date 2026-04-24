@@ -1,4 +1,5 @@
 ---
+image: assets/images/pdq.webp
 title: Web de restaurante
 date: 2013-09-20
 tags: [CMS, design, responsive, responsive design, theme, WordPress]

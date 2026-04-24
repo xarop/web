@@ -1,4 +1,5 @@
 ---
+image: assets/images/lvm.webp
 title: Agencia de viajes online
 date: 2017-02-08
 tags: [ACF, bootstrap, CMS, design, jQuery, responsive, theme, WordPress]

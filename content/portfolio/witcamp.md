@@ -1,4 +1,5 @@
 ---
+image: assets/images/witcamp.webp
 title: Witcamp
 date: 2013-01-30
 tags: [css3, design, Facebook, html5, jQuery, php, prototipo, SocialMedia, socialtec, usabilidad]

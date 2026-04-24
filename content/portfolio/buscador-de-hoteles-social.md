@@ -1,4 +1,5 @@
 ---
+image: assets/images/tralopia-logo_big.webp
 title: Buscador de hoteles social
 date: 2011-10-26
 tags: [css, design, Facebook, jQuery, rediseño, SocialMedia, Twitter, ui, usabilidad, viajes]

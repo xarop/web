@@ -1,4 +1,5 @@
 ---
+image: assets/images/screenshot-1004-1775044340-scaled.webp
 title: "Vaivera - Disseny d'Interiors"
 date: 2025-01-18
 categories: [KitDigital, Portfolio]

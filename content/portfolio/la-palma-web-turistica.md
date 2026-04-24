@@ -1,4 +1,5 @@
 ---
+image: assets/images/lapalma.webp
 title: "La Palma - web turistica"
 date: 2009-03-04
 categories: [Portfolio, Social Media]

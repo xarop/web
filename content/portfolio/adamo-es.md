@@ -1,4 +1,5 @@
 ---
+image: assets/images/adamo_home05.webp
 title: adamo.es
 date: 2015-01-23
 tags: [bootstrap, CMS, css3, design, jQuery, less, php, responsive, WordPress]

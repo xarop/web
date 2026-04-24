@@ -1,4 +1,5 @@
 ---
+image: assets/images/screenshot-1005-1775044160-scaled.webp
 title: "Xyloo - Enginyeria en Fusta"
 date: 2025-05-08
 categories: [KitDigital, Portfolio]

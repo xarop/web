@@ -1,4 +1,5 @@
 ---
+image: assets/images/socialibericus.webp
 title: Social Ibericus
 date: 2012-03-19
 tags: [design, ecommerce, SocialMedia, socialtec, tienda, usabilidad, Youtube]

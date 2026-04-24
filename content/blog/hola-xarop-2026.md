@@ -15,7 +15,7 @@ Una instal·lació de WordPress. Tema personalitzat. Base de dades MySQL. Cache.
 
 ## Què té ara
 
-Una carpeta amb fitxers Markdown. Un script de build de ~250 línies. Un fitxer CSS. GitHub Pages. Zero base de dades.
+Una carpeta amb fitxers Markdown. Un script de build de Node.js. Tres fitxers CSS. GitHub Pages. Zero base de dades.
 
 Per escriure un article:
 
@@ -31,17 +31,22 @@ GitHub Actions construeix el lloc i el publica. Trenta segons després, és a in
 
 Perquè WordPress era *overkill* per un blog personal amb vuit articles l'any. Perquè mantenir un servidor és feina que no m'aporta res. Perquè la web torna a ser millor quan és petita, plana i semàntica.
 
-També: perquè m'agradava la idea que el meu lloc tingués **sabors**. "xarop" vol dir *xarop* en català — dolç i concentrat — i els sabors eren una broma visual que em feia il·lusió implementar. Ara pots canviar la paleta sencera amb un clic. Cap recàrrega. És gairebé tot CSS.
+També: perquè m'agradava la idea que el meu lloc tingués **sabors**. "xarop" vol dir *xarop* en català — dolç i concentrat — i els sabors eren una broma visual que em feia il·lusió implementar. Ara pots canviar la paleta sencera amb un clic. Cap recàrrega. És gairebé tot CSS. En total hi ha set sabors: maduixa, nabiu, gerd, menta, llimona, taronja i regalèssia.
 
 ## Stack
 
 - **HTML** escrit a mà, semànticament el més net que he sabut.
-- **CSS** modern amb *custom properties*, `@media (prefers-color-scheme)`, `::selection`, `color-scheme`, view transitions opcional.
+- **CSS** modern amb *custom properties*, `@media (prefers-color-scheme)`, `::selection`, `color-scheme`, view transitions. Cap framework.
 - **Markdown** per al contingut, `gray-matter` per al front-matter, `marked` per al render.
+- **Asap** — tipografia per als títols, auto-allotjada (OFL), sense cap crida a Google Fonts.
 - **Node.js** per al build (sense runtime al client).
 - **GitHub Pages** per al hosting.
 
-És molt provablement el stack més avorrit que he utilitzat en deu anys. Em fa molt feliç.
+És molt probablement el stack més avorrit que he utilitzat en deu anys. Em fa molt feliç.
+
+## Migració del contingut
+
+L'arxiu de WordPress (2007–2024) ha migrat en format Markdown: uns 90 articles de blog i 70 projectes de portfolio, amb categories, tags i imatges destacades conservades. Cap contingut perdut, cap base de dades.
 
 ## Què ve després
 

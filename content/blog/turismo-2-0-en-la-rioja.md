@@ -1,4 +1,5 @@
 ---
+image: assets/images/larioja20.webp
 title: Turismo 2.0 en la Rioja
 date: 2010-12-27
 tags: [gastronomy, socialtec, tondonia, turismo, viajes, viñedos, vino, vinyard, wine]

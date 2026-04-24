@@ -1,4 +1,5 @@
 ---
+image: assets/images/coamacacao.webp
 title: Cacao Orgánico del Amazonas
 date: 2010-10-29
 tags: [CMS, design, plugins, tema, template, theme, ui, WordPress]

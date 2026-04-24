@@ -1,4 +1,5 @@
 ---
+image: assets/images/memorimage.webp
 title: Film festival web redesign
 date: 2023-10-24
 tags: [ACF, "custom-theme", Git, Gutenberg, php, Sass, WordPress]

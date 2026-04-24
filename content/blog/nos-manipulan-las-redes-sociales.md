@@ -1,4 +1,5 @@
 ---
+image: assets/images/socialmedia.webp
 title: ¿Nos manipulan las redes sociales?
 date: 2011-11-07
 tags: [Facebook, Google, TED, Twitter, Youtube]

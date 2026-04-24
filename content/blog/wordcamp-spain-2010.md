@@ -1,4 +1,5 @@
 ---
+image: assets/images/wp.webp
 title: WordCamp Spain 2010
 date: 2010-12-13
 tags: [CMS, plugins, tema, theme, WordPress]

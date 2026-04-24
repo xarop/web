@@ -1,4 +1,5 @@
 ---
+image: assets/images/memorimage.webp
 title: Memorimage Festival
 date: 2016-10-14
 tags: [ACF, bootstrap, CMS, design, jQuery, php, polylang, rediseño, theme, WordPress]

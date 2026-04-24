@@ -1,4 +1,5 @@
 ---
+image: assets/images/asesoriamartin.webp
 title: Inmobiliaria y gestoria
 date: 2013-09-26
 tags: [design, geolocalización, responsive design, theme, WordPress]

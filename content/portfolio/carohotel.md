@@ -1,4 +1,5 @@
 ---
+image: assets/images/carohotel.webp
 title: Caro Hotel
 date: 2013-01-30
 tags: [css3, design, html, html5, jQuery, php, prototipo, SocialMedia, socialtec, turismod]

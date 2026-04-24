@@ -1,4 +1,5 @@
 ---
+image: assets/images/LPayondo.webp
 title: Landing Page Social Trading
 date: 2017-05-26
 tags: [bootstrap, CMS, jQuery, landing page, php, plugin, responsive, theme, video, WordPress]

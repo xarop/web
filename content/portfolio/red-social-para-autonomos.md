@@ -1,4 +1,5 @@
 ---
+image: assets/images/econred.webp
 title: Red Social para autónomos
 date: 2010-10-04
 tags: [accesibility, design, Facebook, Flickr, SocialMedia, socialtec, Twitter, ui, usabilidad, Youtube]

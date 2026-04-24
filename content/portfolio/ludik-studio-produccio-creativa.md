@@ -1,4 +1,5 @@
 ---
+image: assets/images/screenshot-1002-1775044388-scaled.webp
 title: "Ludik Studio - Producció Creativa"
 date: 2024-06-01
 categories: [KitDigital, Portfolio]

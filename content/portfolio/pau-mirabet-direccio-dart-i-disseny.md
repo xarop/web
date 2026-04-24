@@ -1,4 +1,5 @@
 ---
+image: assets/images/screenshot-1001-1775044935.webp
 title: "Pau Mirabet - Direcció d'Art i Disseny"
 date: 2024-03-19
 tags: [WordPress]

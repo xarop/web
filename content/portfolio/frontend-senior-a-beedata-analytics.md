@@ -1,4 +1,5 @@
 ---
+image: assets/images/screenshot-603-1775045138.webp
 title: Frontend Sènior a BeeData Analytics
 date: 2020-03-20
 description: Desenvolupament de motors de reporting complexos i interfícies de visualització de dades amb Web Components i APIs REST en entorns Node.js escalables.

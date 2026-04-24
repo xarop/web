@@ -1,4 +1,5 @@
 ---
+image: assets/images/xarop2011cc.webp
 title: xarop 2011
 date: 2010-11-30
 tags: [encuesta, Facebook, plugins, rediseño, SocialMedia, tema, template, theme, usabilidad, WordPress, xarop.com]

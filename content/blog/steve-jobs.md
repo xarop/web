@@ -1,4 +1,5 @@
 ---
+image: assets/images/stevejobs1.webp
 title: Steve Jobs pensaba diferente
 date: 2011-10-06
 categories: [Tecnología, UI/UX, Video]

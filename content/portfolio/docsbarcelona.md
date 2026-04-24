@@ -1,4 +1,5 @@
 ---
+image: assets/images/docsbcn.webp
 title: DocsBarcelona
 date: 2015-05-23
 tags: [bootstrap, design, jQuery, php, plugins, prototipo, rediseño, responsive, theme, WordPress]

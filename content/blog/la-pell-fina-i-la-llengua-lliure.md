@@ -1,4 +1,5 @@
 ---
+image: assets/images/pellfina.webp
 title: La pell fina i la llengua lliure
 date: 2026-04-11
 categories: [Blog]

@@ -1,4 +1,5 @@
 ---
+image: assets/images/gutenberg-featured.webp
 title: BackEnd
 date: 2020-02-13
 tags: [CMS, development, Git, github, Gutenberg, php, plugin, theme, WordPress]

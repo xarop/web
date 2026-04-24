@@ -1,4 +1,5 @@
 ---
+image: assets/images/socialmedia.webp
 title: Cómo ganar dinero con tus redes sociales
 date: 2013-04-19
 categories: [Social Media, UI/UX]

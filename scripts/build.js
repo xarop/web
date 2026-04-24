@@ -114,6 +114,8 @@ async function writePage(outPath, opts, template) {
   await ensureDir(dirname(outPath));
   const relToDist = relative(dirname(outPath), DIST).replace(/\\/g, "/");
   const root = relToDist === "" ? "./" : `${relToDist}/`;
+  // Permet usar {{root}} dins del contingut generat
+  const content = (opts.content || "").replaceAll("{{root}}", root);
   const nav = {
     navHome: opts.section === "home" ? 'aria-current="page"' : "",
     navBlog: opts.section === "blog" ? 'aria-current="page"' : "",
@@ -126,7 +128,7 @@ async function writePage(outPath, opts, template) {
     description: opts.description || SITE.description,
     flavor: opts.flavor || SITE.defaultFlavor,
     ogType: opts.ogType || "website",
-    content: opts.content,
+    content,
     root,
     ...nav,
   });
@@ -204,9 +206,12 @@ async function buildBlog(template) {
   const list = posts.map(p => `
     <li>
       <a href="./${p.slug}/">
-        <h3>${p.meta.title}</h3>
-        <time datetime="${formatDate(p.meta.date)}">${formatDate(p.meta.date)}</time>
-        ${p.meta.description ? `<p>${p.meta.description}</p>` : ""}
+        ${p.meta.image ? `<img class="post-thumb" src="{{root}}${p.meta.image}" alt="${p.meta.title}" loading="lazy">` : ""}
+        <div class="post-body">
+          <h3>${p.meta.title}</h3>
+          <time datetime="${formatDate(p.meta.date)}">${formatDate(p.meta.date)}</time>
+          ${p.meta.description ? `<p>${p.meta.description}</p>` : ""}
+        </div>
       </a>
     </li>`).join("");
 
@@ -239,7 +244,7 @@ async function buildBlog(template) {
       ${cats}
     </p>
     ${tags ? `<p class="meta">${tags}</p>` : ""}
-    ${p.meta.image ? `<figure class="featured-image"><img src="${p.meta.image}" alt="${p.meta.title}" loading="lazy"></figure>` : ""}
+    ${p.meta.image ? `<figure class="featured-image"><img src="{{root}}${p.meta.image}" alt="${p.meta.title}" loading="lazy"></figure>` : ""}
   </header>
   ${body}
   <hr style="margin-top:3rem;border:0;border-top:1px solid var(--color-border)">
@@ -262,7 +267,7 @@ async function buildPortfolio(template) {
     return `
     <li>
       <a href="./${p.slug}/">
-        ${p.meta.image ? `<img class="project-thumb" src="${p.meta.image}" alt="${p.meta.title}" loading="lazy">` : ""}
+        ${p.meta.image ? `<img class="project-thumb" src="{{root}}${p.meta.image}" alt="${p.meta.title}" loading="lazy">` : ""}
         <h3>${p.meta.title}</h3>
         <p class="meta">${[p.meta.role, year].filter(Boolean).join(" · ")}</p>
         ${p.meta.description ? `<p>${p.meta.description}</p>` : ""}
@@ -301,7 +306,7 @@ async function buildPortfolio(template) {
     </p>
     ${cats ? `<p class="meta">${cats}</p>` : ""}
     ${tags ? `<p class="meta">${tags}</p>` : ""}
-    ${p.meta.image ? `<figure class="featured-image"><img src="${p.meta.image}" alt="${p.meta.title}" loading="lazy"></figure>` : ""}
+    ${p.meta.image ? `<figure class="featured-image"><img src="{{root}}${p.meta.image}" alt="${p.meta.title}" loading="lazy"></figure>` : ""}
     ${dateFull ? `<p class="meta"><time datetime="${dateFull}">${dateFull}</time></p>` : ""}
   </header>
   ${body}

@@ -1,4 +1,5 @@
 ---
+image: assets/images/socialtec.webp
 title: Socialtec
 date: 2011-06-17
 tags: [design, SocialMedia, socialtec]

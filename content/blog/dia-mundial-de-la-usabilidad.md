@@ -1,4 +1,5 @@
 ---
+image: assets/images/WUD2011-e1320708642186.webp
 title: Día mundial de la Usabilidad
 date: 2011-11-10
 tags: [design, ui, usabilidad]

@@ -1,4 +1,5 @@
 ---
+image: assets/images/xb.webp
 title: Comunidad Barcelona Hotels
 date: 2009-07-08
 categories: [Portfolio, Social Media]

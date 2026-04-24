@@ -1,4 +1,5 @@
 ---
+image: assets/images/esquizo.webp
 title: esquizo.com v8.0
 date: 2009-11-05
 tags: [design, plugins, tema, template, theme, WordPress]

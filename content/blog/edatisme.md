@@ -1,4 +1,5 @@
 ---
+image: assets/images/edadisme.webp
 title: "35 anys de criteri: El problema no és l'algoritme, és el biaix humà"
 date: 2026-03-30
 tags: [design, edatisme, ia, ui, ux, WordPress]

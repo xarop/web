@@ -1,4 +1,5 @@
 ---
+image: assets/images/screenshot-1006-1775044090-scaled.webp
 title: "IusIntegra - Serveis Jurídics"
 date: 2026-02-01
 categories: [Freelance, FrontEnd, KitDigital, Portfolio]

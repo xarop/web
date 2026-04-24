@@ -1,4 +1,5 @@
 ---
+image: assets/images/IOS5vsICS.webp
 title: IOS5 vs ICS
 date: 2011-10-19
 tags: [android, Ice Cream Sandwish, ICS, IOS, IOS5, iPhone, movil, SO, ui, usabilidad]

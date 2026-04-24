@@ -1,4 +1,5 @@
 ---
+image: assets/images/Productivitat.webp
 title: Eines per afavorir la productivitat
 date: 2020-05-06
 tags: [Figma, Git, github, productivity, tools]

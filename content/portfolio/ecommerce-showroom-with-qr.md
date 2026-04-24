@@ -1,4 +1,5 @@
 ---
+image: assets/images/junglemows.webp
 title: "eCommerce & ShowRoom with QR"
 date: 2023-12-11
 tags: [ACF, "custom-theme", Git, Gulp, Gutenberg, php, Sass, WebPack, WordPress]

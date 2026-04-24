@@ -366,10 +366,25 @@ article header .meta {
 .post-list a {
   text-decoration: none;
   color: inherit;
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
 }
 
 .post-list a:hover h3 {
   color: var(--color-accent);
+}
+
+.post-thumb {
+  width: 96px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+.post-body {
+  min-width: 0;
 }
 
 .post-list h3 {
