@@ -3,7 +3,7 @@ title: Nova versió de xarop.com (2026)
 date: 2026-04-23
 description: He reescrit xarop.com des de zero. Sense WordPress, sense base de dades, sense JS al client. Només HTML, CSS modern i Markdown.
 categories: [Blog]
-tags: [meta, html, css, github-pages]
+tags: [meta, html, css, github-pages, Node.js, WordPress, Git, xarop.com, Català]
 flavor: maduixa
 ---
 
@@ -47,6 +47,12 @@ També: perquè m'agradava la idea que el meu lloc tingués **sabors**. "xarop" 
 ## Migració del contingut
 
 L'arxiu de WordPress (2007–2024) ha migrat en format Markdown: uns 90 articles de blog i 70 projectes de portfolio, amb categories, tags i imatges destacades conservades. Cap contingut perdut, cap base de dades.
+
+Les imatges destacades s'han descarregat del servidor antic, convertit a WebP (max 1200px, q82) i auto-allotjat. Els projectes nous sense imatge generen un screenshot automàtic de la URL del projecte via Puppeteer.
+
+## Navegació per contingut
+
+Blog i portfolio tenen un aside sticky amb totes les categories i tags com a núvol navegable. Les pàgines de cada categoria i tag mostren el contingut filtrat amb el mateix aside per continuar explorant.
 
 ## Què ve després
 

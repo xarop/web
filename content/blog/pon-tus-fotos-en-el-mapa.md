@@ -1,7 +1,7 @@
 ---
 title: Pon tus fotos en el mapa
 date: 2007-11-21
-tags: [geolocalización, gps, mapas, mundo, posicionamiento]
+tags: [geolocalización, gps, mapas, mundo, posicionamiento, Flickr, foto, mapa]
 categories: [Social Media]
 originalUrl: "https://xarop.com/pon-tus-fotos-en-el-mapa/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: Taller comunidades sociales
 date: 2007-11-15
-tags: [Barcelona, Facebook, Flickr, Fotolog, PimPamPum, Twitter, Youtube]
+tags: [Barcelona, Facebook, Flickr, Fotolog, PimPamPum, Twitter, Youtube, SocialMedia, api]
 categories: [Design]
 originalUrl: "https://xarop.com/taller-comunidades-sociales/"
 ---

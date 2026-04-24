@@ -1,7 +1,7 @@
 ---
 title: Web 2.0 para niños
 date: 2008-04-23
-tags: [escuela, infantil, niños, tutoriales, Twitter, Youtube]
+tags: [escuela, infantil, niños, tutoriales, Twitter, Youtube, Flickr, SocialMedia, Formació]
 categories: [Social Media, Video]
 originalUrl: "https://xarop.com/web-20-para-ninos/"
 ---

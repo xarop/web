@@ -2,7 +2,7 @@
 image: assets/images/expatsbcn-scaled.webp
 title: "Treballar a Barcelona, sentir-se a l'estranger"
 date: 2026-03-25
-tags: [Barcelona, Català, expats]
+tags: [Barcelona, Català, expats, FrontEnd]
 categories: [Blog, FrontEnd]
 originalUrl: "https://xarop.com/treballar-a-barcelona-sentir-se-a-lestranger/"
 ---

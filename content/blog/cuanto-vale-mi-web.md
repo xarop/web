@@ -1,7 +1,7 @@
 ---
 title: Cuanto vale mi web?
 date: 2008-09-09
-tags: [adsense, analytics, precio, publicidad]
+tags: [adsense, analytics, precio, publicidad, Google]
 categories: [Design]
 originalUrl: "https://xarop.com/cuanto-vale-mi-web/"
 ---

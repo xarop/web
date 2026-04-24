@@ -1,7 +1,7 @@
 ---
 title: Facebook Friend Invaders
 date: 2007-12-07
-tags: [api, app, Facebook, game, matamarcianos, space invaders]
+tags: [api, app, Facebook, game, matamarcianos, space invaders, PimPamPum]
 categories: [Social Media]
 originalUrl: "https://xarop.com/facebook-friend-invaders/"
 ---

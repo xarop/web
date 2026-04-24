@@ -1,6 +1,7 @@
 ---
 title: Evolución de las redes sociales
 date: 2008-04-26
+tags: [SocialMedia]
 categories: [Social Media]
 originalUrl: "https://xarop.com/evolucion-de-las-redes-sociales/"
 ---

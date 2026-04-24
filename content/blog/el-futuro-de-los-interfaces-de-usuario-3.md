@@ -1,7 +1,7 @@
 ---
 title: El futuro de los interfaces de usuario III
 date: 2011-11-07
-tags: [design, geolocalización, iu, microsoft, Youtube]
+tags: [design, geolocalización, iu, microsoft, Youtube, interficies, ui, movil]
 categories: [Blog, Tecnología, UI/UX, Video]
 originalUrl: "https://xarop.com/el-futuro-de-los-interfaces-de-usuario-3/"
 ---

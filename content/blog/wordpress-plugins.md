@@ -1,6 +1,7 @@
 ---
 title: WordPress Plugins favoritos
 date: 2007-04-10
+tags: [WordPress, plugins, Google, adsense, Flickr, analytics, Flash, ActionScript]
 categories: [Design]
 originalUrl: "https://xarop.com/wordpress-plugins/"
 ---

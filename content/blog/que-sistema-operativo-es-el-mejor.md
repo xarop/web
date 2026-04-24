@@ -1,7 +1,7 @@
 ---
 title: Que Sistema Operativo es el mejor?
 date: 2008-11-02
-tags: [iPhone, Leopard, Linux, MacOSX, Ubuntu, windows]
+tags: [iPhone, Leopard, Linux, MacOSX, Ubuntu, windows, android, SO, Gmail, browser, Gadgets]
 categories: [Social Media, Tecnología]
 originalUrl: "https://xarop.com/que-sistema-operativo-es-el-mejor/"
 ---

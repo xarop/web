@@ -1,6 +1,7 @@
 ---
 title: Publicidad
 date: 2007-11-30
+tags: [adsense, Google, publicidad]
 categories: [Design]
 originalUrl: "https://xarop.com/publicidad/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: Tus programas preferidos en tu llavero
 date: 2007-11-02
-tags: [firefox, pendrive, usb]
+tags: [firefox, pendrive, usb, software, download, tools, windows]
 categories: [Tecnología]
 originalUrl: "https://xarop.com/tus-programas-preferidos-en-tu-llavero/"
 ---

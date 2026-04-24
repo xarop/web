@@ -1,6 +1,7 @@
 ---
 title: Previsiones 2010
 date: 2009-12-30
+tags: [apple, android, iPhone, Gadgets, tablet, Google, tendencias]
 categories: [Tecnología]
 originalUrl: "https://xarop.com/previsiones-2010/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: Kayak
 date: 2007-11-21
-tags: [low cost]
+tags: [low cost, turismo, viajes, travel, usabilidad]
 categories: [Social Media]
 originalUrl: "https://xarop.com/kayak/"
 ---

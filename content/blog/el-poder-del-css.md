@@ -1,7 +1,7 @@
 ---
 title: El poder del CSS
 date: 2008-05-02
-tags: [cartoon, css2, html, imagen]
+tags: [cartoon, css2, html, imagen, css, animation]
 categories: [Design]
 originalUrl: "https://xarop.com/el-poder-del-css/"
 ---

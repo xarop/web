@@ -1,6 +1,7 @@
 ---
 title: ¿Qué es la Web 2.0?
 date: 2006-04-01
+tags: [SocialMedia, html, css, api, Youtube, CMS]
 categories: [Video]
 originalUrl: "https://xarop.com/que-es-la-web-20/"
 ---

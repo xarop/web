@@ -1,6 +1,7 @@
 ---
 title: Google Chrome OS vídeo
 date: 2009-11-20
+tags: [Google, SO, android, Youtube, browser]
 categories: [Social Media, Video]
 originalUrl: "https://xarop.com/google-chrome-os-video/"
 ---

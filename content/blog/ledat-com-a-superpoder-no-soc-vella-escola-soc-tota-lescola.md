@@ -1,6 +1,7 @@
 ---
 title: "L'edat com a superpoder (No soc \"vella escola\", soc \"tota l'escola\")"
 date: 2026-03-25
+tags: [edatisme, Angular, react, FrontEnd, ia, Català]
 categories: [Blog, FrontEnd]
 originalUrl: "https://xarop.com/?p=2718"
 ---

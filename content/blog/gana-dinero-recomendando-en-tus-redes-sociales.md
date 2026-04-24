@@ -2,7 +2,7 @@
 image: assets/images/Facebook_Like_Icon_Vector.webp
 title: Gana dinero recomendando en tus redes sociales
 date: 2011-09-15
-tags: [CMS, Facebook, publicidad, Twitter, WordPress]
+tags: [CMS, Facebook, publicidad, Twitter, WordPress, SocialMedia, adsense]
 categories: [Social Media, UI/UX]
 originalUrl: "https://xarop.com/gana-dinero-recomendando-en-tus-redes-sociales/"
 ---

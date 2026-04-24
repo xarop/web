@@ -1,7 +1,7 @@
 ---
 title: Foursquare
 date: 2010-01-25
-tags: [android, api, app, Facebook, gps, iPhone, turismo, Twitter]
+tags: [android, api, app, Facebook, gps, iPhone, turismo, Twitter, geolocalización, SocialMedia, movil]
 categories: [Social Media]
 originalUrl: "https://xarop.com/foursquare/"
 ---

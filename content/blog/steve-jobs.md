@@ -2,6 +2,7 @@
 image: assets/images/stevejobs1.webp
 title: Steve Jobs pensaba diferente
 date: 2011-10-06
+tags: [apple, design, Youtube]
 categories: [Tecnología, UI/UX, Video]
 originalUrl: "https://xarop.com/steve-jobs/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: Editar tus fotos de Flickr
 date: 2008-03-07
-tags: [foto, retoque fotografico]
+tags: [foto, retoque fotografico, Flickr, Photoshop, Facebook]
 categories: [Social Media]
 originalUrl: "https://xarop.com/editar-tus-fotos-de-flickr/"
 ---

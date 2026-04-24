@@ -1,7 +1,7 @@
 ---
 title: "Firefox: extensiones imprescindibles"
 date: 2007-11-26
-tags: [extensions, firefox, plugins]
+tags: [extensions, firefox, plugins, browser, navegador]
 categories: [Design]
 originalUrl: "https://xarop.com/firefox-extensiones-imprescindibles/"
 ---

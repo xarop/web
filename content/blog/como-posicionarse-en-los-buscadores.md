@@ -1,6 +1,7 @@
 ---
 title: Como posicionarse en los buscadores
 date: 2007-08-10
+tags: [SEO, Google, posicionamiento]
 categories: [Design]
 originalUrl: "https://xarop.com/como-posicionarse-en-los-buscadores/"
 ---

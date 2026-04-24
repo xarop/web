@@ -1,6 +1,7 @@
 ---
 title: Torno a ser aquí­
 date: 2007-06-10
+tags: [xarop.com, Català]
 categories: [Design]
 originalUrl: "https://xarop.com/torno-a-ser-aqui/"
 ---

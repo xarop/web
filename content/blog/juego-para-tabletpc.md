@@ -1,7 +1,7 @@
 ---
 title: Juego para TabletPC
 date: 2007-11-15
-tags: [tabletPC, videojuego]
+tags: [tabletPC, videojuego, game, Youtube, tablet]
 categories: [Video]
 originalUrl: "https://xarop.com/juego-para-tabletpc/"
 ---

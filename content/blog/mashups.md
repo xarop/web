@@ -1,6 +1,7 @@
 ---
 title: Mashups
 date: 2007-11-18
+tags: [api, Facebook, Flickr, Youtube, Google, PimPamPum, Barcelona]
 categories: [Social Media]
 originalUrl: "https://xarop.com/mashups/"
 ---

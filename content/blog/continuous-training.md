@@ -1,7 +1,7 @@
 ---
 title: Continuous Training
 date: 2015-09-10
-tags: [Agile, Angular, react, Redux, SCRUM]
+tags: [Agile, Angular, react, Redux, SCRUM, Formació, FrontEnd]
 categories: [Blog]
 originalUrl: "https://xarop.com/?p=13"
 ---

@@ -145,7 +145,7 @@ function renderTaxonomyLinks(items, basePath, prefix = "", cssClass = "tag") {
   ).join(" ");
 }
 
-async function buildTaxonomies(items, distSubdir, section, template) {
+async function buildTaxonomies(items, distSubdir, section, template, allCats = [], allTags = []) {
   const tagMap = new Map();
   const catMap = new Map();
 
@@ -165,11 +165,32 @@ async function buildTaxonomies(items, distSubdir, section, template) {
   const itemLi = (p) => `
     <li>
       <a href="../../${p.slug}/">
-        <h3>${p.meta.title}</h3>
-        ${p.meta.date ? `<time datetime="${formatDate(p.meta.date)}">${formatDate(p.meta.date)}</time>` : ""}
-        ${p.meta.description ? `<p>${p.meta.description}</p>` : ""}
+        ${p.meta.image ? `<img class="post-thumb" src="{{root}}${p.meta.image}" alt="${p.meta.title}" loading="lazy">` : ""}
+        <div class="post-body">
+          <h3>${p.meta.title}</h3>
+          ${p.meta.date ? `<time datetime="${formatDate(p.meta.date)}">${formatDate(p.meta.date)}</time>` : ""}
+          ${p.meta.description ? `<p>${p.meta.description}</p>` : ""}
+        </div>
       </a>
     </li>`;
+
+  const makeSidebar = (currentCatSlug = null, currentTagSlug = null) => {
+    const catCloud = allCats.map(c => {
+      const s = slugify(c);
+      const active = s === currentCatSlug ? ' aria-current="page"' : "";
+      return `<a class="category"${active} href="../../categories/${s}/">${c}</a>`;
+    }).join(" ");
+    const tagCloud = allTags.map(t => {
+      const s = slugify(t);
+      const active = s === currentTagSlug ? ' aria-current="page"' : "";
+      return `<a class="tag"${active} href="../../tags/${s}/">#${t}</a>`;
+    }).join(" ");
+    return (catCloud || tagCloud) ? `
+<aside class="sidebar">
+  ${catCloud ? `<section><h2>Categories</h2><div class="taxonomy-cloud">${catCloud}</div></section>` : ""}
+  ${tagCloud ? `<section><h2>Tags</h2><div class="taxonomy-cloud">${tagCloud}</div></section>` : ""}
+</aside>` : "";
+  };
 
   console.log(`   🏷️  Tags: ${tagMap.size} · Categories: ${catMap.size}`);
 
@@ -179,9 +200,17 @@ async function buildTaxonomies(items, distSubdir, section, template) {
       section,
       description: `${tagged.length} entrades etiquetades amb #${name}.`,
       content: `
-<header><h1>#${name}</h1><p class="meta">${tagged.length} entrades</p></header>
-<ol class="post-list" reversed>${tagged.map(itemLi).join("")}</ol>
-<p><a href="../../">← tornar</a></p>`,
+<div class="sidebar-layout">
+<div>
+  <header>
+    <p class="meta"><a href="../../">← ${section}</a></p>
+    <h1><span class="tag" style="font-size:inherit">#${name}</span></h1>
+    <p class="meta">${tagged.length} entrades</p>
+  </header>
+  <ol class="post-list" reversed>${tagged.map(itemLi).join("")}</ol>
+</div>
+${makeSidebar(null, slug)}
+</div>`,
     }, template);
   }
 
@@ -191,9 +220,17 @@ async function buildTaxonomies(items, distSubdir, section, template) {
       section,
       description: `${categorized.length} entrades a la categoria ${name}.`,
       content: `
-<header><h1>${name}</h1><p class="meta">${categorized.length} entrades</p></header>
-<ol class="post-list" reversed>${categorized.map(itemLi).join("")}</ol>
-<p><a href="../../">← tornar</a></p>`,
+<div class="sidebar-layout">
+<div>
+  <header>
+    <p class="meta"><a href="../../">← ${section}</a></p>
+    <h1><span class="category" style="font-size:inherit">${name}</span></h1>
+    <p class="meta">${categorized.length} entrades</p>
+  </header>
+  <ol class="post-list" reversed>${categorized.map(itemLi).join("")}</ol>
+</div>
+${makeSidebar(slug, null)}
+</div>`,
     }, template);
   }
 }
@@ -215,13 +252,36 @@ async function buildBlog(template) {
       </a>
     </li>`).join("");
 
+  const allCats = [...new Set(posts.flatMap(p => p.meta.categories || []))].sort();
+  const allTags = [...new Set(posts.flatMap(p => p.meta.tags || []))].sort();
+  const catCloud = allCats.map(c => `<a class="category" href="./categories/${slugify(c)}/">${c}</a>`).join(" ");
+  const tagCloud = allTags.map(t => `<a class="tag" href="./tags/${slugify(t)}/">#${t}</a>`).join(" ");
+  const featured = posts.filter(p => p.meta.featured).slice(0, 5);
+  const recentItems = (featured.length ? featured : posts.slice(0, 5)).map(p => `
+    <li><a href="./${p.slug}/"><div class="post-body"><h3>${p.meta.title}</h3><time>${formatDate(p.meta.date)}</time></div></a></li>`).join("");
+
+  const blogSidebar = `
+<aside class="sidebar">
+  ${catCloud ? `<section><h2>Categories</h2><div class="taxonomy-cloud">${catCloud}</div></section>` : ""}
+  ${tagCloud ? `<section><h2>Tags</h2><div class="taxonomy-cloud">${tagCloud}</div></section>` : ""}
+  <section>
+    <h2>Recents</h2>
+    <ol class="post-list">${recentItems}</ol>
+  </section>
+</aside>`;
+
   await writePage(join(DIST, "blog", "index.html"), {
     title: "Blog",
     section: "blog",
     description: "Articles sobre front-end, CSS, web i afins.",
     content: `
-<header><h1>Blog</h1><p class="meta">${posts.length} articles</p></header>
-<ol class="post-list" reversed>${list}</ol>`,
+<div class="sidebar-layout">
+<div>
+  <header><h1>Blog</h1><p class="meta">${posts.length} articles</p></header>
+  <ol class="post-list" reversed>${list}</ol>
+</div>
+${blogSidebar}
+</div>`,
   }, template);
 
   // Posts individuals
@@ -253,7 +313,7 @@ async function buildBlog(template) {
     }, template);
   }
 
-  await buildTaxonomies(posts, "blog", "blog", template);
+  await buildTaxonomies(posts, "blog", "blog", template, allCats, allTags);
 
   return posts;
 }
@@ -275,13 +335,29 @@ async function buildPortfolio(template) {
     </li>`;
   }).join("");
 
+  const allCats = [...new Set(projects.flatMap(p => p.meta.categories || []))].sort();
+  const allTags = [...new Set(projects.flatMap(p => p.meta.tags || []))].sort();
+  const catCloud = allCats.map(c => `<a class="category" href="./categories/${slugify(c)}/">${c}</a>`).join(" ");
+  const tagCloud = allTags.map(t => `<a class="tag" href="./tags/${slugify(t)}/">#${t}</a>`).join(" ");
+
+  const portfolioSidebar = `
+<aside class="sidebar">
+  ${catCloud ? `<section><h2>Categories</h2><div class="taxonomy-cloud">${catCloud}</div></section>` : ""}
+  ${tagCloud ? `<section><h2>Tags</h2><div class="taxonomy-cloud">${tagCloud}</div></section>` : ""}
+</aside>`;
+
   await writePage(join(DIST, "portfolio", "index.html"), {
     title: "Portfolio",
     section: "portfolio",
     description: "Projectes seleccionats.",
     content: `
-<header><h1>Portfolio</h1><p class="meta">${projects.length} projectes seleccionats</p></header>
-<ul class="project-list">${grid}</ul>`,
+<div class="sidebar-layout">
+<div>
+  <header><h1>Portfolio</h1><p class="meta">${projects.length} projectes seleccionats</p></header>
+  <ul class="project-list">${grid}</ul>
+</div>
+${portfolioSidebar}
+</div>`,
   }, template);
 
   for (const p of projects) {
@@ -316,7 +392,7 @@ async function buildPortfolio(template) {
     }, template);
   }
 
-  await buildTaxonomies(projects, "portfolio", "portfolio", template);
+  await buildTaxonomies(projects, "portfolio", "portfolio", template, allCats, allTags);
 
   return projects;
 }

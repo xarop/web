@@ -1,7 +1,7 @@
 ---
 title: Historia de las Redes Sociales
 date: 2011-01-26
-tags: [Facebook, MySpace, SocialMedia, Twitter, Youtube]
+tags: [Facebook, MySpace, SocialMedia, Twitter, Youtube, Orkut, Fotolog]
 categories: [Social Media, UI/UX]
 originalUrl: "https://xarop.com/?p=794"
 ---

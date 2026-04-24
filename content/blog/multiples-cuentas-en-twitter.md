@@ -1,7 +1,7 @@
 ---
 title: Multiples cuentas en Twitter
 date: 2008-12-03
-tags: [splitweet, TwiterFox, Twitter]
+tags: [splitweet, TwiterFox, Twitter, SocialMedia, browser, extensions]
 categories: [Social Media]
 originalUrl: "https://xarop.com/multiples-cuentas-en-twitter/"
 ---

@@ -1,6 +1,7 @@
 ---
 title: ¿Dónde esta Google Wave?
 date: 2009-11-12
+tags: [Google, SocialMedia]
 categories: [Social Media]
 originalUrl: "https://xarop.com/donde-esta-google-wave/"
 ---

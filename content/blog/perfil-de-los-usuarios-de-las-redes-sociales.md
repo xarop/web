@@ -1,7 +1,7 @@
 ---
 title: Perfil de los usuarios de las redes sociales
 date: 2008-06-14
-tags: [chart, estadisticas]
+tags: [chart, estadisticas, SocialMedia, analytics]
 categories: [Social Media]
 originalUrl: "https://xarop.com/perfil-de-los-usuarios-de-las-redes-sociales/"
 ---

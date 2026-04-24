@@ -2,6 +2,7 @@
 image: assets/images/socialmedia.webp
 title: Cómo ganar dinero con tus redes sociales
 date: 2013-04-19
+tags: [SocialMedia, marketing online, publicidad, adsense]
 categories: [Social Media, UI/UX]
 originalUrl: "https://xarop.com/como-ganar-dinero-con-tus-redes-sociales/"
 ---

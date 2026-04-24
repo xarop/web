@@ -1,7 +1,7 @@
 ---
 title: "Web Engineering &amp; Architecture"
 date: 2024-02-20
-tags: [AI Services, Automated Testing, AWS, Azure, Chai, CI/CD, custom themes and plugins, Docker, Google Cloud, Gutenberg, javascript, Mocha, php, react, REST, VueJS]
+tags: [AI Services, Automated Testing, AWS, Azure, Chai, CI/CD, Docker, Google Cloud, Gutenberg, javascript, Mocha, php, react, REST, VueJS, WordPress, Node.js, NPM, Git]
 categories: [Blog]
 originalUrl: "https://xarop.com/?p=15"
 ---

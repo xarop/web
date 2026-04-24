@@ -1,7 +1,7 @@
 ---
 title: Política 2.0
 date: 2009-01-14
-tags: ["cava&amp;twitts", Facebook, politica, Twitter]
+tags: ["cava&amp;twitts", Facebook, politica, Twitter, Barcelona, SocialMedia]
 categories: [Social Media]
 originalUrl: "https://xarop.com/politica-20/"
 ---

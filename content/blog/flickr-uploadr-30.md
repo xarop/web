@@ -1,7 +1,7 @@
 ---
 title: Flickr Uploadr 3.0
 date: 2007-11-22
-tags: [download, new, tool, tools, upload]
+tags: [download, new, tool, tools, upload, Flickr, foto, MacOSX, windows]
 categories: [Design]
 originalUrl: "https://xarop.com/flickr-uploadr-30/"
 ---

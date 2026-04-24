@@ -1,7 +1,7 @@
 ---
 title: Buzzear vs Twittear
 date: 2010-02-10
-tags: [android, buzz, Facebook, gmail, Google, iPhone, Twitter]
+tags: [android, buzz, Facebook, gmail, Google, iPhone, Twitter, foursquare, SocialMedia]
 categories: [Social Media]
 originalUrl: "https://xarop.com/buzzear-vs-twittear/"
 ---

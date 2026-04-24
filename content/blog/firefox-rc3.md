@@ -1,7 +1,7 @@
 ---
 title: Firefox RC3
 date: 2008-06-12
-tags: [browser, mozila, navegador]
+tags: [browser, mozila, navegador, firefox, extensions, movil, usabilidad]
 categories: [Design]
 originalUrl: "https://xarop.com/firefox-rc3/"
 ---

@@ -1,6 +1,7 @@
 ---
 title: Usabilidad
 date: 2005-05-01
+tags: [usabilidad, ui, ux, design]
 categories: [Design]
 originalUrl: "https://xarop.com/usabilidad/"
 ---

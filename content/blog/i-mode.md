@@ -1,6 +1,7 @@
 ---
 title: "¿Que es el i-mode?"
 date: 2007-10-30
+tags: [movil, html, Google, app]
 categories: [Tecnología]
 originalUrl: "https://xarop.com/i-mode/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "¿Cómo eliminar el virus-troyano Beagle/Bagle?"
 date: 2008-10-16
-tags: [Emule, virus]
+tags: [Emule, virus, windows, software]
 categories: [Design]
 originalUrl: "https://xarop.com/eliminar-el-virus-troyano-beagle/"
 ---

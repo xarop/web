@@ -1,7 +1,7 @@
 ---
 title: No hay internet
 date: 2008-04-20
-tags: [cartoon]
+tags: [cartoon, humor, video]
 categories: [Video]
 originalUrl: "https://xarop.com/no-hay-internet/"
 ---

@@ -2,7 +2,7 @@
 image: assets/images/wp.webp
 title: WordCamp Spain 2010
 date: 2010-12-13
-tags: [CMS, plugins, tema, theme, WordPress]
+tags: [CMS, plugins, tema, theme, WordPress, SEO, Barcelona]
 categories: [Design, UI/UX]
 originalUrl: "https://xarop.com/wordcamp-spain-2010/"
 ---

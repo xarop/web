@@ -1,6 +1,7 @@
 ---
 title: xarop.net
 date: 2007-08-02
+tags: [xarop.com, Català]
 categories: [Design]
 originalUrl: "https://xarop.com/xaropnet/"
 ---

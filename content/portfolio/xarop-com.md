@@ -27,6 +27,8 @@ Migració completa de l'arxiu WordPress 2007–2024: uns 90 articles i 70 projec
 - **Publicació via Git**: escriure és `touch post.md && git push`.
 - **GitHub Pages**: hosting gratuït, deploy automàtic via GitHub Actions.
 - **Accessible**: WCAG 2.1 AA, semàntica HTML pura, focus rings visibles, `prefers-reduced-motion`.
+- **Categories i tags**: distinció visual (badge vs. text pla), pàgines d'índex per cada una amb aside navegable.
+- **Imatges**: 60+ imatges migrades des de WordPress, convertides a WebP auto-allotjat. Screenshots automàtics via Puppeteer per a projectes nous.
 
 ## Stack
 

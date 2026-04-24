@@ -1,7 +1,7 @@
 ---
 title: Online Marketing
 date: 2008-12-01
-tags: [marketing online, publicidad, spam]
+tags: [marketing online, publicidad, spam, Google, SEO, email, analytics, ecommerce]
 categories: [Design]
 originalUrl: "https://xarop.com/online-marketing/"
 ---

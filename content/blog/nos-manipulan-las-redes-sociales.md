@@ -2,7 +2,7 @@
 image: assets/images/socialmedia.webp
 title: ¿Nos manipulan las redes sociales?
 date: 2011-11-07
-tags: [Facebook, Google, TED, Twitter, Youtube]
+tags: [Facebook, Google, TED, Twitter, Youtube, SocialMedia, analytics]
 categories: [Social Media, UI/UX, Video]
 originalUrl: "https://xarop.com/nos-manipulan-las-redes-sociales/"
 ---

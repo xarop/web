@@ -1,7 +1,7 @@
 ---
 title: El futuro de los interfaces de usuario
 date: 2010-05-11
-tags: [design, microsoft, ui]
+tags: [design, microsoft, ui, interficies, iu, touch, Youtube]
 categories: [Design, Social Media, Video]
 originalUrl: "https://xarop.com/el-futuro-de-los-interfaces-de-usuario/"
 ---

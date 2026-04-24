@@ -1,6 +1,7 @@
 ---
 title: Mi nuevo Tablet PC
 date: 2007-09-05
+tags: [hardware, tablet, wifi, bluetooth, Gadgets, windows]
 categories: [Tecnología]
 originalUrl: "https://xarop.com/mi-nuevo-tablet-pc/"
 ---

@@ -2,7 +2,7 @@
 image: assets/images/Productivitat.webp
 title: Eines per afavorir la productivitat
 date: 2020-05-06
-tags: [Figma, Git, github, productivity, tools]
+tags: [Figma, Git, github, productivity, tools, UI/UX, mockups, Català]
 categories: [BackEnd, Blog, Design, FrontEnd]
 originalUrl: "https://xarop.com/eines-per-afavorir-la-productivitat/"
 ---

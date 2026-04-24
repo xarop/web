@@ -1,7 +1,7 @@
 ---
 title: Snap Shots Plugin
 date: 2007-11-06
-tags: [pantallazos, plugin, xarop.com]
+tags: [pantallazos, plugin, xarop.com, WordPress, screen, firefox, browser]
 categories: [Design]
 originalUrl: "https://xarop.com/snap-shots-plugin/"
 ---

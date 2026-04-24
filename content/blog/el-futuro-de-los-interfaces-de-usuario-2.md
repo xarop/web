@@ -1,7 +1,7 @@
 ---
 title: El futuro de los interfaces de usuario II
 date: 2010-09-06
-tags: [interficies, screen, touch, ui, usabilidad]
+tags: [interficies, screen, touch, ui, usabilidad, iu, movil, tablet, Youtube]
 categories: [Design, Social Media, Tecnología, Video]
 originalUrl: "https://xarop.com/el-futuro-de-los-interfaces-de-usuario-2/"
 ---

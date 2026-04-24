@@ -1,7 +1,7 @@
 ---
 title: iPod touch
 date: 2008-11-22
-tags: [apple, Gadgets, iPhone, ipod]
+tags: [apple, Gadgets, iPhone, ipod, usabilidad, ui, bluetooth, gps, wifi]
 categories: [Tecnología]
 originalUrl: "https://xarop.com/ipod-touch/"
 ---

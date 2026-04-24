@@ -238,6 +238,79 @@ body>.full {
   }
 }
 
+/* ----- Sidebar layout (blog, portfolio, taxonomy) ----- */
+.sidebar-layout {
+  display: grid;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .sidebar-layout {
+    grid-template-columns: minmax(0, 3fr) minmax(16rem, 1fr);
+  }
+}
+
+.sidebar {
+  background: color-mix(in srgb, var(--color-accent) 2%, var(--color-bg));
+  border: 1px solid color-mix(in srgb, var(--color-accent) 10%, var(--color-border));
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    position: sticky;
+    top: var(--space-6);
+  }
+}
+
+.sidebar section {
+  margin-bottom: var(--space-5);
+}
+
+.sidebar section:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar h2 {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-soft);
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+}
+
+.sidebar .post-list {
+  gap: var(--space-2);
+}
+
+.sidebar .post-list li {
+  padding-bottom: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+/* ----- Taxonomy cloud ----- */
+.taxonomy-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.taxonomy-cloud:last-child {
+  margin-bottom: 0;
+}
+
+.taxonomy-cloud-group {
+  margin-bottom: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
 /* ----- Header ----- */
 .site-header {
   display: flex;
@@ -457,6 +530,16 @@ article header .meta {
 
 .tag:hover {
   color: var(--color-accent);
+}
+
+.category[aria-current="page"] {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.tag[aria-current="page"] {
+  color: var(--color-accent);
+  font-weight: 700;
 }
 
 /* ----- Featured image ----- */

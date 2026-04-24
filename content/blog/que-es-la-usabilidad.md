@@ -1,6 +1,7 @@
 ---
 title: ¿Que es la usabilidad?
 date: 2005-05-01
+tags: [usabilidad, ui, ux, design, web 2.0 expo]
 categories: [Design]
 originalUrl: "https://xarop.com/que-es-la-usabilidad/"
 ---

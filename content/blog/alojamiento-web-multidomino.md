@@ -1,6 +1,7 @@
 ---
 title: Alojamiento web multidomino
 date: 2008-03-20
+tags: [hosting, cpanel]
 categories: [Design]
 originalUrl: "https://xarop.com/alojamiento-web-multidomino/"
 ---

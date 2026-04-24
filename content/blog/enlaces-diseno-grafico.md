@@ -1,6 +1,7 @@
 ---
 title: Enlaces diseño grafico
 date: 2004-04-01
+tags: [Graphic Design, Typography, Photoshop, FreeHand, software, Disseny, Visual Communication]
 categories: [Design]
 originalUrl: "https://xarop.com/enlaces-diseno-grafico/"
 ---

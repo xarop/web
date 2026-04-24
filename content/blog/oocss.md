@@ -2,7 +2,7 @@
 image: assets/images/oocss1.webp
 title: CSS orientado a objetos (OOCSS)
 date: 2011-09-23
-tags: [css, css3, html, html5, oocss, webcat]
+tags: [css, css3, html, html5, oocss, webcat, performance, Barcelona]
 categories: [Design, UI/UX]
 originalUrl: "https://xarop.com/oocss/"
 ---
