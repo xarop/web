@@ -107,7 +107,7 @@ h3 {
 h4 {
   font-size: var(--text-lg);
   line-height: var(--leading-tight);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 h1,
@@ -120,7 +120,8 @@ h4 {
 
 h1:first-child,
 h2:first-child,
-h3:first-child {
+h3:first-child,
+h4:first-child {
   margin-top: 0;
 }
 
@@ -272,7 +273,7 @@ body>.full {
 
 .site-nav {
   display: flex;
-  gap: var(--space-5, var(--space-4));
+  gap: var(--space-5);
   list-style: none;
   padding: 0;
   margin: 0;
@@ -425,7 +426,7 @@ code {
   font-size: 0.9em;
   background: var(--color-code-bg);
   padding: 2px 5px;
-  border-radius: 3px;
+  border-radius: var(--radius);
 }
 
 pre {
@@ -669,7 +670,7 @@ blockquote {
 }
 
 .lang-trigger.is-flipping {
-  animation: flap 0.28s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: flap 0.28s var(--ease) forwards;
 }
 
 .lang-picker {
@@ -756,7 +757,7 @@ button.flavor-name:hover {
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 220ms;
+  animation-duration: var(--duration);
 }
 
 /* ----- Utils (poques, intencionals) ----- */

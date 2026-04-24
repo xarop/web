@@ -2,6 +2,55 @@
    TOKENS — Variables base del sistema de disseny
    ============================================================ */
 
+/* Asap — auto-allotjada, OFL */
+@font-face {
+  font-family: "Asap";
+  src: url("../assets/fonts/Asap-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Asap";
+  src: url("../assets/fonts/Asap-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Asap";
+  src: url("../assets/fonts/Asap-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Asap";
+  src: url("../assets/fonts/Asap-MediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Asap";
+  src: url("../assets/fonts/Asap-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Asap";
+  src: url("../assets/fonts/Asap-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   /* Tipografies — system stacks primer */
   --font-sans: system-ui, -apple-system, "Segoe UI", Inter, Roboto, sans-serif;
@@ -26,6 +75,7 @@
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
+  --space-5: 1.25rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
   --space-12: 3rem;

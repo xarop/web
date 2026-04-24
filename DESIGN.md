@@ -62,26 +62,36 @@ Cada sabor defineix: `--color-accent`, `--color-accent-deep`, `--color-accent-so
 
 ## Tipografies
 
-Tres famílies, totes amb *system stack* primer per garantir rendiment sense fonts externes. L'excepció és **Asap** (Google Fonts), carregada només per als `<h1>`.
+Quatre famílies. Tres via *system stack* (zero latència). Una externa per als títols.
 
-| Variable | Ús | Stack |
+| Variable | Ús | Stack / font |
 |----------|-----|-------|
+| **Asap** | Tots els headings (`h1`–`h4`) | Auto-allotjada (OFL) · weights 400, 500, 700 |
 | `--font-sans` | Cos, UI | `system-ui, -apple-system, "Segoe UI", Inter, sans-serif` |
-| `--font-serif` | Títols (opcional) | `ui-serif, Georgia, "Newsreader", serif` |
-| `--font-mono` | Codi, meta, labels | `ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace` |
+| `--font-serif` | Cos alternatiu (opcional, `data-type="serif"`) | `ui-serif, Georgia, "Newsreader", serif` |
+| `--font-mono` | Codi, meta, labels d'idioma | `ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace` |
 
-Es pot canviar la tipografia global amb `data-type="serif"` al `<html>` — tot el cos passa a serif.
+**Asap** s'aplica a `h1, h2, h3, h4` via `--font-headings`. Auto-allotjada a `src/assets/fonts/` via `@font-face` a `tokens.css`. Sense cap petició externa, `font-display: swap`.
 
-### Escala tipogràfica (perfect fourth, 1.333)
+### Escala de headings
+
+| Element | Mida | Weight | Letter-spacing |
+|---------|------|--------|----------------|
+| `h1` | `--text-3xl` (~51px) | 700 | `-0.02em` |
+| `h2` | `--text-2xl` (~38px) | 700 | `-0.015em` |
+| `h3` | `--text-xl` (~28px) | 700 | — |
+| `h4` | `--text-lg` (~21px) | 500 | — |
+
+### Escala tipogràfica completa (perfect fourth, 1.333)
 
 ```
---text-xs:   0.75rem   (12px)
---text-sm:   0.875rem  (14px)
---text-base: 1rem      (16px)
---text-lg:   1.333rem  (~21px)
---text-xl:   1.777rem  (~28px)
---text-2xl:  2.369rem  (~38px)
---text-3xl:  3.157rem  (~51px)
+--text-xs:   0.75rem   (12px)   — timestamps, tags
+--text-sm:   0.875rem  (14px)   — meta, nav, captions
+--text-base: 1rem      (16px)   — cos del text
+--text-lg:   1.333rem  (~21px)  — h4, highlights
+--text-xl:   1.777rem  (~28px)  — h3
+--text-2xl:  2.369rem  (~38px)  — h2
+--text-3xl:  3.157rem  (~51px)  — h1
 ```
 
 Line-height: `1.6` per cos, `1.2` per títols.
@@ -97,6 +107,7 @@ Escala basada en `rem`, múltiples de `0.25rem` (4px):
 --space-2:  0.5rem    (8px)
 --space-3:  0.75rem   (12px)
 --space-4:  1rem      (16px)
+--space-5:  1.25rem   (20px)
 --space-6:  1.5rem    (24px)
 --space-8:  2rem      (32px)
 --space-12: 3rem      (48px)
@@ -208,7 +219,7 @@ El nom de marca "xarop" i els codis d'idioma estan protegits de Google Translate
 - Cap framework CSS utilitari (Tailwind, etc.). Tokens propis + CSS modern natiu.
 - Cap runtime JS al client per renderitzar contingut.
 - Cap imatge sense `width`/`height` i `alt`.
-- Cap font externa si pot anar amb *system stack* (excepció: Asap per a `<h1>`).
+- Cap font externa si pot anar amb *system stack* (excepció: Asap auto-allotjada per a headings `h1`–`h4`).
 - Cap `!important` tret que sigui reset o override de Google Translate.
 - Cap classe que descrigui aparença (`.red`, `.big`). Classes descriuen propòsit.
 - Cap dependència de npm al client.

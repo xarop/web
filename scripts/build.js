@@ -9,7 +9,7 @@
  * Requereix Node >= 18. Usa `marked` i `gray-matter` (dev deps).
  */
 
-import { readFile, writeFile, mkdir, readdir, copyFile, rm } from "node:fs/promises";
+import { readFile, writeFile, mkdir, readdir, copyFile, cp, rm } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join, dirname, basename, extname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -472,13 +472,9 @@ async function copyAssets() {
     }
   }
 
-  // Assets
+  // Assets (recursiu per suportar subdirectoris com fonts/)
   if (existsSync(join(SRC, "assets"))) {
-    const aDst = join(DIST, "assets");
-    await ensureDir(aDst);
-    for (const f of await readdir(join(SRC, "assets"))) {
-      await copyFile(join(SRC, "assets", f), join(aDst, f));
-    }
+    await cp(join(SRC, "assets"), join(DIST, "assets"), { recursive: true });
   }
 
   console.log("\n🎒 Assets copiats");
