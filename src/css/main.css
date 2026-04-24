@@ -210,9 +210,6 @@ body>.full {
   gap: var(--space-3);
 }
 
-.home-aside .post-list a {
-  display: block;
-}
 
 .home-aside .post-list li {
   padding-bottom: var(--space-2);
@@ -370,6 +367,9 @@ article header .meta {
 .post-list a {
   text-decoration: none;
   color: inherit;
+}
+
+.post-list a:has(.post-thumb) {
   display: flex;
   gap: var(--space-4);
   align-items: flex-start;

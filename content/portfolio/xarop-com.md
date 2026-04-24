@@ -1,4 +1,5 @@
 ---
+image: assets/images/screenshot-xarop-com.webp
 title: xarop.com
 date: 2026-04-01
 year: 2026

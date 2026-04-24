@@ -1,4 +1,5 @@
 ---
+image: assets/images/screenshot-napptilius.webp
 title: Napptilius
 date: 2026-04-22
 year: 2026
