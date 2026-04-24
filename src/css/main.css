@@ -210,6 +210,10 @@ body>.full {
   gap: var(--space-3);
 }
 
+.home-aside .post-list a {
+  display: block;
+}
+
 .home-aside .post-list li {
   padding-bottom: var(--space-2);
 }

@@ -392,7 +392,7 @@ async function buildHome(template, posts, projects) {
   if (existsSync(indexPath)) return;
 
   const recent = posts.slice(0, 3).map(p => `
-    <li><a href="./blog/${p.slug}/"><h3>${p.meta.title}</h3><time>${formatDate(p.meta.date)}</time></a></li>
+    <li><a href="./blog/${p.slug}/"><div class="post-body"><h3>${p.meta.title}</h3><time>${formatDate(p.meta.date)}</time></div></a></li>
   `).join("");
 
   const featured = projects.slice(0, 3).map(p => `
