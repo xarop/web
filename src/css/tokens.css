@@ -7,6 +7,7 @@
   --font-sans: system-ui, -apple-system, "Segoe UI", Inter, Roboto, sans-serif;
   --font-serif: ui-serif, Georgia, "Newsreader", "Iowan Old Style", serif;
   --font-mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  --font-headings: "Asap", var(--font-sans);
 
   /* Escala tipogràfica — perfect fourth 1.333 */
   --text-xs: 0.75rem;
@@ -75,7 +76,10 @@
   :root {
     --duration: 0ms;
   }
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

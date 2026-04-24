@@ -63,6 +63,7 @@ h1,
 h2,
 h3,
 h4 {
+  font-family: var(--font-headings);
   text-wrap: balance;
 }
 
@@ -84,7 +85,6 @@ html {
 }
 
 h1 {
-  font-family: "Asap", var(--font-sans);
   font-size: var(--text-3xl);
   line-height: var(--leading-tight);
   letter-spacing: -0.02em;
