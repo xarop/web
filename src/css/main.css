@@ -403,13 +403,22 @@ article header .meta {
   color: inherit;
 }
 
+.project-thumb {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 1px);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
 .project-list h3 {
   font-size: var(--text-base);
   margin: 0 0 var(--space-1);
 }
 
-/* ----- Tags ----- */
-.tag {
+/* ----- Categories (badge) i Tags (text pla) ----- */
+.category {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -418,6 +427,32 @@ article header .meta {
   padding: 2px var(--space-2);
   border-radius: var(--radius);
   text-decoration: none;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-soft);
+  text-decoration: none;
+}
+
+.tag:hover {
+  color: var(--color-accent);
+}
+
+/* ----- Featured image ----- */
+.featured-image {
+  margin-block: var(--space-6) 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.featured-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
 }
 
 /* ----- Code & pre ----- */

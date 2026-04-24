@@ -137,9 +137,9 @@ async function writePage(outPath, opts, template) {
 
 // ---------- Build pages ----------
 
-function renderTaxonomyLinks(items, basePath, prefix = "") {
+function renderTaxonomyLinks(items, basePath, prefix = "", cssClass = "tag") {
   return (items || []).map(t =>
-    `<a class="tag" href="${basePath}${slugify(t)}/">${prefix}${t}</a>`
+    `<a class="${cssClass}" href="${basePath}${slugify(t)}/">${prefix}${t}</a>`
   ).join(" ");
 }
 
@@ -222,7 +222,7 @@ async function buildBlog(template) {
   // Posts individuals
   for (const p of posts) {
     const tags = renderTaxonomyLinks(p.meta.tags, "../tags/", "#");
-    const cats = renderTaxonomyLinks(p.meta.categories, "../categories/");
+    const cats = renderTaxonomyLinks(p.meta.categories, "../categories/", "", "category");
     const body = htmlFromMarkdown(p.body);
     await writePage(join(DIST, "blog", p.slug, "index.html"), {
       title: p.meta.title,
@@ -236,8 +236,10 @@ async function buildBlog(template) {
     <h1>${p.meta.title}</h1>
     <p class="meta">
       <time datetime="${formatDate(p.meta.date)}">${formatDate(p.meta.date)}</time>
-      ${cats}${tags}
+      ${cats}
     </p>
+    ${tags ? `<p class="meta">${tags}</p>` : ""}
+    ${p.meta.image ? `<figure class="featured-image"><img src="${p.meta.image}" alt="${p.meta.title}" loading="lazy"></figure>` : ""}
   </header>
   ${body}
   <hr style="margin-top:3rem;border:0;border-top:1px solid var(--color-border)">
@@ -260,6 +262,7 @@ async function buildPortfolio(template) {
     return `
     <li>
       <a href="./${p.slug}/">
+        ${p.meta.image ? `<img class="project-thumb" src="${p.meta.image}" alt="${p.meta.title}" loading="lazy">` : ""}
         <h3>${p.meta.title}</h3>
         <p class="meta">${[p.meta.role, year].filter(Boolean).join(" · ")}</p>
         ${p.meta.description ? `<p>${p.meta.description}</p>` : ""}
@@ -278,7 +281,7 @@ async function buildPortfolio(template) {
 
   for (const p of projects) {
     const tags = renderTaxonomyLinks(p.meta.tags, "../tags/", "#");
-    const cats = renderTaxonomyLinks(p.meta.categories, "../categories/");
+    const cats = renderTaxonomyLinks(p.meta.categories, "../categories/", "", "category");
     const year = p.meta.year || (p.meta.date ? formatDate(p.meta.date).slice(0, 4) : "");
     const dateFull = p.meta.date ? formatDate(p.meta.date) : "";
     const body = htmlFromMarkdown(p.body);
@@ -296,7 +299,9 @@ async function buildPortfolio(template) {
       ${[p.meta.role, year].filter(Boolean).join(" · ")}
       ${p.meta.url ? ` · <a href="${p.meta.url}" rel="noopener">visita →</a>` : ""}
     </p>
-    ${(cats || tags) ? `<p class="meta">${cats}${tags}</p>` : ""}
+    ${cats ? `<p class="meta">${cats}</p>` : ""}
+    ${tags ? `<p class="meta">${tags}</p>` : ""}
+    ${p.meta.image ? `<figure class="featured-image"><img src="${p.meta.image}" alt="${p.meta.title}" loading="lazy"></figure>` : ""}
     ${dateFull ? `<p class="meta"><time datetime="${dateFull}">${dateFull}</time></p>` : ""}
   </header>
   ${body}

@@ -2,6 +2,7 @@
 title: "HTML semàntic: els *defaults* ja són bons"
 date: 2026-03-28
 description: Per què escriure HTML semàntic sense classes resol un 80% dels problemes de CSS abans que existeixin.
+categories: [Design, FrontEnd]
 tags: [html, a11y]
 flavor: llimona
 ---

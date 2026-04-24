@@ -2,6 +2,7 @@
 title: Temes amb CSS custom properties — i prou
 date: 2026-04-15
 description: Com implementar sistemes de temes (light/dark i multi-color) amb només CSS, sense JavaScript, sense preprocessadors.
+categories: [Design, FrontEnd]
 tags: [css, design-systems]
 flavor: menta
 ---

@@ -5,6 +5,7 @@ year: 2026
 role: Front-end engineer
 description: "Prova tècnica (Zara Web Challenge): catàleg de smartphones responsive, accessible i multillengua amb frontend React i backend BFF opcional."
 url: https://github.com/xarop/napptilius
+categories: [FrontEnd, Portfolio]
 tags: [react, vite, styled-components, bff, testing, prova-tecnica]
 flavor: nabiu
 ---

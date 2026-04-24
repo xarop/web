@@ -5,6 +5,7 @@ year: 2026
 role: Tot
 description: Aquesta web. Sis sabors, zero base de dades, Markdown.
 url: https://web.xarop.com
+categories: [Design, FrontEnd, Portfolio]
 tags: [html, css, node, github-pages]
 flavor: maduixa
 ---
