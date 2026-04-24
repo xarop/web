@@ -25,49 +25,52 @@ xarop.com/
 │   ├── blog/         Articles del blog
 │   └── portfolio/    Projectes del portfolio
 ├── src/              Codi font
-│   ├── css/          Fulls d'estil modulars
-│   ├── js/           JS opcional (transicions)
-│   ├── templates/    Plantilles HTML
-│   └── assets/       Imatges, fonts, logo
-├── scripts/          Build script (Node.js)
-├── dist/             HTML generat (publicable)
-└── .github/          Workflow per GitHub Pages
+│   ├── css/          tokens.css · flavors.css · main.css
+│   ├── js/           enhance.js (millores progressives)
+│   ├── templates/    base.html (única plantilla)
+│   └── assets/       Imatges, fonts, logo SVG
+├── scripts/          build.js — Node.js ~250 línies
+├── dist/             HTML generat (publicable, git-ignored)
+└── .github/          Workflow de deploy a GitHub Pages
 ```
 
 **Flux:** `content/*.md` → `scripts/build.js` → `dist/*.html`
+
+El build script fa: llegir Markdown, aplicar front-matter, injectar a la plantilla, escriure HTML. Cap dependència de runtime al client.
 
 ---
 
 ## Sabors (paletes de color)
 
-Cada sabor és una variable `data-flavor` al `<html>`. Canviar de sabor és canviar un atribut. Totes les variables CSS es re-calculen automàticament.
+Cada sabor és un bloc de variables CSS sota `[data-flavor="X"]` a `flavors.css`. Canviar de sabor és canviar un atribut al `<html>`. Tot es re-calcula via cascade.
 
-| Sabor | Valor | Color primari | Caràcter |
-|-------|-------|---------------|----------|
-| `maduixa` | Maduixa (default) | `#FF0000` | El clàssic. Intens, vermell. |
-| `menta` | Menta | `#00A878` | Fresc, net, verd. |
-| `llimona` | Llimona | `#F5C518` | Àcid, brillant, groc. |
-| `mora` | Móra | `#5B2A86` | Profund, elegant, lila. |
-| `taronja` | Taronja | `#FF6B35` | Càlid, enèrgic. |
-| `regalessia` | Regalèssia | `#1A1A1A` | Seriós, negre quasi pur. |
+| Sabor | Color primari | Caràcter |
+|-------|---------------|----------|
+| `maduixa` | `#FF0000` | El clàssic. Vermell intens. Default. |
+| `nabiu` | `#3B4CCA` | Blau fosc, digital, fred. |
+| `gerd` | `#CF255E` | Rosa fosc, enèrgic. |
+| `menta` | `#00A878` | Fresc, net, verd. |
+| `llimona` | `#D4A300` | Àcid, daurat. |
+| `taronja` | `#FF6B35` | Càlid, enèrgic. |
+| `regalessia` | `#1A1A1A` | Seriós, quasi negre (s'inverteix en dark mode). |
 
 Activació: `<html data-flavor="menta">`. Sense atribut → `maduixa`.
 
-El color afecta: logo, enllaços, `accent-color`, selecció de text, focus rings, i decoracions. **No** afecta text principal ni fons (tret que el sabor ho requereixi explícitament).
+Cada sabor defineix: `--color-accent`, `--color-accent-deep`, `--color-accent-soft`. Aquestes tres variables alimenten tots els elements de color del lloc: logo, enllaços, focus rings, tags, hover states.
 
 ---
 
 ## Tipografies
 
-Tres famílies, totes amb *system stack* primer per garantir rendiment sense fonts externes.
+Tres famílies, totes amb *system stack* primer per garantir rendiment sense fonts externes. L'excepció és **Asap** (Google Fonts), carregada només per als `<h1>`.
 
 | Variable | Ús | Stack |
 |----------|-----|-------|
 | `--font-sans` | Cos, UI | `system-ui, -apple-system, "Segoe UI", Inter, sans-serif` |
 | `--font-serif` | Títols (opcional) | `ui-serif, Georgia, "Newsreader", serif` |
-| `--font-mono` | Codi, meta | `ui-monospace, "JetBrains Mono", Menzies, monospace` |
+| `--font-mono` | Codi, meta, labels | `ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace` |
 
-Es pot canviar la tipografia global amb `data-type="serif"` al `<html>` — tot el cos passa a serif. Més "editorial", menys "interfície".
+Es pot canviar la tipografia global amb `data-type="serif"` al `<html>` — tot el cos passa a serif.
 
 ### Escala tipogràfica (perfect fourth, 1.333)
 
@@ -90,105 +93,122 @@ Line-height: `1.6` per cos, `1.2` per títols.
 Escala basada en `rem`, múltiples de `0.25rem` (4px):
 
 ```
---space-1:  0.25rem
---space-2:  0.5rem
---space-3:  0.75rem
---space-4:  1rem
---space-6:  1.5rem
---space-8:  2rem
---space-12: 3rem
---space-16: 4rem
---space-24: 6rem
+--space-1:  0.25rem   (4px)
+--space-2:  0.5rem    (8px)
+--space-3:  0.75rem   (12px)
+--space-4:  1rem      (16px)
+--space-6:  1.5rem    (24px)
+--space-8:  2rem      (32px)
+--space-12: 3rem      (48px)
+--space-16: 4rem      (64px)
+--space-24: 6rem      (96px)
 ```
 
-Amplada màxima del contingut: `--measure: 65ch` (òptima per lectura).
+Amplada màxima del contingut: `--measure: 65ch` (òptima per lectura). En pantalles grans: `min(110ch, 100% - var(--space-12))`.
 
 ---
 
 ## Layout
 
-- **Una columna.** Contingut centrat, `max-width: 65ch`. Pren amb calma.
-- **Sense grids complexes.** Si cal una graella (portfolio), `display: grid` amb `grid-template-columns: repeat(auto-fill, minmax(240px, 1fr))`.
-- **Sticky header minimalista** amb logo i nav. Footer al final.
-- **Sense hero.** Primer paràgraf = hero.
+- **Una columna.** Contingut centrat a `65ch`. Body és un CSS Grid de 3 columnes: `1fr [contingut] 1fr`.
+- **Sense grids complexes.** Si cal una graella (portfolio), `grid-template-columns: repeat(auto-fill, minmax(220px, 1fr))`.
+- **Grid rows:** `auto 1fr auto` — header, main, footer. El main ocupa l'espai sobrant.
+- **Home layout:** a ≥ 1024px, grid de 2 columnes `3fr 1fr` amb aside sticky.
 
 ---
 
-## Components (pocs)
+## Header
 
-**Només el que la web necessita.** No hi ha una biblioteca.
+El header conté tots els controls globals del lloc:
 
-- `<header>` del lloc: logo + nav
-- `<article>` per posts i projectes
-- `<aside>` per notes al marge (opcional)
-- `<footer>` del lloc: contacte + copyleft
-- `.flavor-picker` (opcional, JS): canvia el `data-flavor`
+```
+[ logo xarop ]  [ nav: inici · blog · portfolio · cv · contacte ]  [ ● flavor · CA lang · ☀ tema ]
+```
 
-Tota la resta és HTML pur amb Pico CSS classless.
+- **Logo:** SVG inline, `fill: currentColor`, canvia amb el sabor.
+- **Nav:** links amb underline de color accent a l'actiu.
+- **header-end** (flex row, `margin-left: auto`):
+  - **Flavor picker:** punt de color del sabor actiu; al hover s'expandeixen els set punts. El punt actiu s'amaga quan el picker és obert (via `:has()`). Requereix JS.
+  - **Lang picker:** tile monospace amb l'idioma actiu; al hover s'expandeix la llista. Requereix JS.
+  - **Theme toggle:** icona sol/lluna SVG. Requereix JS.
+
+---
+
+## Selector d'idioma
+
+Estètica de tauler d'aeroport (split-flap). Tile monospace amb `background: var(--color-bg)`, `border: var(--border)`. Al hover s'expandeix la llista (mateix mecanisme `max-width: 0 → 300px` que el flavor picker).
+
+- Idiomes: CA (original) · ES · EN · SV · IT
+- Traducció: Google Translate via cookie `googtrans=/ca/es`.
+- URL: `?lang=es` s'actualitza amb `history.replaceState`. Compartible i bookmark-able.
+- CA sempre recarrega la pàgina sense cookie → contingut original garantit.
+- Els codis d'idioma estan protegits de la traducció amb `translate="no"`.
 
 ---
 
 ## Accessibilitat
 
 - Contrast mínim WCAG AA (4.5:1 text, 3:1 UI).
-- Focus rings visibles i gruixats (2px, color del sabor).
-- `prefers-reduced-motion` respectat sempre.
-- `prefers-color-scheme` support per mode fosc automàtic.
-- Semàntica HTML5 primer. ARIA només quan cal.
+- Focus rings visibles: `outline: 2px solid var(--color-accent)`, `outline-offset: 3px`.
+- `prefers-reduced-motion` respectat — les animacions (View Transitions, flap) s'ometen.
+- `prefers-color-scheme` per mode fosc automàtic.
+- Semàntica HTML5 primer. ARIA (`role`, `aria-pressed`, `aria-current`, `aria-label`) quan la semàntica nativa no és suficient.
 - Navegació accessible per teclat al 100%.
+- `.sr-only` per contingut only-screen-reader (text del logo, etc.).
 
 ---
 
 ## Mode fosc
 
-Automàtic segons `prefers-color-scheme: dark`. Es pot forçar amb `data-theme="dark"` o `data-theme="light"`.
+Automàtic segons `prefers-color-scheme: dark`. Es pot forçar:
+- `data-theme="dark"` o `data-theme="light"` al `<html>`.
+- Toggle manual (sol/lluna) al header.
+- URL `?theme=dark|light` per a links directes al footer.
+- Persistit a `localStorage` (`xarop:theme`).
 
-- Light: fons blanc trencat, text quasi negre.
-- Dark: fons quasi negre, text blanc trencat.
-- Sabor es manté però s'ajusta la saturació/lluminositat.
-
----
-
-## JavaScript (opcional)
-
-**Per defecte: cap JS.** La web funciona sense JS, 100%.
-
-Millores progressives activables al `<head>` amb `<script src="/js/enhance.js" defer>`:
-
-- Selector de sabor (sense recàrrega)
-- View Transitions API entre pàgines
-- Theme toggle (dark/light manual)
-
-Res d'això és necessari. Tot funciona sense.
+Paleta dark: fons `#111110`, text `#f0efe9`, borde `#2a2a27`.
 
 ---
 
-## Publicació
+## JavaScript — Millores progressives
 
-- **Escriure:** crear un `.md` a `content/blog/` o `content/portfolio/`.
-- **Build:** `npm run build` → genera `dist/`.
-- **Publicar:** push a `main`. GitHub Actions desplega a Pages.
+**Per defecte: cap JS.** La web funciona sense JS al 100%.
 
-Front-matter mínim:
+Tot el JS és a `src/js/enhance.js` (~190 línies), carregat amb `defer`. Usa el patró **progressive enhancement**: cada feature comprova si l'element existeix abans d'activar-se.
 
-```markdown
+| Feature | Activació | Persistència |
+|---------|-----------|-------------|
+| Flavor picker | `data-enabled="true"` a `.flavor-picker` | `localStorage` (`xarop:flavor`) |
+| Theme toggle | `data-enabled="true"` a `.theme-toggle` | `localStorage` (`xarop:theme`) |
+| Lang picker | `data-enabled="true"` a `.lang-picker-wrap` | `localStorage` (`xarop:lang`) + `?lang=` URL |
+| View Transitions | `document.startViewTransition` API | — |
+
+### Tècniques CSS per a les transicions sense JS
+
+- **Flavor/lang expand:** `max-width: 0 → 300px` amb `transition`. Evita el problema de `display: none` no-animable.
+- **Active item hidden:** `:has(button[aria-pressed="true"]) { display: none }` — CSS pur, sense JS.
+- **Flap animation:** `@keyframes flap` amb `rotateX(-90deg)` i `opacity: 0`.
+- **Theme icons:** `.icon-sun { display: block }` + `:root[data-theme="dark"] .icon-sun { display: none }` — sense JS per al canvi visual.
+
 ---
-title: Títol del post
-date: 2026-04-23
-tags: [css, html]
----
 
-Contingut en markdown...
-```
+## Protecció de contingut de la traducció
+
+El nom de marca "xarop" i els codis d'idioma estan protegits de Google Translate:
+
+- `translate="no"` a `.lang-picker-wrap` i elements de nav amb codis d'idioma.
+- `class="notranslate"` als mateixos elements (suport GT legacy).
+- `build.js` embolcalla automàticament les ocurrències de "xarop" en text Markdown amb `<span translate="no">xarop</span>`, excloent URLs i atributs HTML.
 
 ---
 
 ## Anti-patrons (què NO fem)
 
 - Cap `<div class="wrapper container inner">`. Si cal un `<div>`, qüestiona't la vida.
-- Cap framework CSS utilitari (Tailwind, etc.). Pico + tokens propis.
+- Cap framework CSS utilitari (Tailwind, etc.). Tokens propis + CSS modern natiu.
 - Cap runtime JS al client per renderitzar contingut.
 - Cap imatge sense `width`/`height` i `alt`.
-- Cap font externa si pot anar amb *system stack*.
-- Cap `!important` tret que sigui reset.
+- Cap font externa si pot anar amb *system stack* (excepció: Asap per a `<h1>`).
+- Cap `!important` tret que sigui reset o override de Google Translate.
 - Cap classe que descrigui aparença (`.red`, `.big`). Classes descriuen propòsit.
+- Cap dependència de npm al client.

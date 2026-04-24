@@ -292,8 +292,12 @@ body>.full {
   border-bottom-color: var(--color-accent);
 }
 
-.site-header nav {
+.header-end {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
   margin-left: auto;
+  flex-shrink: 0;
 }
 
 @media (max-width: 740px) {
@@ -303,12 +307,11 @@ body>.full {
   }
 
   .site-header nav {
-    margin-left: 0;
     width: 100%;
     order: 1;
   }
 
-  .site-header .theme-toggle {
+  .header-end {
     margin-left: auto;
   }
 
@@ -328,6 +331,7 @@ body>.full {
 /* ----- Main ----- */
 main {
   min-height: 60dvh;
+  position: relative;
 }
 
 article header {
@@ -506,15 +510,16 @@ blockquote {
 
 /* ----- Flavor picker — punt al header, s'expandeix al hover ----- */
 .flavor-picker-wrap {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  align-self: center;
 }
 
 .flavor-picker-wrap::before {
   content: "";
   display: block;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: var(--color-accent);
   flex-shrink: 0;
@@ -530,6 +535,7 @@ blockquote {
   max-width: 0;
   overflow: hidden;
   transition: max-width 0.25s var(--ease), gap 0.2s var(--ease), margin-left 0.2s var(--ease);
+  margin-top: -3px;
 }
 
 .flavor-picker-wrap:hover .flavor-picker[data-enabled="true"],
@@ -560,26 +566,168 @@ blockquote {
   display: none;
 }
 
-/* ----- Theme toggle — cercle simple al header ----- */
+/* ----- Theme toggle — sol/lluna SVG al header ----- */
 .theme-toggle {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--color-text);
-  border: none;
-  cursor: pointer;
-  padding: 0;
   display: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-text-soft);
+  line-height: 0;
   flex-shrink: 0;
-  transition: transform var(--duration) var(--ease);
+  transition: color var(--duration) var(--ease), transform var(--duration) var(--ease);
 }
 
 .theme-toggle[data-enabled="true"] {
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 .theme-toggle:hover {
-  transform: scale(1.25);
+  color: var(--color-text);
+  transform: scale(1.15);
+}
+
+.icon-sun {
+  display: block;
+}
+
+.icon-moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .icon-sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .icon-moon {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .icon-sun {
+    display: none;
+  }
+
+  :root:not([data-theme="light"]) .icon-moon {
+    display: block;
+  }
+}
+
+/* ----- Language selector — s'expandeix al hover com el flavor picker ----- */
+@keyframes flap {
+  0% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+
+  40% {
+    transform: rotateX(-90deg);
+    opacity: 0;
+  }
+
+  60% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+.lang-picker-wrap {
+  display: none;
+  align-items: center;
+  margin-bottom: var(--space-4);
+  position: absolute;
+  top: -1.2rem;
+}
+
+.lang-picker-wrap[data-enabled="true"] {
+  display: flex;
+}
+
+.lang-trigger {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: var(--border);
+  padding: 4px 7px 3px;
+  border-radius: 2px;
+  min-width: 2.4em;
+  text-align: center;
+  user-select: none;
+  flex-shrink: 0;
+  cursor: default;
+}
+
+.lang-trigger.is-flipping {
+  animation: flap 0.28s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.lang-picker {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: -5px;
+  gap: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width 0.25s var(--ease), gap 0.2s var(--ease), margin-left 0.2s var(--ease);
+}
+
+.lang-picker-wrap:hover .lang-picker[data-enabled="true"],
+.lang-picker-wrap:focus-within .lang-picker[data-enabled="true"] {
+  max-width: 300px;
+  gap: var(--space-2);
+  margin-left: var(--space-2);
+  overflow: visible;
+}
+
+.lang-picker .lang-btn {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: var(--border);
+  padding: 4px 7px 3px;
+  cursor: pointer;
+  border-radius: 2px;
+  min-width: 2.4em;
+  text-align: center;
+  user-select: none;
+  flex-shrink: 0;
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+
+.lang-picker .lang-btn:hover {
+  background: var(--color-bg-soft);
+}
+
+.lang-picker-wrap:hover li:has(.lang-btn[aria-pressed="true"]),
+.lang-picker-wrap:focus-within li:has(.lang-btn[aria-pressed="true"]) {
+  display: none;
+}
+
+/* Amagar barra de Google Translate */
+.goog-te-banner-frame,
+body>.skiptranslate {
+  display: none !important;
+}
+
+html body {
+  top: 0 !important;
 }
 
 /* ----- Flavor names al home (botons inline) ----- */

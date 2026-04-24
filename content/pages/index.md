@@ -5,7 +5,7 @@ section: home
 flavor: maduixa
 ---
 
-# hola, sóc xarop.
+# hola, sóc l'Adrià.
 
 Sóc **front-end engineer**. Escric codi — sobretot HTML semàntic i CSS modern — i, a vegades, també paraules.
 

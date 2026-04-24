@@ -79,7 +79,10 @@ function formatDate(d) {
 
 // Convert links relatius dins el markdown a absoluts de site
 function htmlFromMarkdown(md) {
-  return marked.parse(md);
+  const html = marked.parse(md);
+  // Protect brand name from Google Translate (skip occurrences inside HTML tags/attrs)
+  return html.replace(/(?<![a-zA-Z0-9\/\-_=".])xarop(?![a-zA-Z0-9\/\-_.])/g,
+    '<span translate="no">xarop</span>');
 }
 
 // ---------- Read content ----------
@@ -134,6 +137,65 @@ async function writePage(outPath, opts, template) {
 
 // ---------- Build pages ----------
 
+function renderTaxonomyLinks(items, basePath, prefix = "") {
+  return (items || []).map(t =>
+    `<a class="tag" href="${basePath}${slugify(t)}/">${prefix}${t}</a>`
+  ).join(" ");
+}
+
+async function buildTaxonomies(items, distSubdir, section, template) {
+  const tagMap = new Map();
+  const catMap = new Map();
+
+  for (const item of items) {
+    for (const t of item.meta.tags || []) {
+      const s = slugify(t);
+      if (!tagMap.has(s)) tagMap.set(s, { name: t, items: [] });
+      tagMap.get(s).items.push(item);
+    }
+    for (const c of item.meta.categories || []) {
+      const s = slugify(c);
+      if (!catMap.has(s)) catMap.set(s, { name: c, items: [] });
+      catMap.get(s).items.push(item);
+    }
+  }
+
+  const itemLi = (p) => `
+    <li>
+      <a href="../../${p.slug}/">
+        <h3>${p.meta.title}</h3>
+        ${p.meta.date ? `<time datetime="${formatDate(p.meta.date)}">${formatDate(p.meta.date)}</time>` : ""}
+        ${p.meta.description ? `<p>${p.meta.description}</p>` : ""}
+      </a>
+    </li>`;
+
+  console.log(`   🏷️  Tags: ${tagMap.size} · Categories: ${catMap.size}`);
+
+  for (const [slug, { name, items: tagged }] of tagMap) {
+    await writePage(join(DIST, distSubdir, "tags", slug, "index.html"), {
+      title: `#${name}`,
+      section,
+      description: `${tagged.length} entrades etiquetades amb #${name}.`,
+      content: `
+<header><h1>#${name}</h1><p class="meta">${tagged.length} entrades</p></header>
+<ol class="post-list" reversed>${tagged.map(itemLi).join("")}</ol>
+<p><a href="../../">← tornar</a></p>`,
+    }, template);
+  }
+
+  for (const [slug, { name, items: categorized }] of catMap) {
+    await writePage(join(DIST, distSubdir, "categories", slug, "index.html"), {
+      title: name,
+      section,
+      description: `${categorized.length} entrades a la categoria ${name}.`,
+      content: `
+<header><h1>${name}</h1><p class="meta">${categorized.length} entrades</p></header>
+<ol class="post-list" reversed>${categorized.map(itemLi).join("")}</ol>
+<p><a href="../../">← tornar</a></p>`,
+    }, template);
+  }
+}
+
 async function buildBlog(template) {
   const posts = await readMarkdownDir(join(CONTENT, "blog"));
   console.log(`\n📝 Blog: ${posts.length} posts`);
@@ -159,7 +221,8 @@ async function buildBlog(template) {
 
   // Posts individuals
   for (const p of posts) {
-    const tags = (p.meta.tags || []).map(t => `<a class="tag" href="../tags/${slugify(t)}/">#${t}</a>`).join(" ");
+    const tags = renderTaxonomyLinks(p.meta.tags, "../tags/", "#");
+    const cats = renderTaxonomyLinks(p.meta.categories, "../categories/");
     const body = htmlFromMarkdown(p.body);
     await writePage(join(DIST, "blog", p.slug, "index.html"), {
       title: p.meta.title,
@@ -173,7 +236,7 @@ async function buildBlog(template) {
     <h1>${p.meta.title}</h1>
     <p class="meta">
       <time datetime="${formatDate(p.meta.date)}">${formatDate(p.meta.date)}</time>
-      ${tags}
+      ${cats}${tags}
     </p>
   </header>
   ${body}
@@ -183,6 +246,8 @@ async function buildBlog(template) {
     }, template);
   }
 
+  await buildTaxonomies(posts, "blog", "blog", template);
+
   return posts;
 }
 
@@ -190,14 +255,17 @@ async function buildPortfolio(template) {
   const projects = await readMarkdownDir(join(CONTENT, "portfolio"));
   console.log(`\n💼 Portfolio: ${projects.length} projectes`);
 
-  const grid = projects.map(p => `
+  const grid = projects.map(p => {
+    const year = p.meta.year || (p.meta.date ? formatDate(p.meta.date).slice(0, 4) : "");
+    return `
     <li>
       <a href="./${p.slug}/">
         <h3>${p.meta.title}</h3>
-        ${p.meta.role ? `<p class="meta">${p.meta.role}${p.meta.year ? ` · ${p.meta.year}` : ""}</p>` : ""}
+        <p class="meta">${[p.meta.role, year].filter(Boolean).join(" · ")}</p>
         ${p.meta.description ? `<p>${p.meta.description}</p>` : ""}
       </a>
-    </li>`).join("");
+    </li>`;
+  }).join("");
 
   await writePage(join(DIST, "portfolio", "index.html"), {
     title: "Portfolio",
@@ -209,6 +277,10 @@ async function buildPortfolio(template) {
   }, template);
 
   for (const p of projects) {
+    const tags = renderTaxonomyLinks(p.meta.tags, "../tags/", "#");
+    const cats = renderTaxonomyLinks(p.meta.categories, "../categories/");
+    const year = p.meta.year || (p.meta.date ? formatDate(p.meta.date).slice(0, 4) : "");
+    const dateFull = p.meta.date ? formatDate(p.meta.date) : "";
     const body = htmlFromMarkdown(p.body);
     await writePage(join(DIST, "portfolio", p.slug, "index.html"), {
       title: p.meta.title,
@@ -221,10 +293,11 @@ async function buildPortfolio(template) {
   <header>
     <h1>${p.meta.title}</h1>
     <p class="meta">
-      ${p.meta.role ? p.meta.role : ""}
-      ${p.meta.year ? ` · ${p.meta.year}` : ""}
+      ${[p.meta.role, year].filter(Boolean).join(" · ")}
       ${p.meta.url ? ` · <a href="${p.meta.url}" rel="noopener">visita →</a>` : ""}
     </p>
+    ${(cats || tags) ? `<p class="meta">${cats}${tags}</p>` : ""}
+    ${dateFull ? `<p class="meta"><time datetime="${dateFull}">${dateFull}</time></p>` : ""}
   </header>
   ${body}
   <hr style="margin-top:3rem;border:0;border-top:1px solid var(--color-border)">
@@ -232,6 +305,8 @@ async function buildPortfolio(template) {
 </article>`,
     }, template);
   }
+
+  await buildTaxonomies(projects, "portfolio", "portfolio", template);
 
   return projects;
 }
