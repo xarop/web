@@ -4,7 +4,7 @@ title: "IusIntegra - Serveis Jurídics"
 date: 2026-02-01
 categories: [Freelance, FrontEnd, KitDigital, Portfolio]
 originalUrl: "https://xarop.com/iusintegra-serveis-juridics/"
-tags: [css3, design, html5, responsive, SEO, usabilitat, WordPress, React, Gutenberg]
+tags: [css3, design, html5, responsive, SEO, usabilitat, WordPress, react, Gutenberg]
 ---
 
 
