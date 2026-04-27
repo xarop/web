@@ -2,7 +2,7 @@
 image: assets/images/lvm.webp
 title: Agencia de viajes online
 date: 2017-02-08
-tags: [ACF, bootstrap, CMS, design, jQuery, responsive, theme, WordPress]
+tags: [ACF, bootstrap, CMS, design, ecommerce, jQuery, responsive, theme, travel, turisme, viatges, WordPress]
 categories: [Design, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/agencia-de-viajes-online/"
 ---

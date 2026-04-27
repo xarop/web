@@ -1,7 +1,7 @@
 ---
 title: Fotolog y MySpace
 date: 2007-12-02
-tags: [Fotolog, MySpace, Flickr, WordPress, Youtube, SocialMedia, humor]
+tags: [Flickr, Fotolog, humor, MySpace, Social Media, WordPress, Youtube]
 categories: [Social Media, Video]
 originalUrl: "https://xarop.com/fotolog-y-myspace/"
 ---

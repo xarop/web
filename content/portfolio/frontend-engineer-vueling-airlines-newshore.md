@@ -2,7 +2,7 @@
 title: Desenvolupament Frontend per a Vueling Airlines a Newshore
 date: 2018-07-22
 description: "Enginyeria d&#x27;interfícies d&#x27;alt tràfic i webapps per a Vueling Airlines, amb components modulars, Design Systems i APIs REST dins d&#x27;un entorn SCRUM."
-tags: [Angular, APIs REST, Git, html5, javascript, Node.js, NPM, SCSS]
+tags: [Angular, APIs REST, Git, html5, javascript, Node.js, NPM, SASS/SCSS]
 categories: [FrontEnd, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/frontend-engineer-vueling-airlines-newshore/"
 ---

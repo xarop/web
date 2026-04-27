@@ -2,7 +2,7 @@
 image: assets/images/xaropcard4.webp
 title: xarop card
 date: 2011-06-02
-tags: [design, rediseño, xarop.com]
+tags: [Branding, design, redisseny, xarop, xarop.com]
 categories: [Design, Portfolio]
 originalUrl: "https://xarop.com/xarop-card/"
 ---

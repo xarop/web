@@ -1,7 +1,7 @@
 ---
 title: Freelance (2009–2019)
 date: 2009-09-01
-tags: [bootstrap, css, css3, Git, html, html5, javascript, php, REST APIs, SCSS, UI/UX, WordPress]
+tags: [bootstrap, css, css3, Git, html, html5, javascript, php, REST APIs, SASS/SCSS, UI/UX, WordPress]
 categories: [BackEnd, Blog, Design, Freelance, FrontEnd, Portfolio, Social Media, Tecnología, UI/UX]
 originalUrl: "https://xarop.com/freelance-2009-2019/"
 ---

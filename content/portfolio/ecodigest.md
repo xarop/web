@@ -2,7 +2,7 @@
 image: assets/images/ecodigest-portada.webp
 title: Ecodigest
 date: 2012-01-30
-tags: [CMS, css3, design, html5, jQuery, php, responsive, tema, template, theme, usabilidad, WordPress]
+tags: [bootstrap, CMS, css3, design, html, html5, jQuery, php, responsive, SEO, tema, template, theme, usabilitat, WordPress]
 categories: [Design, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/ecodigest/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: Diseño y optimización de páginas web
 date: 2004-05-01
-tags: [design, usabilidad, SEO, html, Web Design, Performance]
+tags: [design, html, Performance, SEO, usabilitat, Web Design]
 categories: [Design]
 originalUrl: "https://xarop.com/diseno-y-optimizacion-de-paginas-web/"
 ---

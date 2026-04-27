@@ -2,7 +2,7 @@
 image: assets/images/valladodepiscinas.webp
 title: Vallado de piscinas
 date: 2010-10-29
-tags: [css, design, html, php, SEO, W3c]
+tags: [css, design, html, html5, php, responsive, SEO, W3c]
 categories: [Design, Portfolio]
 originalUrl: "https://xarop.com/vallado-de-piscinas/"
 ---

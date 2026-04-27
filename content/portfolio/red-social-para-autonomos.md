@@ -2,7 +2,7 @@
 image: assets/images/econred.webp
 title: Red Social para autónomos
 date: 2010-10-04
-tags: [accesibility, design, Facebook, Flickr, SocialMedia, socialtec, Twitter, ui, usabilidad, Youtube]
+tags: [a11y, design, Facebook, Flickr, Social Media, socialtec, Twitter, ui, usabilitat, Youtube]
 categories: [Design, Portfolio, Social Media]
 originalUrl: "https://xarop.com/red-social-para-autonomos/"
 ---

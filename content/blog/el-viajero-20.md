@@ -1,7 +1,7 @@
 ---
 title: El viajero 2.0
 date: 2007-12-19
-tags: [turismo, viajes, travel, usabilidad]
+tags: [travel, turisme, usabilitat, viatges]
 categories: [Design]
 originalUrl: "https://xarop.com/el-viajero-20/"
 ---

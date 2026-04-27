@@ -2,7 +2,7 @@
 image: assets/images/socialibericus.webp
 title: Social Ibericus
 date: 2012-03-19
-tags: [design, ecommerce, SocialMedia, socialtec, tienda, usabilidad, Youtube]
+tags: [botiga, CMS, css3, design, ecommerce, html5, php, Social Media, socialtec, usabilitat, WordPress, Youtube]
 categories: [Design, Portfolio, Social Media, UI/UX]
 originalUrl: "https://xarop.com/social-ecommerce/"
 ---

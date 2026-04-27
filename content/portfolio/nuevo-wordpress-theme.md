@@ -1,7 +1,7 @@
 ---
 title: Nuevo WordPress Theme
 date: 2007-11-08
-tags: [design, download, plantilla, pligin, rediseño, tema, template, theme]
+tags: [css, design, download, php, plantilla, plugins, redisseny, tema, template, theme, WordPress]
 categories: [Portfolio]
 originalUrl: "https://xarop.com/nuevo-wordpress-theme/"
 ---

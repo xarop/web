@@ -1,7 +1,7 @@
 ---
 title: Freelance (2002–2005)
 date: 2002-11-05
-tags: [ActionScript, css, Director, Dreamweaver, Fireworks, Flash, FreeHand, html, Lingo, Photoshop]
+tags: [ActionScript, css, Director, Dreamweaver, Fireworks, Flash, FreeHand, html, javascript, Lingo, Multimedia, Photoshop]
 categories: [Portfolio]
 originalUrl: "https://xarop.com/freelance-2002-2005/"
 ---

@@ -2,7 +2,7 @@
 image: assets/images/IOS5vsICS.webp
 title: IOS5 vs ICS
 date: 2011-10-19
-tags: [android, Ice Cream Sandwish, ICS, IOS, IOS5, iPhone, movil, SO, ui, usabilidad, apple, tablet]
+tags: [android, apple, Ice Cream Sandwish, ICS, IOS, IOS5, iPhone, mòbil, SO, tablet, ui, usabilitat]
 categories: [Blog, Tecnología, UI/UX]
 originalUrl: "https://xarop.com/ios5-ics/"
 ---

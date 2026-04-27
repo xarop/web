@@ -3,7 +3,7 @@ image: assets/images/xaropcom-1999.webp
 title: xarop 2020
 date: 2020-02-13
 description: "#EnCasaDeHerreroCuchilloDePalo"
-tags: [BackEnd, FrontEnd, Gutenberg, MVP, WordPress, xarop.com, Git, design, Branding, mockups]
+tags: [BackEnd, Branding, design, FrontEnd, Git, Gutenberg, mockups, MVP, WordPress, xarop, xarop.com]
 categories: [BackEnd, Blog, Design, FrontEnd]
 originalUrl: "https://xarop.com/xarop-2020/"
 ---

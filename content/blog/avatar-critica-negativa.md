@@ -1,7 +1,7 @@
 ---
 title: "Avatar: crítica negativa"
 date: 2009-12-20
-tags: [adobe, animation, cine, Twitter]
+tags: [adobe, animation, cinema, Twitter]
 categories: [Blog, Tecnología]
 originalUrl: "https://xarop.com/avatar-critica-negativa/"
 ---

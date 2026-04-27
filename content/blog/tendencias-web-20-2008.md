@@ -1,7 +1,7 @@
 ---
 title: Tendencias Web 2.0 2008
 date: 2008-04-10
-tags: [mapa, metro, tendencias, design, SocialMedia]
+tags: [design, mapa, metro, Social Media, tendències]
 categories: [Design]
 originalUrl: "https://xarop.com/tendencias-web-20-2008/"
 ---

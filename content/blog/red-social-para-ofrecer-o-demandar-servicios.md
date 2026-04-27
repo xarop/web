@@ -1,7 +1,7 @@
 ---
 title: Red social para ofrecer o demandar servicios
 date: 2008-11-30
-tags: [profesional, SocialMedia, freelance]
+tags: [freelance, profesional, Social Media]
 categories: [Social Media]
 originalUrl: "https://xarop.com/red-social-para-ofrecer-o-demandar-servicios/"
 ---

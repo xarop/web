@@ -2,7 +2,7 @@
 image: assets/images/ebk.webp
 title: Tienda en PrestaShop
 date: 2016-04-14
-tags: [bootstrap, CMS, CRM, css, design, jQuery, PrestaShop, responsive, smarty, theme, TPV]
+tags: [bootstrap, CMS, CRM, css, css3, design, ecommerce, html5, jQuery, php, PrestaShop, responsive, SEO, smarty, theme, TPV]
 categories: [Design, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/tienda-en-prestashop/"
 ---

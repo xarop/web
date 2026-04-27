@@ -2,7 +2,7 @@
 title: Enginyer Frontend per a Editorial Planeta
 date: 2019-11-05
 description: "Implementació d&#x27;experiències digitals refinades i migració de components legacy a estructures JavaScript modulars modernes per a casadellibro.com."
-tags: [APIs REST, html5, javascript, php, SCSS, Symfony, VueJS]
+tags: [APIs REST, html5, javascript, php, SASS/SCSS, Symfony, VueJS]
 categories: [FrontEnd, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/frontend-engineer-editorial-planeta-casa-del-libro/"
 ---

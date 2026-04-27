@@ -3,7 +3,7 @@ image: assets/images/screenshot-603-1775045138.webp
 title: Frontend Sènior a BeeData Analytics
 date: 2020-03-20
 description: Desenvolupament de motors de reporting complexos i interfícies de visualització de dades amb Web Components i APIs REST en entorns Node.js escalables.
-tags: [APIs REST, css3, D3.js, ES6+, html5, javascript, NPM, Python, SCSS, Web Components]
+tags: [APIs REST, css3, D3.js, ES6+, html5, javascript, NPM, Python, SASS/SCSS, Web Components]
 categories: [FrontEnd, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/frontend-senior-a-beedata-analytics/"
 ---

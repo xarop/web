@@ -1,7 +1,7 @@
 ---
 title: Here comes another bubble
 date: 2007-12-06
-tags: [Facebook, Youtube, humor, SocialMedia]
+tags: [Facebook, humor, Social Media, Youtube]
 categories: [Social Media, Video]
 originalUrl: "https://xarop.com/here-comes-another-bubble/"
 ---

@@ -2,7 +2,7 @@
 image: assets/images/xarop1.webp
 title: ¿Qué es el diseño gráfico?
 date: 2011-02-23
-tags: [Graphic Design, design, Visual Communication, Branding, Typography]
+tags: [Branding, design, Graphic Design, Typography, Visual Communication]
 categories: [UI/UX, Video]
 originalUrl: "https://xarop.com/que-es-el-diseno-grafico/"
 ---

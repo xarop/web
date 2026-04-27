@@ -1,7 +1,7 @@
 ---
 title: Todos tus emails en Gmail
 date: 2007-11-07
-tags: [email, forward, gmail, mail, pop3, redireciones, redirect, spam, trash, webmail, Google, hosting]
+tags: [email, forward, gmail, Google, hosting, mail, pop3, redirect, spam, trash, webmail]
 categories: [Social Media]
 originalUrl: "https://xarop.com/todos-tus-emails-en-gmail/"
 ---

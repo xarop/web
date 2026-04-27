@@ -1,7 +1,7 @@
 ---
 title: Education
 date: 1994-06-01
-tags: [CDRom development, css, Graphic Design, html, javascript, Multimedia, php, Typography, Visual Communication, Formació, Barcelona]
+tags: [Barcelona, CDRom development, css, Formació, Graphic Design, html, javascript, Multimedia, php, Typography, Visual Communication]
 categories: [Blog]
 originalUrl: "https://xarop.com/?p=12"
 ---

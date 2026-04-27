@@ -1,7 +1,7 @@
 ---
 title: "Front-End &amp; UX/UI Design"
 date: 2024-03-05
-tags: [BEM, Caching, Core Web Vitals, Design Systems Architecture, Figma, Sass, SEO, Tailwind, Agile, SCRUM, Docker, Git, WordPress, ACF, UI/UX, SCSS]
+tags: [ACF, Agile, BEM, Caching, Core Web Vitals, Design Systems Architecture, Docker, Figma, Git, SASS/SCSS, SCRUM, SEO, Tailwind, UI/UX, WordPress]
 categories: [Blog]
 originalUrl: "https://xarop.com/?p=16"
 ---

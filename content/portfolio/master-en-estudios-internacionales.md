@@ -2,7 +2,7 @@
 image: assets/images/ub-edu-mei_desktop.webp
 title: Master en Estudios internacionales
 date: 2013-01-30
-tags: [Barcelona, CMS, css3, design, Facebook, html, html5, jQuery, php, template, theme, WordPress]
+tags: [Barcelona, bootstrap, CMS, css3, design, Facebook, html, html5, jQuery, php, responsive, SEO, template, theme, WordPress]
 categories: [BackEnd, Design, FrontEnd, Portfolio, Social Media, UI/UX]
 originalUrl: "https://xarop.com/master-en-estudios-internacionales/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: Reactable
 date: 2007-11-18
-tags: [Barcelona, electronica, instrumento, musica]
+tags: [Barcelona, electronica, instrumento, música]
 categories: [Tecnología, Video]
 originalUrl: "https://xarop.com/reactable/"
 ---

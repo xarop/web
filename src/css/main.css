@@ -587,6 +587,29 @@ blockquote {
   font-style: italic;
 }
 
+/* ----- Article footer (edit link) ----- */
+.article-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-8);
+  padding-top: var(--space-4);
+  border-top: var(--border);
+}
+
+.edit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+  text-decoration: none;
+}
+
+.edit-link:hover {
+  color: var(--color-accent);
+}
+
 /* ----- Footer ----- */
 .site-footer {
   padding-block: var(--space-6);

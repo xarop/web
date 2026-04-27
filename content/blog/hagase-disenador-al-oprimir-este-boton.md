@@ -1,7 +1,7 @@
 ---
 title: Hagase diseñador al oprimir este botón
 date: 2004-05-01
-tags: [Graphic Design, Visual Communication, design, Formació]
+tags: [css, design, Formació, Graphic Design, Visual Communication, Web Design]
 categories: [Design]
 originalUrl: "https://xarop.com/hagase-disenador-al-oprimir-este-boton/"
 ---

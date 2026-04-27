@@ -1,7 +1,7 @@
 ---
 title: Web 2.0 expo 2008
 date: 2008-04-25
-tags: [web 2.0 expo, Twitter, SocialMedia, tendencias]
+tags: [Social Media, tendències, Twitter, web 2.0 expo]
 categories: [Social Media]
 originalUrl: "https://xarop.com/web-20-expo-2008/"
 ---

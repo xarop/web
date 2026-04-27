@@ -2,7 +2,7 @@
 image: assets/images/post55.webp
 title: Red Social para mayores
 date: 2010-06-08
-tags: [accesibility, design, Facebook, Flickr, post55, SocialMedia, socialtec, Twitter, ui, usabilidad, Youtube]
+tags: [a11y, design, Facebook, Flickr, post55, Social Media, socialtec, Twitter, ui, usabilitat, Youtube]
 categories: [Design, Portfolio, Social Media]
 originalUrl: "https://xarop.com/red-social-para-mayores/"
 ---

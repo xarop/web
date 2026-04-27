@@ -2,7 +2,7 @@
 image: assets/images/IMG_20220830_074330517-scaled-1.webp
 title: Viatjar amb cotxe elèctric
 date: 2022-09-02
-tags: [carsharing, ev, viatges, turismo, travel, Català]
+tags: [carsharing, Català, ev, travel, turisme, viatges]
 categories: [Blog, Tecnología]
 originalUrl: "https://xarop.com/viatjar-amb-cotxe-electric/"
 ---

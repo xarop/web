@@ -2,7 +2,7 @@
 image: assets/images/tralopia-logo_big.webp
 title: Buscador de hoteles social
 date: 2011-10-26
-tags: [css, design, Facebook, jQuery, rediseño, SocialMedia, Twitter, ui, usabilidad, viajes]
+tags: [Barcelona, css, design, Facebook, html, jQuery, redisseny, SEO, Social Media, turisme, Twitter, ui, usabilitat, viatges]
 categories: [Design, Portfolio, Social Media, UI/UX]
 originalUrl: "https://xarop.com/buscador-de-hoteles-social/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: Hostony
 date: 2007-11-15
-tags: [cpanel, hosting, registro, Google, SEO, analytics]
+tags: [analytics, cpanel, Google, hosting, registre, SEO]
 categories: [Design]
 originalUrl: "https://xarop.com/hostony/"
 ---

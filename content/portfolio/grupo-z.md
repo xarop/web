@@ -3,6 +3,7 @@ title: Grupo Z
 date: 1997-08-03
 categories: [Portfolio]
 originalUrl: "https://xarop.com/grupo-z/"
+tags: [CDRom development, Lingo, Macromedia Director, Multimedia]
 ---
 
 **Programador i Integrador Multimèdia** a Somni Systems (Grup Zeta):  

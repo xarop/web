@@ -2,7 +2,7 @@
 image: assets/images/carohotel.webp
 title: Caro Hotel
 date: 2013-01-30
-tags: [css3, design, html, html5, jQuery, php, prototipo, SocialMedia, socialtec, turismod]
+tags: [css3, design, html, html5, jQuery, php, prototip, responsive, Social Media, socialtec, turisme, turismod, viatges]
 categories: [Design, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/carohotel/"
 ---

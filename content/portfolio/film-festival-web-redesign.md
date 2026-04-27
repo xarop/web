@@ -2,7 +2,7 @@
 image: assets/images/memorimage.webp
 title: Film festival web redesign
 date: 2023-10-24
-tags: [ACF, "custom-theme", Git, Gutenberg, php, Sass, WordPress]
+tags: [ACF, css3, custom-theme, design, Git, Gutenberg, html5, javascript, php, redisseny, SASS/SCSS, WordPress]
 categories: [BackEnd, Design, FrontEnd, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/film-festival-web-redesign/"
 ---

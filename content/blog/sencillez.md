@@ -1,7 +1,7 @@
 ---
 title: Sencillez
 date: 2008-04-21
-tags: [Facebook, firefox, Google, MySpace, Twitter, usabilidad, browser, SocialMedia]
+tags: [browser, Facebook, firefox, Google, MySpace, Social Media, Twitter, usabilitat]
 categories: [Social Media]
 originalUrl: "https://xarop.com/sencillez/"
 ---

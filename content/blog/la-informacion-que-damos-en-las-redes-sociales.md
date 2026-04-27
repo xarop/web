@@ -1,7 +1,7 @@
 ---
 title: La información que damos en las redes sociales
 date: 2008-05-13
-tags: [SocialMedia, Twitter, Facebook, Flickr]
+tags: [Facebook, Flickr, Social Media, Twitter]
 categories: [Social Media]
 originalUrl: "https://xarop.com/la-informacion-que-damos-en-las-redes-sociales/"
 ---

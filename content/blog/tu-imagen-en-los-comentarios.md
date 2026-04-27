@@ -1,7 +1,7 @@
 ---
 title: Tu imagen en los comentarios
 date: 2007-11-05
-tags: [avatar, icono, plugin, xarop.com, WordPress, email]
+tags: [avatar, email, icono, plugins, WordPress, xarop.com]
 categories: [Social Media]
 originalUrl: "https://xarop.com/tu-imagen-en-los-comentarios/"
 ---

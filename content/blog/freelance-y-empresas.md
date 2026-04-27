@@ -1,7 +1,7 @@
 ---
 title: Freelance y empresas
 date: 2010-08-10
-tags: [freelance, desarrollo]
+tags: [desenvolupament, design, freelance, Web Design]
 categories: [Design, Tecnología]
 originalUrl: "https://xarop.com/freelance-y-empresas/"
 ---

@@ -2,7 +2,7 @@
 image: assets/images/invattur.webp
 title: Invat·tur
 date: 2010-11-30
-tags: [accesibility, design, Facebook, Flickr, invattur, SocialMedia, socialtec, Twitter, ui, usabilidad, Youtube]
+tags: [a11y, design, Facebook, Flickr, invattur, Social Media, socialtec, Twitter, ui, usabilitat, Youtube]
 categories: [Design, Portfolio]
 originalUrl: "https://xarop.com/invattur/"
 ---

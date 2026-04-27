@@ -1,7 +1,7 @@
 ---
 title: esquizo.com v7.5
 date: 2008-12-22
-tags: [design, Drupal, esquizo.com, Joomla, plugins, theme, WordPress]
+tags: [CMS, css, design, Drupal, esquizo.com, html, Joomla, php, plugins, redisseny, theme, WordPress]
 categories: [Portfolio]
 originalUrl: "https://xarop.com/esquizocom-v75/"
 ---

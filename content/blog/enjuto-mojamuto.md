@@ -1,7 +1,7 @@
 ---
 title: Enjuto Mojamuto
 date: 2008-04-07
-tags: [firefox, humor, Twitter, Youtube, video, browser]
+tags: [browser, firefox, humor, Twitter, video, Youtube]
 categories: [Social Media, Video]
 originalUrl: "https://xarop.com/enjuto-mojamuto/"
 ---

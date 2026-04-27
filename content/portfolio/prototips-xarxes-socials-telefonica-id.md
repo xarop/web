@@ -2,7 +2,7 @@
 title: Disseny i maquetació de prototips de xarxes socials a Telefónica I+D
 date: 2008-11-10
 description: Desenvolupament UI/UX de prototips de xarxes socials en entorns àgils per a Telefónica I+D, amb JavaScript i estàndards HTML/CSS.
-tags: [css, Drupal, html, javascript, php, SCRUM]
+tags: [css, design, Drupal, html, javascript, mockups, php, SCRUM, ui, usabilitat]
 categories: [Portfolio]
 originalUrl: "https://xarop.com/prototips-xarxes-socials-telefonica-id/"
 ---

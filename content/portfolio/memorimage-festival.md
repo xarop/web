@@ -2,7 +2,7 @@
 image: assets/images/memorimage.webp
 title: Memorimage Festival
 date: 2016-10-14
-tags: [ACF, bootstrap, CMS, design, jQuery, php, polylang, rediseño, theme, WordPress]
+tags: [ACF, bootstrap, CMS, css3, design, html5, javascript, jQuery, php, polylang, redisseny, theme, WordPress]
 categories: [Design, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/memorimage-festival/"
 ---

@@ -3,7 +3,7 @@ title: Nova versió de xarop.com (2026)
 date: 2026-04-23
 description: He reescrit xarop.com des de zero. Sense WordPress, sense base de dades, sense JS al client. Només HTML, CSS modern i Markdown.
 categories: [Blog]
-tags: [meta, html, css, github-pages, Node.js, WordPress, Git, xarop.com, Català]
+tags: [a11y, Català, css, Git, github-pages, html, javascript, meta, Node.js, WordPress, xarop, xarop.com]
 flavor: maduixa
 ---
 

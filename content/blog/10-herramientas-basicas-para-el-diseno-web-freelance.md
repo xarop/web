@@ -2,7 +2,7 @@
 image: assets/images/xarop1.webp
 title: 10 herramientas básicas para el diseño web freelance
 date: 2011-01-24
-tags: [android, CMS, design, freelance, gmail, Google, hardware, html, SocialMedia, software, Twitter, xarop.com, WordPress, Fireworks, Dreamweaver, css, php, javascript]
+tags: [android, CMS, css, design, Dreamweaver, Fireworks, freelance, gmail, Google, hardware, html, javascript, php, Social Media, software, Twitter, WordPress, xarop.com]
 categories: [Design, UI/UX]
 originalUrl: "https://xarop.com/10-herramientas-basicas-para-el-diseno-web-freelance/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: Twitter
 date: 2008-04-07
-tags: [Twitter, SocialMedia, tools]
+tags: [Social Media, tools, Twitter]
 categories: [Social Media]
 originalUrl: "https://xarop.com/twitter/"
 ---

@@ -27,7 +27,10 @@ const SITE = {
   description: "Front-end engineer. Blog, portfolio i xarop.",
   defaultFlavor: "maduixa",
   baseUrl: "/",
+  githubRepo: "https://github.com/xarop/web",
 };
+
+const EDIT_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
 
 // ---------- Helpers ----------
 
@@ -307,8 +310,10 @@ ${blogSidebar}
     ${p.meta.image ? `<figure class="featured-image"><img src="{{root}}${p.meta.image}" alt="${p.meta.title}" loading="lazy"></figure>` : ""}
   </header>
   ${body}
-  <hr style="margin-top:3rem;border:0;border-top:1px solid var(--color-border)">
-  <p><a href="../">← tornar al blog</a></p>
+  <footer class="article-footer">
+    <a href="../">← tornar al blog</a>
+    <a class="edit-link" href="${SITE.githubRepo}/edit/main/content/blog/${p.slug}.md" rel="noopener" title="Edita a GitHub">${EDIT_ICON} edita</a>
+  </footer>
 </article>`,
     }, template);
   }
@@ -386,8 +391,10 @@ ${portfolioSidebar}
     ${dateFull ? `<p class="meta"><time datetime="${dateFull}">${dateFull}</time></p>` : ""}
   </header>
   ${body}
-  <hr style="margin-top:3rem;border:0;border-top:1px solid var(--color-border)">
-  <p><a href="../">← tornar al portfolio</a></p>
+  <footer class="article-footer">
+    <a href="../">← tornar al portfolio</a>
+    <a class="edit-link" href="${SITE.githubRepo}/edit/main/content/portfolio/${p.slug}.md" rel="noopener" title="Edita a GitHub">${EDIT_ICON} edita</a>
+  </footer>
 </article>`,
     }, template);
   }

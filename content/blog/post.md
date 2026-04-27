@@ -1,7 +1,7 @@
 ---
 title: (sense títol)
 date: 2012-03-19
-tags: [css, html, responsive, framework]
+tags: [css, development, html, responsive]
 categories: [Design]
 originalUrl: "https://xarop.com/?p=958"
 ---

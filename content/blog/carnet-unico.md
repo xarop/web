@@ -3,6 +3,7 @@ title: Nuevo carnet de conducir europeo
 date: 2013-01-22
 categories: [Design]
 originalUrl: "https://xarop.com/?p=1013"
+tags: [design]
 ---
 
 Ayer perdí la cartera y tengo que pedir un duplicado de toda mi documentación, a ver si en de conducir ya cumple con el nuevo formato. A partir de hoy todos los carnets que se expidan tendrán el formato europeo y el resto se irá actualizando conforme se dupliquen, renueven etc. Esta medida se enmarca dentro de un paquete más amplio de medidas, la Tercera Directiva de la UE sobre permisos de conducción, que tiene como objetivo reforzar la libre circulación, luchar contra el fraude de los permisos y mejorar la seguridad vial en el conjunto de la UE. Aquí van algunas de sus novedades:

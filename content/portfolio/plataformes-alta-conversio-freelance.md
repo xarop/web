@@ -2,7 +2,7 @@
 title: "Enginyeria de plataformes d'alta conversió"
 date: 2014-03-10
 description: Desenvolupament de temes i aplicacions a mida enfocades en la interacció JavaScript i els estàndards semàntics HTML5/CSS3 per a diversos clients en etapa freelance.
-tags: [css3, Git, html5, javascript, php, REST APIs, SCSS, WordPress]
+tags: [css3, design, ecommerce, Git, html5, javascript, performance, php, REST APIs, SASS/SCSS, SEO, WordPress]
 categories: [FrontEnd, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/plataformes-alta-conversio-freelance/"
 ---

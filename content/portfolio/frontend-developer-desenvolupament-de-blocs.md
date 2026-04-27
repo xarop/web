@@ -3,7 +3,7 @@ image: assets/images/screenshot-601-1775045226.webp
 title: "Frontend Developer | Desenvolupament de blocs."
 date: 2021-04-15
 description: "Estratègia tècnica i desenvolupament d&#x27;ecosistemes corporatius robustos per a ByteBerry Studio, incloent arquitectures multilingües complexes i backends personalitzats amb Laravel."
-tags: [Caching, javascript, Laravel, NPM, Performance, php, REST APIs, SASS/SCSS, WordPress]
+tags: [Caching, design, Gutenberg, javascript, Laravel, NPM, Performance, php, REST APIs, SASS/SCSS, WordPress]
 categories: [Freelance, FrontEnd, Portfolio]
 originalUrl: "https://xarop.com/frontend-developer-desenvolupament-de-blocs/"
 ---

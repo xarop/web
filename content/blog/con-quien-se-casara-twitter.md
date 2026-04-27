@@ -1,7 +1,7 @@
 ---
 title: Con quien se casará Twitter?
 date: 2010-02-13
-tags: [buzz, foursquare, Twitter, Facebook, Google, SocialMedia, FriendFeed]
+tags: [buzz, Facebook, foursquare, FriendFeed, Google, Social Media, Twitter]
 categories: [Social Media]
 originalUrl: "https://xarop.com/con-quien-se-casara-twitter/"
 ---

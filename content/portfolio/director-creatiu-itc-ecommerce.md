@@ -2,7 +2,7 @@
 title: "Director Creatiu a IT&C: e-commerce i serveis ISP"
 date: 2001-06-10
 description: "Coordinació d&#x27;equips de disseny i webmaster per a branding corporatiu i webs diverses, incloent e-commerces i portals de referència cultural."
-tags: [Branding, Direcció Creativa, "E-commerce", Web Design]
+tags: [Branding, Direcció Creativa, ecommerce, Web Design]
 categories: [Portfolio]
 originalUrl: "https://xarop.com/director-creatiu-itc-ecommerce/"
 ---

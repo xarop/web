@@ -2,7 +2,7 @@
 title: Enginyeria Web i motors de reserva a Vueling Airlines
 date: 2007-02-12
 description: "Implementació de motors de reserva d&#x27;hotels i lloguer de cotxes, i desenvolupament de la interfície dels fluxos principals de reserva de Vueling Airlines."
-tags: [css, html, javascript, php]
+tags: [css, design, html, javascript, performance, php, SEO, ui]
 categories: [Portfolio]
 originalUrl: "https://xarop.com/enginyeria-web-vueling-airlines/"
 ---

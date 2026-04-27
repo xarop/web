@@ -3,6 +3,7 @@ title: Ruedas Estándar vs Ruedas Tubeless Xiaomi m365 Scooter
 date: 2018-12-14
 categories: [Design]
 originalUrl: "https://xarop.com/?p=1291"
+tags: [Gadgets, hardware]
 ---
 
 Son muchas las personas que se han hecho esta pregunta. ¿Qué es mejor para mi patinete? Tenemos que tener varios factores en cuenta tales como las vibraciones, el ahorro energético, la comodidad del mantenimiento y uno de los más importante, la posibilidad de que se pinche.

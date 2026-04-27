@@ -1,7 +1,7 @@
 ---
 title: Nunca diseñes en HTML
 date: 2004-05-01
-tags: [design, html, Dreamweaver, Photoshop, css, Graphic Design]
+tags: [css, design, Dreamweaver, Graphic Design, html, Photoshop]
 categories: [Design]
 originalUrl: "https://xarop.com/nunca-disenes-en-html/"
 ---

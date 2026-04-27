@@ -2,7 +2,7 @@
 image: assets/images/esquizo.webp
 title: esquizo.com v8.0
 date: 2009-11-05
-tags: [design, plugins, tema, template, theme, WordPress]
+tags: [CMS, css, design, html, php, plugins, redisseny, tema, template, theme, WordPress]
 categories: [Design, Portfolio, Social Media]
 originalUrl: "https://xarop.com/esquizo-com-v8-0/"
 ---

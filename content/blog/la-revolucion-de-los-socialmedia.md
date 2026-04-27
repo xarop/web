@@ -1,7 +1,7 @@
 ---
 title: La revolución de los SocialMedia
 date: 2010-05-07
-tags: [SocialMedia, Facebook, Twitter, YouTube, iPhone, android]
+tags: [android, Facebook, iPhone, Social Media, Twitter, Youtube]
 categories: [Social Media, Video]
 originalUrl: "https://xarop.com/la-revolucion-de-los-socialmedia/"
 ---

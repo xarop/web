@@ -3,6 +3,7 @@ title: xarop .com
 date: 2005-09-22
 categories: [Portfolio]
 originalUrl: "https://xarop.com/xarop/"
+tags: [design, hosting, redisseny, xarop, xarop.com]
 ---
 
 **Actualitzant el site xarop.com**  

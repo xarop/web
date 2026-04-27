@@ -4,6 +4,7 @@ date: 2005-09-26
 description: esquizo.com es un portal sobre la salud mental en general y la esquizofrenia en particular
 categories: [Portfolio]
 originalUrl: "https://xarop.com/esquizo-com/"
+tags: [CMS, design, Joomla, php, SEO]
 ---
 
 Un proyecto nacido a partir de la web profesional del **Dr. Julià** , psiquiatra, existente **desde 1997** y reconvertida en un **portal sobre enfermedades mentales** basado en **PHPNuke** modificado para conseguir una identidad propia. Acrualmente esquizo.com está en fase de remodelación para adaptarse a las nuevas necesidades (RSS, blogs, etc.)

@@ -1,7 +1,7 @@
 ---
 title: Página Hackeada
 date: 2008-02-04
-tags: [hacker, WordPress, seguridad]
+tags: [hacker, seguridad, WordPress]
 categories: [Design]
 originalUrl: "https://xarop.com/pagina-hackeada/"
 ---

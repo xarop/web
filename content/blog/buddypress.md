@@ -1,7 +1,7 @@
 ---
 title: Buddypress
 date: 2008-12-18
-tags: [WordPress, SocialMedia, plugin]
+tags: [CMS, php, plugins, Social Media, WordPress]
 categories: [Design]
 originalUrl: "https://xarop.com/?p=229"
 ---

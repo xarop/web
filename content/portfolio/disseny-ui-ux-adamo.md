@@ -2,7 +2,7 @@
 title: Disseny i Desenvolupament UI/UX per a adamo.es
 date: 2011-09-17
 description: Enginyeria UI amb SCSS/Less i JavaScript per a adamo.es, integrant fluxos de registre complexos amb APIs externes.
-tags: [APIs REST, bootstrap, css3, html5, javascript, WordPress]
+tags: [APIs REST, bootstrap, css3, design, html5, javascript, SEO, WordPress]
 categories: [Design, Freelance, FrontEnd, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/disseny-ui-ux-adamo/"
 ---

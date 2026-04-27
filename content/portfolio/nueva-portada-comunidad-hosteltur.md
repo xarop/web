@@ -1,7 +1,7 @@
 ---
 title: Nueva portada Comunidad Hosteltur
 date: 2008-12-03
-tags: [home, portada, rediseño, turismo, viajes]
+tags: [CMS, design, home, php, portada, redisseny, turisme, ui, usabilitat, viatges, WordPress]
 categories: [Portfolio, Social Media]
 originalUrl: "https://xarop.com/nueva-portada-comunidad-hosteltur/"
 ---

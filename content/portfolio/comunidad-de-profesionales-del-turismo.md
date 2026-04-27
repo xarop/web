@@ -1,7 +1,7 @@
 ---
 title: Comunidad de profesionales del turismo
 date: 2008-04-19
-tags: [travel, turismo, viajes]
+tags: [design, Social Media, socialtec, travel, turisme, viatges]
 categories: [Portfolio, Social Media]
 originalUrl: "https://xarop.com/comunidad-de-profesionales-del-turismo/"
 ---

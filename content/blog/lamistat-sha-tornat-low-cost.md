@@ -2,7 +2,7 @@
 image: assets/images/608b12d8-88e4-44e4-a017-63505b68fc96.webp
 title: "L'amistat s'ha tornat \"low-cost\""
 date: 2026-04-15
-tags: [ia, SocialMedia, Català]
+tags: [Català, ia, Social Media]
 categories: [Blog]
 originalUrl: "https://xarop.com/lamistat-sha-tornat-low-cost/"
 ---

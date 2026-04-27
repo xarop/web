@@ -2,7 +2,7 @@
 image: assets/images/responsive-eodigest.webp
 title: Responsive design
 date: 2012-03-19
-tags: [android, CMS, css3, design, html5, iPhone, jQuery, php, rwd, smartTV, tablet, tema, template, theme, ui, usabilidad, WordPress]
+tags: [android, CMS, css3, design, html5, iPhone, jQuery, php, responsive, smartTV, tablet, tema, template, theme, ui, usabilitat, WordPress]
 categories: [Design, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/responsive-design/"
 ---

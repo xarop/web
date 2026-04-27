@@ -1,7 +1,7 @@
 ---
 title: JAMstack
 date: 2020-05-07
-tags: [WordPress, CMS, javascript, Node.js, development]
+tags: [CMS, css, development, Git, github-pages, html, javascript, Node.js, performance, WordPress]
 categories: [BackEnd, FrontEnd]
 originalUrl: "https://xarop.com/?p=1403"
 ---

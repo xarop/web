@@ -2,7 +2,7 @@
 image: assets/images/ux.webp
 title: Diseñador de Interacción (UX Designer)
 date: 2011-01-26
-tags: [design, ILUVUXDESIGN, MySpace, ui, usabilidad, ux, UI/UX, interficies]
+tags: [design, ILUVUXDESIGN, interficies, MySpace, ui, UI/UX, usabilitat, ux]
 categories: [Design, UI/UX, Video]
 originalUrl: "https://xarop.com/disenador-de-interaccion-ux-designer/"
 ---

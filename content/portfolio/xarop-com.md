@@ -7,7 +7,7 @@ role: Tot
 description: Aquesta web. Set sabors, zero base de dades, Markdown, auto-allotjada.
 url: https://web.xarop.com
 categories: [Design, FrontEnd, Portfolio]
-tags: [html, css, node, github-pages, a11y]
+tags: [a11y, css, design, Git, github-pages, html, javascript, meta, Node.js, xarop, xarop.com]
 flavor: maduixa
 ---
 

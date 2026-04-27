@@ -2,7 +2,7 @@
 title: "Dissenyador UI al portal d'ocupació Infojobs"
 date: 2010-05-30
 description: "Redisseny de la interfície d&#x27;usuari del portal de candidats d&#x27;Infojobs, amb estructures HTML/CSS modulars per a tot el cicle de vida de l&#x27;aplicació."
-tags: [css, html, javascript, php, UI/UX]
+tags: [css, design, html, javascript, php, SEO, ui, UI/UX, usabilitat]
 categories: [Freelance, FrontEnd, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/ui-designer-infojobs/"
 ---

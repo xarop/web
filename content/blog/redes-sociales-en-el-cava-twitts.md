@@ -1,7 +1,7 @@
 ---
 title: "Redes sociales en el cava & twitts"
 date: 2008-12-18
-tags: ["cava&amp;twitts", Social Media, Twitter, SocialMedia, Barcelona]
+tags: [Barcelona, cava&amp;twitts, Social Media, Twitter]
 categories: [Social Media]
 originalUrl: "https://xarop.com/redes-sociales-en-el-cava-twitts/"
 ---

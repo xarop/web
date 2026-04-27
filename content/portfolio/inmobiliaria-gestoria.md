@@ -2,7 +2,7 @@
 image: assets/images/asesoriamartin.webp
 title: Inmobiliaria y gestoria
 date: 2013-09-26
-tags: [design, geolocalización, responsive design, theme, WordPress]
+tags: [CMS, css3, design, geolocalització, html5, php, responsive design, SEO, theme, WordPress]
 categories: [Design, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/inmobiliaria-gestoria/"
 ---

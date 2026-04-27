@@ -1,7 +1,7 @@
 ---
 title: xarop.com v9
 date: 2008-11-27
-tags: [design, Google Adds, theme, WordPress, xarop]
+tags: [design, Google Adds, redisseny, SEO, theme, WordPress, xarop, xarop.com]
 categories: [Portfolio, Social Media]
 originalUrl: "https://xarop.com/xaropcom-v9/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: Hasta pronto TID
 date: 2009-01-30
-tags: [design, Facebook, mockups, TID]
+tags: [design, Facebook, mockups, Social Media, TID, Twitter]
 categories: [Portfolio]
 originalUrl: "https://xarop.com/hasta-pronto-tid/"
 ---

@@ -2,7 +2,7 @@
 image: assets/images/gutenberg-featured.webp
 title: BackEnd
 date: 2020-02-13
-tags: [CMS, development, Git, github, Gutenberg, php, plugin, theme, WordPress, ACF]
+tags: [ACF, CMS, development, Git, github, Gutenberg, javascript, Node.js, php, plugins, theme, WordPress]
 categories: [BackEnd]
 originalUrl: "https://xarop.com/backend/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: Tethering
 date: 2010-05-19
-tags: [android, bluetooth, iPhone, mifi, modem, router, theter, usb, wifi, movil, tablet, apple]
+tags: [android, apple, bluetooth, iPhone, mifi, mòbil, modem, router, tablet, theter, usb, wifi]
 categories: [Tecnología, Video]
 originalUrl: "https://xarop.com/tethering/"
 ---

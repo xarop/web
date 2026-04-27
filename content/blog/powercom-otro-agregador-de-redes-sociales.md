@@ -1,7 +1,7 @@
 ---
 title: Power.com, Otro agregador de Redes Sociales
 date: 2008-12-02
-tags: [Facebook, FriendFeed, iGoogle, keteke, MySpace, netvibes, Orkut, power.com, SocialMedia]
+tags: [Facebook, FriendFeed, iGoogle, keteke, MySpace, netvibes, Orkut, power.com, Social Media]
 categories: [Social Media]
 originalUrl: "https://xarop.com/powercom-otro-agregador-de-redes-sociales/"
 ---

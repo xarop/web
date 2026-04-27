@@ -1,7 +1,7 @@
 ---
 title: Diseña Sitios, no páginas
 date: 2004-05-01
-tags: [design, usabilidad, Web Design]
+tags: [design, usabilitat, Web Design]
 categories: [Design]
 originalUrl: "https://xarop.com/disena-sitios-no-paginas/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: Nuevo Template
 date: 2007-11-01
-tags: [theme, update, xarop.com]
+tags: [design, redisseny, theme, update, WordPress, xarop.com]
 categories: [Portfolio]
 originalUrl: "https://xarop.com/nuevo-template/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: Vueling Airlines
 date: 2006-07-14
-tags: [css, html, javascript, php]
+tags: [css, design, html, javascript, performance, php, SEO, ui]
 categories: [Portfolio]
 originalUrl: "https://xarop.com/vueling-airlines/"
 ---
