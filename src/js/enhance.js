@@ -26,7 +26,7 @@
     if (savedTheme === "light" || savedTheme === "dark") {
       html.dataset.theme = savedTheme;
     } else {
-      delete html.dataset.theme;
+      html.dataset.theme = "light";
     }
   } catch (_) { }
 
