@@ -3,7 +3,7 @@ image: assets/images/LPayondo.webp
 title: Landing Page Social Trading
 date: 2017-05-26
 tags: [bootstrap, CMS, css3, design, ecommerce, html5, jQuery, landing page, php, plugins, responsive, theme, video, WordPress]
-categories: [Design, Portfolio, Social Media, UI/UX, Video]
+categories: [Design, Portfolio, Social Media, UI/UX]
 originalUrl: "https://xarop.com/landing-page-social-trading/"
 ---
 
