@@ -185,7 +185,7 @@ Paleta dark: fons `#111110`, text `#f0efe9`, borde `#2a2a27`.
 
 **Per defecte: cap JS.** La web funciona sense JS al 100%.
 
-Tot el JS és a `src/js/enhance.js` (~190 línies), carregat amb `defer`. Usa el patró **progressive enhancement**: cada feature comprova si l'element existeix abans d'activar-se.
+Tot el JS és a `src/js/enhance.js` (~210 línies), carregat amb `defer`. Usa el patró **progressive enhancement**: cada feature comprova si l'element existeix abans d'activar-se.
 
 | Feature | Activació | Persistència |
 |---------|-----------|-------------|
@@ -193,6 +193,7 @@ Tot el JS és a `src/js/enhance.js` (~190 línies), carregat amb `defer`. Usa el
 | Theme toggle | `data-enabled="true"` a `.theme-toggle` | `localStorage` (`xarop:theme`) |
 | Lang picker | `data-enabled="true"` a `.lang-picker-wrap` | `localStorage` (`xarop:lang`) + `?lang=` URL |
 | View Transitions | `document.startViewTransition` API | — |
+| Giscus theme sync | `window.addEventListener("message")` des de `giscus.app` | — |
 
 ### Tècniques CSS per a les transicions sense JS
 
@@ -210,6 +211,31 @@ El nom de marca "xarop" i els codis d'idioma estan protegits de Google Translate
 - `translate="no"` a `.lang-picker-wrap` i elements de nav amb codis d'idioma.
 - `class="notranslate"` als mateixos elements (suport GT legacy).
 - `build.js` embolcalla automàticament les ocurrències de "xarop" en text Markdown amb `<span translate="no">xarop</span>`, excloent URLs i atributs HTML.
+
+---
+
+## Comentaris (giscus)
+
+Els posts del blog inclouen una secció de comentaris via [giscus](https://giscus.app), que usa GitHub Discussions com a backend. Zero cookies, zero trackers.
+
+**Configuració** (a `scripts/build.js`):
+
+```javascript
+const GISCUS = {
+  repo: "xarop/web",
+  repoId: "R_kgDOSKW4Ew",
+  category: "General",
+  categoryId: "DIC_kwDOSKW4E84C73Kj",
+};
+```
+
+**Mapping:** `pathname` — cada post mapa a una Discussion amb títol `/blog/{slug}/`.
+
+**Tema:** el widget s'inicialitza en `light`. Quan l'usuari canvia el tema del lloc, `enhance.js` envia un `postMessage` a l'iframe de giscus per sincronitzar-lo. Quan giscus carrega (missatge `message` des de `giscus.app`), s'aplica el tema actiu del lloc.
+
+**Secció CSS:** `.comments` — `margin-top: var(--space-12)`, `border-top: var(--border)`.
+
+**Migració WordPress:** `scripts/import-wp-comments.js` — importa comentaris aprovats del XML d'exportació de WordPress cap a GitHub Discussions. Requereix token de GitHub amb scope `write:discussion`.
 
 ---
 

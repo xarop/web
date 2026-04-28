@@ -10,10 +10,11 @@ Sense WordPress. Sense base de dades. Sense JS obligatori. Només HTML semàntic
 
 ## Característiques
 
-- **Static site** generat des de Markdown amb un script de Node (~250 línies).
+- **Static site** generat des de Markdown amb un script de Node (~280 línies).
 - **Set sabors** de color intercanviables (`maduixa`, `nabiu`, `gerd`, `menta`, `llimona`, `taronja`, `regalessia`).
 - **Mode clar/fosc** automàtic (`prefers-color-scheme`) amb toggle manual sol/lluna al header.
 - **Selector d'idioma** (CA / ES / EN / SV / IT) amb Google Translate i URL `?lang=xx`.
+- **Comentaris** via [giscus](https://giscus.app) (GitHub Discussions) als posts del blog, sincronitzats amb el tema clar/fosc.
 - **Zero JS obligatori**. Millores progressives opcionals via `enhance.js`.
 - **Accessible** (WCAG 2.1 AA), semàntica HTML pura.
 - **Deploy automàtic** a GitHub Pages via Actions.
@@ -34,7 +35,9 @@ Sense WordPress. Sense base de dades. Sense JS obligatori. Només HTML semàntic
 │   ├── js/               enhance.js (opcional)
 │   ├── templates/        base.html
 │   └── assets/           logo, fonts, imatges
-├── scripts/build.js      Build script
+├── scripts/
+│   ├── build.js          Build script
+│   └── import-wp-comments.js  Migració de comentaris WordPress → giscus
 ├── dist/                 Generat (git-ignored)
 ├── DESIGN.md             Sistema de disseny
 ├── AGENTS.md             Ús d'agents IA en el projecte
@@ -128,6 +131,7 @@ Quan el JS és actiu, `enhance.js` afegeix:
 - **URL `?lang=xx`** per compartir pàgines traduïdes
 - **Noms de sabor clicables** a la pàgina d'inici
 - **View Transitions** entre pàgines (si el navegador les suporta)
+- **Sincronització de tema amb giscus** (comentaris clar/fosc en temps real)
 
 ---
 

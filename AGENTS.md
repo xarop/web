@@ -38,6 +38,16 @@ Redisseny complet del header en múltiples iteracions:
 - Noms de sabor al home convertits en `<button>` clicables que canvien el sabor en viu.
 - Mover el selector d'idioma del header al `<main>` (just abans del H1) a totes les pàgines.
 
+### Comentaris via giscus (2026-04)
+
+Integració del sistema de comentaris [giscus](https://giscus.app) als posts del blog:
+
+1. **Configuració giscus** — constant `GISCUS` a `scripts/build.js` amb `repo`, `repoId`, `category`, `categoryId`. La funció `giscusWidget()` genera el `<script>` de giscus i retorna cadena buida si els IDs no estan configurats (zero errors en builds sense configurar).
+2. **Injecció al template** — el widget s'afegeix dins `<article>` just després de `<footer class="article-footer">`, únicament als posts del blog (no al portfolio).
+3. **Sincronització de tema** — `enhance.js` escolta missatges `message` de l'origen `https://giscus.app`. Quan giscus carrega envia un missatge; `enhance.js` respon amb el tema actiu del lloc via `postMessage({ giscus: { setConfig: { theme } } })`. El canvi manual de tema també notifica giscus en temps real.
+4. **CSS** — secció `.comments` amb `margin-top: var(--space-12)` i `border-top: var(--border)`.
+5. **Migració WordPress** — script `scripts/import-wp-comments.js` que llegeix l'XML d'exportació de WordPress, filtra comentaris aprovats (descarta pingbacks/trackbacks i esborranys), crea una GitHub Discussion per post (títol = `/blog/{slug}/`), i afegeix cada comentari amb l'autor i data originals. Gestiona threading de 1r nivell (`replyToId`), detecció de discussions ja existents per idempotència, i reintents automàtics per rate limits de l'API de GitHub.
+
 ---
 
 ## Decisions de disseny preses amb l'agent
@@ -50,6 +60,9 @@ Redisseny complet del header en múltiples iteracions:
 | `?lang=xx` en URL | `/es/` subpaths | Site estàtic, no hi ha servidor |
 | `translate="no"` en blocs | Protegir tot el `<body>` | Protecció total bloquejaría la traducció |
 | regex en `build.js` per "xarop" | Wrapping manual al Markdown | Automatitzat, no requereix edició manual |
+| `postMessage` per sync tema giscus | Re-render amb `data-theme` nou | L'iframe ja existeix; `postMessage` és l'API oficial |
+| Mapping giscus `pathname` | `og:title`, `title` | Robust a canvis de títol; 1 discussion = 1 URL |
+| `giscusWidget()` retorna `""` si IDs buits | Error de build | Permet builds sense giscus configurat |
 
 ---
 
@@ -58,9 +71,10 @@ Redisseny complet del header en múltiples iteracions:
 | Fitxer | Canvis |
 |--------|--------|
 | `src/templates/base.html` | Header redesign, lang picker, flavor picker, theme toggle SVG, `translate="no"` |
-| `src/css/main.css` | Flavor picker styles, lang picker styles, theme toggle, animació flap, tokens |
-| `src/js/enhance.js` | Flavor picker, theme toggle, lang picker (URL, cookies, Google Translate) |
-| `scripts/build.js` | Post-processing "xarop" protection |
+| `src/css/main.css` | Flavor picker styles, lang picker styles, theme toggle, animació flap, tokens, `.comments` |
+| `src/js/enhance.js` | Flavor picker, theme toggle, lang picker (URL, cookies, Google Translate), giscus theme sync |
+| `scripts/build.js` | Post-processing "xarop" protection, config `GISCUS`, `giscusWidget()` |
+| `scripts/import-wp-comments.js` | Nou — migració de comentaris WordPress → GitHub Discussions |
 | `content/pages/index.md` | Flavor names com a `<button>` clicables |
 
 ---
@@ -82,3 +96,6 @@ Redisseny complet del header en múltiples iteracions:
 - **`?lang=xx`** no es propaga automàticament en navegar entre pàgines (la cookie ho gestiona, però l'URL perd el param). Solució futura: interceptar clicks a `<a>` internes.
 - **`/es/`** com a ruta real requeriria generar totes les pàgines en cada idioma a build time — canvi arquitectural important.
 - **Sabor `regalessia`** té lògica especial per a dark mode (color quasi negre → s'inverteix a blanc trencat).
+- **Giscus threading:** GitHub Discussions no suporta respostes a respostes (2n nivell). El script d'importació ho detecta i afegeix el comentari com a top-level en lloc de fallar.
+- **Comentaris importats duplicats:** els posts de les primeres execucions del script d'importació (runs 1 i 2) van rebre els comentaris dues vegades per un bug de re-execució. Cal netejar-los manualment a GitHub Discussions.
+- **`viatjar-amb-cotxe-electric`** (#42) va quedar incomplet a la migració (2/8 comentaris). Cal esborrar la discussion i re-executar el script.

@@ -920,6 +920,13 @@ button.flavor-name:hover {
   animation-duration: var(--duration);
 }
 
+/* ----- Comentaris (giscus) ----- */
+.comments {
+  margin-top: var(--space-12);
+  padding-top: var(--space-8);
+  border-top: var(--border);
+}
+
 /* ----- Utils (poques, intencionals) ----- */
 .sr-only {
   position: absolute;

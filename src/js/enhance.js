@@ -60,11 +60,21 @@
     themeToggle.setAttribute("aria-label", isDark ? "Tema fosc activat" : "Tema clar activat");
   };
 
+  const sendGiscusTheme = (theme) => {
+    const iframe = document.querySelector("iframe.giscus-frame");
+    if (!iframe) return;
+    iframe.contentWindow.postMessage(
+      { giscus: { setConfig: { theme } } },
+      "https://giscus.app"
+    );
+  };
+
   const applyTheme = (theme) => {
     const apply = () => {
       html.dataset.theme = theme;
       try { localStorage.setItem(THEME_KEY, theme); } catch (_) { }
       syncThemeToggle();
+      sendGiscusTheme(theme);
     };
     if (document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
       document.startViewTransition(apply);
@@ -72,6 +82,12 @@
       apply();
     }
   };
+
+  // Quan giscus carrega, sincronitzar el tema actual del lloc
+  window.addEventListener("message", (e) => {
+    if (e.origin !== "https://giscus.app") return;
+    if (e.data?.giscus) sendGiscusTheme(getCurrentTheme());
+  });
 
   // ---- 4. Activar el flavor picker ----
   const picker = document.querySelector(".flavor-picker");
