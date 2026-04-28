@@ -25,9 +25,8 @@
 
     if (savedTheme === "light" || savedTheme === "dark") {
       html.dataset.theme = savedTheme;
-    } else {
-      html.dataset.theme = "light";
     }
+    // Sense preferència guardada: el CSS gestiona prefers-color-scheme automàticament
   } catch (_) { }
 
   // ---- 2. URL params (?theme=dark|light) ----
