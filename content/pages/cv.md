@@ -1,58 +1,69 @@
 ---
 title: CV
-description: Curriculum vitae de xarop — front-end engineer.
+description: Adrià Julià Lundgren — Senior Front-end Engineer. Barcelona.
 section: cv
 ---
 
-# CV
+<!-- aside -->
 
-**Front-end engineer.** Barcelona / remot.
+<img src="{{root}}assets/images/ajl.jpg" alt="Adrià Julià Lundgren" class="avatar" loading="lazy">
 
-Contacte: [ajl@xarop.com](mailto:ajl@xarop.com)
+**Barcelona / remot**
+
+- [ajl@xarop.com](mailto:ajl@xarop.com)
+- [linkedin.com/in/xarop](https://linkedin.com/in/xarop/)
+- [github.com/xarop](https://github.com/xarop)
+- [+34 620 58 26 26](https://wa.me/34620582626)
 
 ---
 
-## Enfocament
+[HTML5](../portfolio/tags/html5/) · [CSS3](../portfolio/tags/css3/) · [SASS](../portfolio/tags/sass/) · [JavaScript](../portfolio/tags/javascript/) · [TypeScript](../portfolio/tags/typescript/) · [Figma](../portfolio/tags/figma/) · [Vue.js](../portfolio/tags/vuejs/) · [Angular](../portfolio/tags/angular/) · [React](../portfolio/tags/react/) · [Node.js](../portfolio/tags/nodejs/) · [npm](../portfolio/tags/npm/) · [Git](../portfolio/tags/git/) · [SCRUM](../portfolio/tags/scrum/) · [PHP](../portfolio/tags/php/) · [WordPress](../portfolio/tags/wordpress/) · [REST APIs](../portfolio/tags/rest/) · [MySQL](./portfolio/tags/mysql) · [Python](../portfolio/tags/python) · [SEO](../portfolio/tags/seo/) · [Web Components](../portfolio/tags/webcomponents/) · [LitElement](../portfolio/tags/litelement/) · [Eines d'IA](../portfolio/tags/ia/)
 
-Construeixo interfícies web ràpides, accessibles i sostenibles. M'agraden els estàndards, la semàntica i el CSS modern. Prefereixo solucions simples que funcionen durant anys a solucions sofisticades que cal mantenir cada setmana.
+---
 
-## Habilitats principals
+<!-- main -->
 
-- **HTML** semàntic, accessible (WCAG 2.1 AA).
-- **CSS** modern: custom properties, grid, subgrid, container queries, `@layer`, view transitions.
-- **JavaScript** vanilla, amb biblioteques petites quan calen. TypeScript quan cal.
-- **Frameworks**: React, Vue, Svelte. Prefereixo allò que sobreviurà a la propera moda.
-- **Rendiment**: Core Web Vitals, Lighthouse, profiling.
-- **Tooling**: Vite, esbuild, Node scripts.
-- **Git / GitHub**: workflows, Actions, Pages.
+# Adrià Julià Lundgren
 
-## Experiència
+## Senior Front-end Engineer
 
-### Empresa o projecte — Rol *(2022 – actualitat)*
+Senior Engineer amb més de 20 anys d'experiència construint ecosistemes digitals d'alt rendiment. Especialitzat en arquitectura front-end moderna, disseny UI/UX, Figma i desenvolupament assistit per IA (Cursor, VS Code + Claude).
 
-Breu descripció del que faig aquí. Tecnologies, resultats, mètriques si n'hi ha.
+### Senior Web Engineer — xarop.com *(2019 – actualitat)*
 
-### Empresa anterior — Rol *(2019 – 2022)*
+- Zara Web Challenge: SPA amb React 19 i backend Node.js / Express.
+- Desenvolupament de blocs WordPress / ACF a mida per a clients grans.
+- Arquitectura de design systems escalables.
 
-Una o dues línies sobre responsabilitats i impacte.
+### Senior Front-end Engineer — Newshore *(2017 – 2020)*
 
-### Altres
+- Vueling Airlines: desenvolupament d'interfícies d'alt tràfic amb components modulars.
 
-Projectes freelance, col·laboracions open source, xerrades o publicacions.
+### Altres rols destacats
+
+- **Minsait / Fundació BBVA** — Web Components, LitElement.
+- **BeeData Analytics** — visualització de dades, REST APIs.
+- **Editorial Planeta** — plataformes editorials web.
+- **SomMobilitat** — mobilitat sostenible, front-end.
+- **Telefónica I+D** — recerca i prototipatge.
+- **Vueling Airlines** — interfícies web.
+
+---
 
 ## Formació
 
-- **Grau / estudis** — Institució, any.
-- **Cursos destacats** — nom, lloc.
+- **Postgrau** en Programació Multimèdia — Universitat Pompeu Fabra *(1999)*
+- **Grau** en Disseny Gràfic — EAAOA Llotja *(1994)*
+- **Tècnic** en Tractament Multimèdia — ITES *(1996)*
+
+---
 
 ## Idiomes
 
-- **Català** — matern.
-- **Castellà** — matern.
+- **Català** — natiu.
+- **Castellà** — natiu.
 - **Anglès** — professional.
 
-## Vols treballar amb mi?
+---
 
-Escriu-me a [ajl@xarop.com](mailto:ajl@xarop.com). Responc ràpid.
-
-> *Aquest CV és un fitxer `.md` al repositori. Per actualitzar-lo, edita `content/pages/cv.md` i fes `git push`.*
+Escriu-me a [ajl@xarop.com](mailto:ajl@xarop.com).

@@ -13,7 +13,7 @@ Aquí dins hi ha tres coses:
 
 - un **[blog](./blog/)** amb notes tècniques i reflexions diverses,
 - un **[portfolio](./portfolio/)** amb projectes seleccionats,
-- i un **[cv](https://xarop.com/cv/)** per si em vols contractar.
+- i un **[cv](./cv/)** per si em vols contractar.
 
 *xarop* és un concentrat de sabor: és el *saft* suec, el *squash* britànic o el *jarabe* o *sirope* clàssic. Aquest lloc té sabors: <button type="button" class="flavor-name flavor-maduixa" data-flavor="maduixa">maduixa</button>, <button type="button" class="flavor-name flavor-nabiu" data-flavor="nabiu">nabiu</button>, <button type="button" class="flavor-name flavor-gerd" data-flavor="gerd">gerd</button>, <button type="button" class="flavor-name flavor-menta" data-flavor="menta">menta</button>, <button type="button" class="flavor-name flavor-llimona" data-flavor="llimona">llimona</button>, <button type="button" class="flavor-name flavor-taronja" data-flavor="taronja">taronja</button> i <button type="button" class="flavor-name flavor-regalessia" data-flavor="regalessia">regalèssia</button>. Clica'n un — la web es re-pinta sola.
 

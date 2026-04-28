@@ -41,6 +41,18 @@ const GISCUS = {
 
 const EDIT_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
 
+const HAMBURGER_ICON = `<svg class="icon-hamburger" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="2" y1="4" x2="14" y2="4"/><line x1="2" y1="8" x2="14" y2="8"/><line x1="2" y1="12" x2="14" y2="12"/></svg><svg class="icon-close" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg>`;
+const CLOSE_ICON = `<svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg>`;
+
+// Utilitat: genera aside responsive amb toggle hamburger
+function responsiveAside(asideHtml) {
+  return `
+<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">
+<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>
+<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="Tanca">${CLOSE_ICON}</label>${asideHtml}</aside>
+`;
+}
+
 function giscusWidget() {
   if (!GISCUS.repoId || !GISCUS.categoryId) return "";
   return `
@@ -309,11 +321,11 @@ async function buildBlog(template) {
     description: "Articles sobre front-end, CSS, web i afins.",
     content: `
 <div class="sidebar-layout">
-<div>
-  <header><h1>Blog</h1><p class="meta">${posts.length} articles</p></header>
-  <ol class="post-list" reversed>${list}</ol>
-</div>
-${blogSidebar}
+  <div>
+    <header><h1>Blog</h1><p class="meta">${posts.length} articles</p></header>
+    <ol class="post-list" reversed>${list}</ol>
+  </div>
+  ${responsiveAside(blogSidebar.replace(/<aside class=\"sidebar\">|<\/aside>/g, ""))}
 </div>`,
   }, template);
 
@@ -388,11 +400,11 @@ async function buildPortfolio(template) {
     description: "Projectes seleccionats.",
     content: `
 <div class="sidebar-layout">
-<div>
-  <header><h1>Portfolio</h1><p class="meta">${projects.length} projectes seleccionats</p></header>
-  <ul class="project-list">${grid}</ul>
-</div>
-${portfolioSidebar}
+  <div>
+    <header><h1>Portfolio</h1><p class="meta">${projects.length} projectes seleccionats</p></header>
+    <ul class="project-list">${grid}</ul>
+  </div>
+  ${responsiveAside(portfolioSidebar.replace(/<aside class=\"sidebar\">|<\/aside>/g, ""))}
 </div>`,
   }, template);
 
@@ -465,20 +477,20 @@ async function buildPages(template, posts = [], projects = []) {
           </a>
         </li>`).join("");
 
-      const aside = `
-<aside class="home-aside">
-  <section>
-    <h2>Darrers articles</h2>
-    <ol class="post-list" reversed>${recentPosts}</ol>
-    <p><a href="./blog/">tots els articles →</a></p>
-  </section>
+      const asideHtml = `
+<section>
+  <h2>Darrers articles</h2>
+  <ol class="post-list" reversed>${recentPosts}</ol>
+  <p><a href="./blog/">tots els articles →</a></p>
+</section>
 
-  <section>
-    <h2>Darrers projectes</h2>
-    <ul class="project-list">${recentProjects}</ul>
-    <p><a href="./portfolio/">tots els projectes →</a></p>
-  </section>
-</aside>`;
+<section>
+  <h2>Darrers projectes</h2>
+  <ul class="project-list">${recentProjects}</ul>
+  <p><a href="./portfolio/">tots els projectes →</a></p>
+</section>`;
+
+      const aside = responsiveAside(asideHtml);
 
       await writePage(outPath, {
         title: p.meta.title,
@@ -490,12 +502,31 @@ async function buildPages(template, posts = [], projects = []) {
       continue;
     }
 
+    const ASIDE_MARKER = "<!-- aside -->";
+    const MAIN_MARKER  = "<!-- main -->";
+    let content;
+    if (p.body.includes(ASIDE_MARKER) && p.body.includes(MAIN_MARKER)) {
+      const asideStart = p.body.indexOf(ASIDE_MARKER) + ASIDE_MARKER.length;
+      const mainStart  = p.body.indexOf(MAIN_MARKER);
+      const asideMd = p.body.slice(asideStart, mainStart).trim();
+      const mainMd  = p.body.slice(mainStart + MAIN_MARKER.length).trim();
+      const asideHtml = htmlFromMarkdown(asideMd);
+      const mainHtml  = htmlFromMarkdown(mainMd);
+      content = `<div class="aside-layout">` +
+        `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
+        `<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>` +
+        `<article>${mainHtml}</article>` +
+        `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="Tanca">${CLOSE_ICON}</label>${asideHtml}</aside>` +
+        `</div>`;
+    } else {
+      content = `<article>${body}</article>`;
+    }
     await writePage(outPath, {
       title: p.meta.title,
       section: p.meta.section || p.slug,
       description: p.meta.description || "",
       flavor: p.meta.flavor || SITE.defaultFlavor,
-      content: `<article>${body}</article>`,
+      content,
     }, template);
   }
 }

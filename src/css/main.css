@@ -125,6 +125,15 @@ h4:first-child {
   margin-top: 0;
 }
 
+h1 em,
+h2 em,
+h3 em,
+h4 em {
+  font-size: .8rem;
+  font-weight: normal;
+  opacity: 0.7;
+}
+
 p,
 ul,
 ol,
@@ -184,46 +193,34 @@ body>.full {
   }
 }
 
+
 .home-layout {
   display: grid;
   gap: var(--space-8);
-}
-
-.home-aside section {
-  margin-bottom: var(--space-6);
-}
-
-.home-aside {
-  background: color-mix(in srgb, var(--color-accent) 2%, var(--color-bg));
-  border: 1px solid color-mix(in srgb, var(--color-accent) 10%, var(--color-border));
-  border-radius: var(--radius);
-  padding: var(--space-4);
-}
-
-.home-aside h2 {
-  font-size: var(--text-lg);
-  margin-top: 0;
-}
-
-.home-aside .post-list,
-.home-aside .project-list {
-  gap: var(--space-3);
+  align-items: start;
 }
 
 
-.home-aside .post-list li {
-  padding-bottom: var(--space-2);
+/* Home aside unificat amb sidebar */
+.home-layout>article {
+  grid-column: 1;
 }
 
-.home-aside .post-list h3,
-.home-aside .project-list h3 {
-  font-size: var(--text-base);
+.home-layout>.sidebar,
+.home-layout>#page-aside {
+  grid-column: 2;
 }
 
-.home-aside .post-list p,
-.home-aside .project-list p {
-  margin-block: var(--space-1);
-  font-size: var(--text-sm);
+@media (min-width: 1024px) {
+  .home-layout {
+    grid-template-columns: minmax(0, 3fr) minmax(16rem, 1fr);
+  }
+
+  .sidebar,
+  #page-aside {
+    position: sticky;
+    top: var(--space-6);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -351,7 +348,7 @@ body>.full {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
 }
 
 .site-nav a {
@@ -918,6 +915,141 @@ button.flavor-name:hover {
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: var(--duration);
+}
+
+/* ----- Aside layout (pàgines amb <!-- aside --> / <!-- main -->) ----- */
+.aside-layout {
+  display: grid;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+/* Toggle CSS-only: checkbox ocult + label com a botó */
+.aside-toggle-cb {
+  display: none;
+}
+
+
+.aside-toggle {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  transition: background var(--duration) var(--ease);
+  user-select: none;
+}
+
+.aside-toggle:hover {
+  background: none;
+}
+
+.aside-toggle .icon-close {
+  display: none;
+}
+
+/* Mòbil: toggle visible, aside ocult fins que checkbox activat */
+@media (max-width: 767px) {
+  .aside-toggle {
+    display: flex;
+    position: absolute;
+    right: 0;
+  }
+
+
+  .aside-layout>.sidebar,
+  .home-layout>#page-aside {
+    display: none;
+  }
+
+
+  .aside-toggle-cb:checked~.sidebar,
+  .aside-toggle-cb:checked~#page-aside {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    overflow-y: auto;
+    background: var(--color-bg);
+    padding: var(--space-6);
+  }
+
+  .aside-toggle-cb:checked~.aside-toggle .icon-hamburger {
+    display: none;
+  }
+
+  .aside-toggle-cb:checked~.aside-toggle .icon-close {
+    display: block;
+  }
+}
+
+/* Botó tancar dins el panel (mòbil) */
+.aside-close {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+  margin-left: auto;
+  transition: background var(--duration) var(--ease);
+  flex-shrink: 0;
+}
+
+.aside-close:hover {
+  background: none;
+}
+
+@media (max-width: 767px) {
+  .aside-close {
+    display: flex;
+  }
+}
+
+/* Desktop: grid 2 columnes, aside a la dreta */
+@media (min-width: 768px) {
+  .aside-layout {
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: var(--space-8);
+  }
+
+  .aside-toggle {
+    display: none;
+  }
+
+  .aside-layout>article {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .aside-layout>.sidebar {
+    grid-column: 2;
+    grid-row: 1;
+    position: sticky;
+    top: var(--space-6);
+  }
+}
+
+/* ----- Avatar (foto de perfil circular) ----- */
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border: 3px solid var(--color-accent);
+  margin-block: var(--space-6);
 }
 
 /* ----- Comentaris (giscus) ----- */
