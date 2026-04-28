@@ -503,15 +503,15 @@ async function buildPages(template, posts = [], projects = []) {
     }
 
     const ASIDE_MARKER = "<!-- aside -->";
-    const MAIN_MARKER  = "<!-- main -->";
+    const MAIN_MARKER = "<!-- main -->";
     let content;
     if (p.body.includes(ASIDE_MARKER) && p.body.includes(MAIN_MARKER)) {
       const asideStart = p.body.indexOf(ASIDE_MARKER) + ASIDE_MARKER.length;
-      const mainStart  = p.body.indexOf(MAIN_MARKER);
+      const mainStart = p.body.indexOf(MAIN_MARKER);
       const asideMd = p.body.slice(asideStart, mainStart).trim();
-      const mainMd  = p.body.slice(mainStart + MAIN_MARKER.length).trim();
+      const mainMd = p.body.slice(mainStart + MAIN_MARKER.length).trim();
       const asideHtml = htmlFromMarkdown(asideMd);
-      const mainHtml  = htmlFromMarkdown(mainMd);
+      const mainHtml = htmlFromMarkdown(mainMd);
       content = `<div class="aside-layout">` +
         `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
         `<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>` +
