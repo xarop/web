@@ -66,6 +66,6 @@ Senior Engineer amb més de 20 anys d'experiència construint ecosistemes digita
 
 ---
 
-CV complert a [cv.xarop.com](http://cv.xarop.com)
+CV complert a [cv.xarop.com](https://xarop.com/cv)
 
 Escriu-me a [ajl@xarop.com](mailto:ajl@xarop.com)
