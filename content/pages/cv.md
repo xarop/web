@@ -27,7 +27,7 @@ section: cv
 
 ## Senior Front-end Engineer
 
-Senior Engineer amb més de 20 anys d'experiència construint ecosistemes digitals d'alt rendiment. Especialitzat en arquitectura front-end moderna, disseny UI/UX, Figma i desenvolupament assistit per IA (Cursor, VS Code + Claude).
+Senior Engineer amb més de 20 anys d'experiència construint ecosistemes digitals d'alt rendiment. Especialitzat en arquitectura front-end moderna, disseny UI/UX, Figma i desenvolupament assistit per IA.
 
 ### Senior Web Engineer — xarop.com *(2019 – actualitat)*
 
@@ -65,5 +65,5 @@ Senior Engineer amb més de 20 anys d'experiència construint ecosistemes digita
 - **Anglès** — professional.
 
 ---
-
+CV complert a [cv.xarop.com](https://cv.xarop.com)
 Escriu-me a [ajl@xarop.com](mailto:ajl@xarop.com).
