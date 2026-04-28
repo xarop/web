@@ -161,17 +161,20 @@
       } catch (_) { }
     };
 
-    // Determinar idioma inicial: localStorage > CA
+    // Determinar idioma inicial: localStorage > URL param > navigator.language > CA
     let currentLang = "CA";
+    let hasSavedPref = false;
     try {
       const saved = localStorage.getItem(LANG_KEY);
-      if (saved && LANGS.includes(saved)) currentLang = saved;
+      if (saved && LANGS.includes(saved)) { currentLang = saved; hasSavedPref = true; }
     } catch (_) { }
 
     // URL param ?lang=XX té prioritat (per a enllaços compartits)
+    let hasUrlParam = false;
     try {
       const p = new URLSearchParams(location.search).get("lang");
       if (p && LANGS.includes(p.toUpperCase())) {
+        hasUrlParam = true;
         const fromUrl = p.toUpperCase();
         currentLang = fromUrl;
         try { localStorage.setItem(LANG_KEY, fromUrl); } catch (_) { }
@@ -184,6 +187,24 @@
         }
       }
     } catch (_) { }
+
+    // Auto-detecció del navegador (només si no hi ha preferència guardada ni URL param)
+    if (!hasSavedPref && !hasUrlParam) {
+      try {
+        const browserLang = (navigator.language || "").slice(0, 2).toUpperCase();
+        if (LANGS.includes(browserLang) && browserLang !== "CA") {
+          currentLang = browserLang;
+          try { localStorage.setItem(LANG_KEY, browserLang); } catch (_) { }
+          const targetCode = LANG_CODES[browserLang];
+          if (getCookieLang() !== targetCode) {
+            const val = `/ca/${targetCode}`;
+            document.cookie = `googtrans=${val}; path=/`;
+            document.cookie = `googtrans=${val}; path=/; domain=.${location.hostname}`;
+            location.reload();
+          }
+        }
+      } catch (_) { }
+    }
 
     langPickerEl.dataset.enabled = "true";
     langPickerWrap.dataset.enabled = "true";
