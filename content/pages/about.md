@@ -24,6 +24,6 @@ Com a enginyer UX, el meu treball combina els principis de l'experiència d'usua
 
 * * *
 
-Pots consultar els últims desenvolupaments **[aquí](http://www.xarop.com/category/works/ "Posts sobre los proyectos que realizo o donde participo")**,    
+Pots consultar els últims desenvolupaments **[aquí](/portfolio/ "Portfolio")**,    
 el meu [**Currículum Vitae**](http://xarop.com/cv/)  
 i el meu perfil professional en **[Linkedin](http://www.linkedin.com/in/xarop)**.
