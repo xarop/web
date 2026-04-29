@@ -447,6 +447,43 @@ async function buildPortfolio(template) {
   return projects;
 }
 
+const CV_ASIDE_MD = `<img src="{{root}}assets/images/ajl.jpg" alt="Adrià Julià Lundgren" class="avatar" loading="lazy">
+
+**Barcelona / remot**
+
+- [ajl@xarop.com](mailto:ajl@xarop.com)
+- [linkedin.com/in/xarop](https://linkedin.com/in/xarop/)
+- [github.com/xarop](https://github.com/xarop)
+- [+34 620 58 26 26](https://wa.me/34620582626)`;
+
+async function buildCv(template) {
+  const allFiles = await readMarkdownDir(join(CONTENT, "cv"));
+  const cvItems = allFiles.filter(p => p.filename.startsWith("cv-"));
+  console.log(`\n📋 CV: ${cvItems.length} variants`);
+
+  const asideHtml = htmlFromMarkdown(CV_ASIDE_MD);
+
+  for (const p of cvItems) {
+    const slug = p.meta.slug || p.slug;
+    const body = htmlFromMarkdown(p.body);
+    const content =
+      `<div class="aside-layout">` +
+      `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
+      `<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>` +
+      `<article class="cv-page">${body}<footer class="article-footer"><a href="../">← tots els CVs</a></footer></article>` +
+      `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="Tanca">${CLOSE_ICON}</label>${asideHtml}</aside>` +
+      `</div>`;
+    await writePage(join(DIST, "cv", slug, "index.html"), {
+      title: p.meta.title || slug,
+      section: "cv",
+      description: p.meta.description || "",
+      content,
+    }, template);
+  }
+
+  return cvItems;
+}
+
 async function buildPages(template, posts = [], projects = []) {
   const pages = await readMarkdownDir(join(CONTENT, "pages"));
   console.log(`\n📄 Pàgines: ${pages.length}`);
@@ -648,6 +685,7 @@ async function main() {
 
   const posts = await buildBlog(template);
   const projects = await buildPortfolio(template);
+  await buildCv(template);
   await buildPages(template, posts, projects);
   await buildHome(template, posts, projects);
   await buildFeed(posts);

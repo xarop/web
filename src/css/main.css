@@ -1050,6 +1050,7 @@ button.flavor-name:hover {
   display: block;
   border: 3px solid var(--color-accent);
   margin-block: var(--space-6);
+  margin: 0 auto;
 }
 
 /* ----- Comentaris (giscus) ----- */

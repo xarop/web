@@ -15,15 +15,17 @@ section: cv
 - [github.com/xarop](https://github.com/xarop)
 - [+34 620 58 26 26](https://wa.me/34620582626)
 
----
-
-[HTML5](../portfolio/tags/html5/) · [CSS3](../portfolio/tags/css3/) · [SASS](../portfolio/tags/sass/) · [JavaScript](../portfolio/tags/javascript/) · [TypeScript](../portfolio/tags/typescript/) · [Figma](../portfolio/tags/figma/) · [Vue.js](../portfolio/tags/vuejs/) · [Angular](../portfolio/tags/angular/) · [React](../portfolio/tags/react/) · [Node.js](../portfolio/tags/nodejs/) · [npm](../portfolio/tags/npm/) · [Git](../portfolio/tags/git/) · [SCRUM](../portfolio/tags/scrum/) · [PHP](../portfolio/tags/php/) · [WordPress](../portfolio/tags/wordpress/) · [REST APIs](../portfolio/tags/rest/) · [MySQL](./portfolio/tags/mysql) · [Python](../portfolio/tags/python) · [SEO](../portfolio/tags/seo/) · [Web Components](../portfolio/tags/webcomponents/) · [LitElement](../portfolio/tags/litelement/) · [Eines d'IA](../portfolio/tags/ia/)
-
----
-
 <!-- main -->
 
 # Adrià Julià Lundgren
+
+## Tria el perfil
+
+- [**Senior Frontend Engineer** — React, TypeScript, Vite, Design Systems](./frontend-react/)
+- [**Design Engineer** — UI Systems, Figma, Design Tokens](./design-engineer/)
+- [**WordPress Architect** — Blocks, ACF, Twig/Timber, Performance](./wordpress-architect/)
+
+---
 
 ## Senior Front-end Engineer
 
