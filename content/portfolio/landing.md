@@ -1,6 +1,6 @@
 ---
 image: assets/images/screenshot-pott-landing.webp
-title: pott — xarop.com landing
+title: xarop.com landing
 date: 2026-04-30
 year: 2026
 role: Disseny & Desenvolupament

@@ -1,5 +1,5 @@
 ---
-title: "pott: landing page amb Astro 5, TypeScript i zero frameworks CSS"
+title: "landing page amb Astro 5, TypeScript i zero frameworks CSS"
 image: assets/images/screenshot-pott-landing.webp
 date: 2026-04-30
 url: https://xarop.com
