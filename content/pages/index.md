@@ -29,6 +29,25 @@ La web hauria de ser ràpida, accessible i editable per qualsevol. He après que
 
 ---
 
+## Treballs junts?
+
+<a href="https://xarop.com/">
+  <img src="{{root}}assets/images/screenshot-landing.webp" alt="xarop.com — serveis de desenvolupament web" loading="lazy" style="aspect-ratio:16/9;object-fit:cover;object-position:top;width:100%">
+</a>
+
+https://xarop.com/
+
+Si tens un projecte web, pots trobar els meus serveis a **[xarop.com](https://xarop.com/)**.
+
+- **Webs a mida** — Landings, llocs corporatius, portals editorials i botigues online
+- **Migracions web** — De WordPress a tecnologies modernes, sense deute tècnic
+- **Integracions amb IA** — Chatbots, automatitzacions, RAG i generació de contingut
+- **Optimització i refactor** — Millora de rendiment i Core Web Vitals
+
+Codi obert i auditable, sense *lock-in*. De brief a producció en 2–4 setmanes.
+
+---
+
 ## Contacte
 
 - **Email** — [ajl@xarop.com](mailto:ajl@xarop.com)
