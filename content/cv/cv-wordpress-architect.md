@@ -1,7 +1,7 @@
 ---
 title: WordPress Architect — Blocks, ACF & Performance
 slug: wordpress-architect
-description: Arquitectura WordPress modular amb Gutenberg, ACF i Twig/Timber. Temes a medida, build modern i atenció als Core Web Vitals. Sense maquetadors ni pluginitis.
+description: Modular WordPress architecture with Gutenberg, ACF and Twig/Timber. Custom themes, modern build tooling and Core Web Vitals focus. No page builders, no plugin bloat.
 role: WordPress Architect
 ---
 
@@ -14,88 +14,88 @@ role: WordPress Architect
 
 ---
 
-## Sobre mí
+## About
 
-Desarrollador WordPress avanzado con foco en **arquitectura modular, datos limpios y rendimiento**. Construyo ecosistemas corporativos sobre WordPress aprovechando el potencial de Gutenberg, ACF y Twig/Timber para separar lógica y vista.
+Senior WordPress developer focused on **modular architecture, clean data and performance**. I build corporate ecosystems on WordPress, harnessing the full potential of Gutenberg, ACF and Twig/Timber to separate logic from view.
 
-Trabajo desde una mentalidad de ingeniería: temas a medida con build moderno (Vite/Webpack), estructuras SCSS escalables, datos modelados con ACF, y atención a Core Web Vitals desde el primer commit. Sin maquetadores arrastrables ni plugins infinitos.
+I work with an engineering mindset: custom themes with a modern build (Vite/Webpack), scalable SCSS structures, data modelled with ACF, and Core Web Vitals attention from the first commit. No drag-and-drop page builders, no plugin sprawl.
 
 ---
 
-## Stack WordPress
+## WordPress Stack
 
-**Core:** WordPress · Gutenberg · ACF (Custom Blocks) · Twig/Timber · PHP moderno
+**Core:** WordPress · Gutenberg · ACF (Custom Blocks) · Twig/Timber · Modern PHP
 **Boilerplates:** Bedrock · Sage · Composer
 **Frontend:** SCSS/SASS · BEM · JavaScript (ES6+) · Vite/Webpack · npm
 **Performance:** Core Web Vitals · Caching · Lazy loading · Image optimisation
-**Stack ampliado:** REST API · WP-CLI · Git · MySQL · SEO técnico · Laravel/Eloquent (Blade)
+**Extended stack:** REST API · WP-CLI · Git · MySQL · Technical SEO · Laravel/Eloquent (Blade)
 
 ---
 
-## Proyectos destacados
+## Highlighted Projects
 
-### CCIB — Centro de Convenciones Internacional de Barcelona
+### CCIB — Barcelona International Convention Centre
 [ccib.es](https://ccib.es) · ByteBerry Studio
 
-Implementación de un **sistema multilingüe modular block-based** para una marca corporativa de referencia. Arquitectura de bloques personalizados, separación logica/vista con Twig/Timber, gestión multilingüe robusta.
+Implementation of a **modular multilingual block-based system** for a flagship corporate brand. Custom block architecture, logic/view separation with Twig/Timber, robust multilingual management.
 
-`WordPress` `Custom Blocks` `Twig/Timber` `Multilingüe` `SCSS/BEM`
+`WordPress` `Custom Blocks` `Twig/Timber` `Multilingual` `SCSS/BEM`
 
-### Bandalux — Marca global de protección solar
+### Bandalux — Global solar protection brand
 [bandalux.com](https://bandalux.com) · ByteBerry Studio
 
-UI/UX premium para una marca global. **Build con Node.js**, arquitectura SCSS escalable, atención al detalle visual y rendimiento.
+Premium UI/UX for a global brand. **Node.js build**, scalable SCSS architecture, attention to visual detail and performance.
 
 `WordPress` `Node.js build` `SCSS` `Performance`
 
-### Iusintegra — Despacho jurídico
+### Iusintegra — Legal practice
 [iusintegra.es](https://iusintegra.es) · Kit Digital
 
-Web corporativa con CMS WordPress. Modelado de contenidos con ACF, plantillas Twig/Timber, SEO técnico. Proyecto entregado dentro del programa Kit Digital.
+Corporate website with WordPress CMS. Content modelling with ACF, Twig/Timber templates, technical SEO. Delivered under the Kit Digital programme.
 
 `WordPress` `ACF` `Twig/Timber` `SEO`
 
-### BAROS — Asociación profesional médica
-Web institucional con sistema de premios y soporte a asociaciones colaboradoras. Mantenimiento evolutivo continuado.
+### BAROS — Medical professional association
+Institutional website with an awards system and support for partner associations. Ongoing evolutionary maintenance.
 
-### Madvelous — Plataforma e-commerce
-WordPress + WooCommerce avanzado. Proyecto via Hays para cliente final. Implementación de flujos de checkout y catálogo.
+### Madvelous — E-commerce platform
+WordPress + advanced WooCommerce. Project via Hays for end client. Implementation of checkout flows and product catalogue.
 
-### adamo.es — Telecomunicaciones
-UI con SCSS/Less y JavaScript. **Integración de flujos de registro complejos con APIs externas** sobre WordPress.
+### adamo.es — Telecommunications
+UI with SCSS/Less and JavaScript. **Integration of complex registration flows with external APIs** on WordPress.
 
 `WordPress` `Bootstrap` `REST APIs` `JavaScript`
 
 ---
 
-## Otros proyectos WordPress
+## Other WordPress Projects
 
-Casa del Libro (Editorial Planeta) · SomMobilitat · Numerosos proyectos freelance de alta conversión con temas a medida y arquitecturas SCSS reutilizables.
-
----
-
-## Cómo trabajo
-
-- **Datos primero:** modelado limpio con ACF antes de tocar marcado.
-- **Logica/vista separada:** Twig/Timber para mantenibilidad real.
-- **Build moderno:** Vite o Webpack con npm scripts, no FTP.
-- **Sin pluginitis:** prefiero código a medida cuando aporta sostenibilidad.
-- **Rendimiento desde día uno:** caching, lazy loading, Core Web Vitals.
-- **Documentación:** README en cada repo, decisiones explicadas.
+Casa del Libro (Editorial Planeta) · SomMobilitat · Numerous high-conversion freelance projects with custom themes and reusable SCSS architectures.
 
 ---
 
-## Formación
+## How I Work
 
-**Postgrado en Programación Multimedia** · Universitat Pompeu Fabra (UPF)
-**Grado en Diseño Gráfico** · EAAOA Llotja, Barcelona
-
----
-
-## Idiomas
-
-**Català** y **Español**: nativos · **English**: Professional Working Proficiency
+- **Data first:** clean ACF modelling before touching markup.
+- **Logic/view separated:** Twig/Timber for real maintainability.
+- **Modern build:** Vite or Webpack with npm scripts, not FTP.
+- **No plugin bloat:** I prefer custom code when it brings sustainability.
+- **Performance from day one:** caching, lazy loading, Core Web Vitals.
+- **Documentation:** README in every repo, decisions explained.
 
 ---
 
-*20+ años en desarrollo web, +10 años de experiencia continuada con WordPress.*
+## Education
+
+**Postgraduate in Multimedia Programming** · Universitat Pompeu Fabra (UPF)
+**Degree in Graphic Design** · EAAOA Llotja, Barcelona
+
+---
+
+## Languages
+
+**Catalan** and **Spanish**: native · **English**: Professional Working Proficiency
+
+---
+
+*20+ years in web development, 10+ years of continuous WordPress experience.*

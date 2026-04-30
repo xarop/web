@@ -1,7 +1,7 @@
 ---
 title: Design Engineer — UI Systems & Figma
 slug: design-engineer
-description: A la frontera entre disseny i enginyeria. Design systems end-to-end, Figma, design tokens i implementació d'UI d'alta fidelitat des del component fins a producció.
+description: At the intersection of design and engineering. End-to-end design systems, Figma, design tokens and high-fidelity UI implementation from component to production.
 role: Design Engineer
 ---
 
@@ -14,89 +14,89 @@ role: Design Engineer
 
 ---
 
-## Sobre mí
+## About
 
-Trabajo en la frontera entre diseño e ingeniería. Diseño en Figma con la cabeza puesta en cómo se va a implementar, y programo con la sensibilidad de quien viene del diseño gráfico. **Mi terreno son los Design Systems, los design tokens, la accesibilidad y la implementación de UI de alta fidelidad** — desde la decisión de tipografía hasta el componente final en producción.
+I work at the boundary between design and engineering. I design in Figma with implementation in mind, and I code with the sensibility of someone who comes from graphic design. **My territory is Design Systems, design tokens, accessibility and high-fidelity UI implementation** — from the typography decision to the final component in production.
 
-Background en diseño gráfico (Llotja) y 20+ años desarrollando productos digitales. Práctica intensiva en **AI-Assisted Development**: prompt engineering aplicado a refactor sostenible, generación de tokens, documentación y revisión sistemática.
+Background in graphic design (Llotja) and 20+ years developing digital products. Intensive practice in **AI-Assisted Development**: prompt engineering applied to sustainable refactoring, token generation, documentation and systematic review.
 
 ---
 
-## Lo que hago
+## What I Do
 
-**Design Systems end-to-end:** desde tokens y primitivos en Figma hasta su implementación como Web Components o componentes React.
+**End-to-end Design Systems:** from tokens and primitives in Figma to their implementation as Web Components or React components.
 
-**UI Engineering:** traducción fiel de mockups a código sin perder matices (microinteracciones, tipografía, ritmo vertical, transiciones).
+**UI Engineering:** faithful translation of mockups to code without losing nuance (micro-interactions, typography, vertical rhythm, transitions).
 
-**Bridge entre disciplinas:** traduzco vocabulario de diseño al lenguaje de ingeniería y viceversa. Útil en equipos donde diseñadores y devs trabajan separados.
+**Bridge between disciplines:** I translate design vocabulary into engineering language and vice versa. Useful in teams where designers and developers work separately.
 
-**AI-Assisted workflows:** acelero producción y mantengo coherencia mediante prompt engineering, sin perder criterio humano.
+**AI-Assisted workflows:** I accelerate production and maintain coherence through prompt engineering, without losing human judgement.
 
 ---
 
 ## Stack
 
-**Diseño:** Figma · Variables · Componentes · Auto-layout · Design Tokens · Prototipado
+**Design:** Figma · Variables · Components · Auto-layout · Design Tokens · Prototyping
 **Frontend:** React 19 · TypeScript · Web Components / LitElement · Vite
-**Estilos:** SCSS/SASS · Tailwind · CSS moderno (custom properties, container queries) · BEM
-**Motion:** CSS transitions · animaciones declarativas · transiciones de página
-**Accesibilidad:** WCAG 2.1 · navegación por teclado · contraste · screen reader testing
-**AI:** Claude · Cursor · prompt engineering aplicado a refactor y generación de tokens
+**Styles:** SCSS/SASS · Tailwind · Modern CSS (custom properties, container queries) · BEM
+**Motion:** CSS transitions · declarative animations · page transitions
+**Accessibility:** WCAG 2.1 · keyboard navigation · contrast · screen reader testing
+**AI:** Claude · Cursor · prompt engineering applied to refactoring and token generation
 
 ---
 
-## Experiencia destacada
+## Highlighted Experience
 
 ### Zara Web Challenge — Napptilus / Inditex (2026)
-SPA con foco en detalle visual: dark mode, skeleton loaders coherentes, transiciones de página animadas, multilenguaje (ES/CA/EN). Diseño y desarrollo del sistema visual completo.
+SPA focused on visual detail: dark mode, coherent skeleton loaders, animated page transitions, multilingual (ES/CA/EN). Design and development of the complete visual system.
 
 → [Demo](https://napptilius.onrender.com)
 
 `React 19` `Styled Components` `Design tokens` `Animation`
 
 ### Frontend Developer — Minsait / Fundación BBVA
-**Web Components y LitElement** para el ecosistema OpenWeb. Trabajo dentro del Design System corporativo de BBVA (Cells), respetando design tokens, primitivos y patrones existentes.
+**Web Components and LitElement** for the OpenWeb ecosystem. Working within the BBVA corporate Design System (Cells), respecting existing design tokens, primitives and patterns.
 
 `Web Components` `LitElement` `Design Systems` `BBVA Cells`
 
 ### Senior Frontend — Newshore / Vueling Airlines
-**SCSS para un Design System a gran escala** en entorno SCRUM. Componentes reutilizables consistentes con la identidad visual de marca.
+**SCSS for a large-scale Design System** in a SCRUM environment. Reusable components consistent with the brand's visual identity.
 
 `SCSS` `Design Systems` `Angular`
 
 ### Senior Developer — BeeData Analytics
-**Componentes de visualización de datos** (D3.js + Web Components) con foco en legibilidad, accesibilidad y consistencia visual.
+**Data visualisation components** (D3.js + Web Components) focused on readability, accessibility and visual consistency.
 
 `D3.js` `Web Components` `Data viz`
 
 ### UI Designer — Infojobs
-Rediseño de la UI del portal de candidatos. **Estructuras HTML/CSS modulares** para todo el ciclo de vida de la aplicación.
+Redesign of the candidate portal UI. **Modular HTML/CSS structures** for the full application lifecycle.
 
 ### UI/UX Designer — adamo.es
-Diseño y desarrollo de UI con SCSS/Less. Integración de flujos de registro complejos.
+UI design and development with SCSS/Less. Integration of complex registration flows.
 
 ---
 
-## Otros proyectos relevantes
+## Other Relevant Projects
 
-**ByteBerry Studio:** Sistema multilingüe block-based para [ccib.es](https://ccib.es). UI/UX premium para [bandalux.com](https://bandalux.com).
+**ByteBerry Studio:** Multilingual block-based system for [ccib.es](https://ccib.es). Premium UI/UX for [bandalux.com](https://bandalux.com).
 
 ---
 
-## Formación
+## Education
 
-**Postgrado en Programación Multimedia** · Universitat Pompeu Fabra (UPF)
-**Grado en Diseño Gráfico** · EAAOA Llotja, Barcelona — base sólida en tipografía, color y composición.
+**Postgraduate in Multimedia Programming** · Universitat Pompeu Fabra (UPF)
+**Degree in Graphic Design** · EAAOA Llotja, Barcelona — strong foundation in typography, colour and composition.
 
-**Formación continua reciente:**
+**Recent continuous learning:**
 Advanced React/Redux Architecture · Agile/SCRUM · High-Performance System Design
 
 ---
 
-## Idiomas
+## Languages
 
-**Català** y **Español**: nativos · **English**: Professional Working Proficiency
+**Catalan** and **Spanish**: native · **English**: Professional Working Proficiency
 
 ---
 
-*Diseño que entiende código. Código que respeta el diseño.*
+*Design that understands code. Code that respects design.*

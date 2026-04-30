@@ -1,5 +1,7 @@
 ---
+image: assets/images/screenshot-css-custom-properties-per-temes.webp
 title: Temes amb CSS custom properties — i prou
+url: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties
 date: 2026-04-15
 description: Com implementar sistemes de temes (light/dark i multi-color) amb només CSS, sense JavaScript, sense preprocessadors.
 categories: [Design, FrontEnd]

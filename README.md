@@ -10,7 +10,7 @@ Sense WordPress. Sense base de dades. Sense JS obligatori. Només HTML semàntic
 
 ## Característiques
 
-- **Static site** generat des de Markdown amb un script de Node (~280 línies).
+- **Static site** generat des de Markdown amb un script de Node (~320 línies).
 - **Set sabors** de color intercanviables (`maduixa`, `nabiu`, `gerd`, `menta`, `llimona`, `taronja`, `regalessia`).
 - **Mode clar/fosc** automàtic (`prefers-color-scheme`) amb toggle manual sol/lluna al header.
 - **Selector d'idioma** (CA / ES / EN / SV / IT) amb Google Translate i URL `?lang=xx`.
@@ -28,6 +28,7 @@ Sense WordPress. Sense base de dades. Sense JS obligatori. Només HTML semàntic
 .
 ├── content/              Markdown (la font de veritat)
 │   ├── pages/            Pàgines (index, cv, contacte)
+│   ├── cv/               CVs per perfil (cv-frontend-react.md, cv-design-engineer.md…)
 │   ├── blog/             Articles
 │   └── portfolio/        Projectes
 ├── src/
@@ -93,6 +94,39 @@ url: https://exemple.com
 
 Detalls en Markdown...
 ```
+
+### Generar imatge automàtica des d'una URL
+
+Qualsevol fitxer de `blog/` o `portfolio/` que tingui `url:` al frontmatter però **no** `image:` serà processat per l'script de screenshots:
+
+```bash
+npm run screenshots
+```
+
+L'script:
+1. Detecta tots els `.md` amb `url:` i sense `image:`.
+2. Obre cada URL amb Puppeteer (headless Chrome), fa un screenshot i el converteix a WebP (1200×525, q82).
+3. Desa la imatge a `src/assets/images/screenshot-{slug}.webp`.
+4. Afegeix automàticament `image: assets/images/screenshot-{slug}.webp` al frontmatter del fitxer.
+
+Per **forçar** un nou screenshot d'un fitxer que ja té `image:`: elimina la línia `image:` del frontmatter i torna a executar `npm run screenshots`.
+
+### Una variant de CV
+
+`content/cv/cv-nom.md` amb frontmatter mínim:
+
+```markdown
+---
+title: Rol — especialitat
+slug: nom-del-rol
+description: Descripció breu per a la llista.
+role: Rol
+---
+
+Contingut en **Markdown**.
+```
+
+Publicat automàticament a `/cv/nom-del-rol/`. La pàgina comparteix el aside de la secció CV (foto + contacte).
 
 ### Una pàgina nova
 

@@ -1,7 +1,9 @@
 ---
+image: assets/images/screenshot-xarop-com.webp
 title: Nova versió de xarop.com (2026)
 date: 2026-04-23
 description: He reescrit xarop.com des de zero. Sense WordPress, sense base de dades, sense JS al client. Només HTML, CSS modern i Markdown.
+url: https://web.xarop.com
 categories: [Blog]
 tags: [a11y, Català, css, Git, github-pages, html, javascript, meta, Node.js, WordPress, xarop, xarop.com]
 flavor: maduixa

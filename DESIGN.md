@@ -22,6 +22,7 @@ Tres principis:
 xarop.com/
 ├── content/          Markdown (la font de veritat)
 │   ├── pages/        Pàgines estàtiques (about, cv, contacte)
+│   ├── cv/           CVs per perfil (cv-frontend-react.md, cv-design-engineer.md…)
 │   ├── blog/         Articles del blog
 │   └── portfolio/    Projectes del portfolio
 ├── src/              Codi font
@@ -29,7 +30,7 @@ xarop.com/
 │   ├── js/           enhance.js (millores progressives)
 │   ├── templates/    base.html (única plantilla)
 │   └── assets/       Imatges, fonts, logo SVG
-├── scripts/          build.js — Node.js ~250 línies
+├── scripts/          build.js — Node.js ~320 línies
 ├── dist/             HTML generat (publicable, git-ignored)
 └── .github/          Workflow de deploy a GitHub Pages
 ```
@@ -37,6 +38,12 @@ xarop.com/
 **Flux:** `content/*.md` → `scripts/build.js` → `dist/*.html`
 
 El build script fa: llegir Markdown, aplicar front-matter, injectar a la plantilla, escriure HTML. Cap dependència de runtime al client.
+
+**Seccions del build:**
+- `buildBlog` → `/blog/` + posts + tags/categories
+- `buildPortfolio` → `/portfolio/` + projectes + tags/categories
+- `buildCv` → `/cv/{slug}/` per a cada `content/cv/cv-*.md`
+- `buildPages` → pàgines soltes de `content/pages/`
 
 ---
 
@@ -236,6 +243,19 @@ const GISCUS = {
 **Secció CSS:** `.comments` — `margin-top: var(--space-12)`, `border-top: var(--border)`.
 
 **Migració WordPress:** `scripts/import-wp-comments.js` — importa comentaris aprovats del XML d'exportació de WordPress cap a GitHub Discussions. Requereix token de GitHub amb scope `write:discussion`.
+
+---
+
+## Secció CV
+
+La secció `/cv/` conté variants de CV per perfil professional. Cada variant és un `content/cv/cv-nom.md` amb frontmatter `title`, `slug`, `description`, `role`.
+
+**Layout:** totes les subpàgines de CV usen `aside-layout` (mateixa estructura que la pàgina principal `/cv/`):
+- **Aside:** foto centrada + ubicació + contacte. Definit com a constant `CV_ASIDE_MD` al build script. Compartit per totes les variants — cap duplicació al Markdown.
+- **Main:** contingut del CV en `<article class="cv-page">` + link "← tots els CVs" al footer.
+- **Hamburger toggle** responsive (input checkbox CSS pur) per mostrar/amagar el aside en mòbil.
+
+Per afegir un nou perfil: crear `content/cv/cv-nom.md` amb frontmatter i el build el recull automàticament.
 
 ---
 

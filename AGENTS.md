@@ -48,6 +48,16 @@ Integració del sistema de comentaris [giscus](https://giscus.app) als posts del
 4. **CSS** — secció `.comments` amb `margin-top: var(--space-12)` i `border-top: var(--border)`.
 5. **Migració WordPress** — script `scripts/import-wp-comments.js` que llegeix l'XML d'exportació de WordPress, filtra comentaris aprovats (descarta pingbacks/trackbacks i esborranys), crea una GitHub Discussion per post (títol = `/blog/{slug}/`), i afegeix cada comentari amb l'autor i data originals. Gestiona threading de 1r nivell (`replyToId`), detecció de discussions ja existents per idempotència, i reintents automàtics per rate limits de l'API de GitHub.
 
+### Secció CV amb subpàgines per perfil (2026-04)
+
+Creació de la secció `/cv/` amb variants de CV per a cada perfil professional:
+
+1. **Estructura de contingut** — carpeta `content/cv/` amb fitxers `cv-*.md`. Cada fitxer té frontmatter (`title`, `slug`, `description`, `role`). El build filtra per prefix `cv-` per excloure cartes i emails.
+2. **Funció `buildCv`** — afegida a `scripts/build.js`. Llegeix `content/cv/cv-*.md`, genera `/cv/{slug}/index.html` per a cadascun. La pàgina índex (`/cv/`) la gestiona `content/pages/cv.md` (ja existent, amb aside de sidebar).
+3. **Aside compartit** — les subpàgines de CV usen el mateix `aside-layout` que la pàgina principal: foto centrada + dades de contacte. La constant `CV_ASIDE_MD` al build script centralitza aquest contingut.
+4. **Contingut de l'aside** — eliminats els tags de tecnologia (llistat de HTML5, CSS3, etc.) del aside de `cv.md`. El aside queda net: foto + ubicació + contacte.
+5. **Links al índex** — `content/pages/cv.md` té la secció "Tria el perfil" amb links a cada variant.
+
 ---
 
 ## Decisions de disseny preses amb l'agent
@@ -73,9 +83,11 @@ Integració del sistema de comentaris [giscus](https://giscus.app) als posts del
 | `src/templates/base.html` | Header redesign, lang picker, flavor picker, theme toggle SVG, `translate="no"` |
 | `src/css/main.css` | Flavor picker styles, lang picker styles, theme toggle, animació flap, tokens, `.comments` |
 | `src/js/enhance.js` | Flavor picker, theme toggle, lang picker (URL, cookies, Google Translate), giscus theme sync |
-| `scripts/build.js` | Post-processing "xarop" protection, config `GISCUS`, `giscusWidget()` |
+| `scripts/build.js` | Post-processing "xarop" protection, config `GISCUS`, `giscusWidget()`, `buildCv()`, `CV_ASIDE_MD` |
 | `scripts/import-wp-comments.js` | Nou — migració de comentaris WordPress → GitHub Discussions |
 | `content/pages/index.md` | Flavor names com a `<button>` clicables |
+| `content/pages/cv.md` | Secció "Tria el perfil" + tags eliminats del aside |
+| `content/cv/cv-*.md` | Nous fitxers de CV per perfil (frontend-react, design-engineer, wordpress-architect) |
 
 ---
 

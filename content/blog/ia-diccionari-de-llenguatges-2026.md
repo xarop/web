@@ -1,6 +1,8 @@
 ---
+image: assets/images/screenshot-ia-diccionari-de-llenguatges-2026.webp
 title: "Desenvolupament en 2026: Cal saber escriure codi si tens IA?"
 date: 2026-04-27
+url: https://github.com/xarop
 tags: [IA, AI, development, programming, Claude, GitHub Copilot, diccionari de llenguatges, productivitat]
 categories: [Blog, Desarrollo, IA]
 ---
