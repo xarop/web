@@ -1,5 +1,5 @@
 ---
-image: assets/images/junglemows.webp
+image: assets/images/screenshot-junglemows-com.webp
 title: junglemows.com
 date: 2023-06-01
 year: 2023
