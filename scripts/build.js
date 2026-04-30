@@ -436,6 +436,7 @@ async function buildPortfolio(template) {
     const year = p.meta.year || (p.meta.date ? formatDate(p.meta.date).slice(0, 4) : "");
     const dateFull = p.meta.date ? formatDate(p.meta.date) : "";
     const hasAside = p.body.includes(ASIDE_MARKER) && p.body.includes(MAIN_MARKER);
+    const hasAutoAside = !hasAside && !!(p.meta.image && p.meta.url);
 
     const articleHeader = `
   <header>
@@ -446,7 +447,7 @@ async function buildPortfolio(template) {
     </p>
     ${cats ? `<p class="meta">${cats}</p>` : ""}
     ${tags ? `<p class="meta">${tags}</p>` : ""}
-    ${p.meta.image && !hasAside ? `<figure class="featured-image"><img src="{{root}}${p.meta.image}" alt="${p.meta.title}" loading="lazy"></figure>` : ""}
+    ${p.meta.image && !hasAside && !hasAutoAside ? `<figure class="featured-image"><img src="{{root}}${p.meta.image}" alt="${p.meta.title}" loading="lazy"></figure>` : ""}
     ${dateFull ? `<p class="meta"><time datetime="${dateFull}">${dateFull}</time></p>` : ""}
   </header>`;
     const articleFooter = `
@@ -455,18 +456,25 @@ async function buildPortfolio(template) {
     <a class="edit-link" href="${SITE.githubRepo}/edit/main/content/portfolio/${p.slug}.md" rel="noopener" title="Edita a GitHub">${EDIT_ICON} edita</a>
   </footer>`;
 
+    const makeAsideLayout = (articleHtml, asideInnerHtml) =>
+      `<div class="aside-layout">` +
+      `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
+      `<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>` +
+      `${articleHtml}` +
+      `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="Tanca">${CLOSE_ICON}</label>${asideInnerHtml}</aside>` +
+      `</div>`;
+
     let content;
     if (hasAside) {
       const asideStart = p.body.indexOf(ASIDE_MARKER) + ASIDE_MARKER.length;
       const mainStart = p.body.indexOf(MAIN_MARKER);
       const asideHtml = htmlFromMarkdown(p.body.slice(asideStart, mainStart).trim());
       const mainHtml = htmlFromMarkdown(p.body.slice(mainStart + MAIN_MARKER.length).trim());
-      content = `<div class="aside-layout">` +
-        `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
-        `<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>` +
-        `<article>${articleHeader}${mainHtml}${articleFooter}</article>` +
-        `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="Tanca">${CLOSE_ICON}</label>${asideHtml}</aside>` +
-        `</div>`;
+      content = makeAsideLayout(`<article>${articleHeader}${mainHtml}${articleFooter}</article>`, asideHtml);
+    } else if (hasAutoAside) {
+      const body = htmlFromMarkdown(p.body);
+      const autoAsideHtml = `<a href="${p.meta.url}" rel="noopener"><img src="{{root}}${p.meta.image}" alt="${p.meta.title}" loading="lazy"></a>`;
+      content = makeAsideLayout(`<article>${articleHeader}${body}${articleFooter}</article>`, autoAsideHtml);
     } else {
       const body = htmlFromMarkdown(p.body);
       content = `<article>${articleHeader}${body}${articleFooter}</article>`;

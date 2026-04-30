@@ -95,6 +95,22 @@ url: https://exemple.com
 Detalls en Markdown...
 ```
 
+Qualsevol projecte amb `image:` **i** `url:` al frontmatter mostra automàticament el screenshot a l'aside lateral. No cal cap marcador addicional.
+
+Si es vol un aside completament personalitzat (contingut diferent de la captura), s'usen els marcadors `<!-- aside -->` i `<!-- main -->` al cos del Markdown:
+
+```markdown
+---
+...
+---
+
+<!-- aside -->
+Contingut personalitzat de l'aside (HTML o Markdown).
+
+<!-- main -->
+## El contingut principal
+```
+
 ### Generar imatge automàtica des d'una URL
 
 Qualsevol fitxer de `blog/` o `portfolio/` que tingui `url:` al frontmatter però **no** `image:` serà processat per l'script de screenshots:
@@ -105,7 +121,7 @@ npm run screenshots
 
 L'script:
 1. Detecta tots els `.md` amb `url:` i sense `image:`.
-2. Obre cada URL amb Puppeteer (headless Chrome), fa un screenshot i el converteix a WebP (1200×525, q82).
+2. Obre cada URL amb Puppeteer (headless Chrome), fa scroll complet per activar lazy load, i converteix a WebP (1200px ample, q85).
 3. Desa la imatge a `src/assets/images/screenshot-{slug}.webp`.
 4. Afegeix automàticament `image: assets/images/screenshot-{slug}.webp` al frontmatter del fitxer.
 

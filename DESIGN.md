@@ -45,6 +45,8 @@ El build script fa: llegir Markdown, aplicar front-matter, injectar a la plantil
 - `buildCv` → `/cv/{slug}/` per a cada `content/cv/cv-*.md`
 - `buildPages` → pàgines soltes de `content/pages/`
 
+**Aside automàtic al portfolio:** qualsevol projecte amb `image:` + `url:` al frontmatter genera automàticament un aside lateral amb el screenshot enllaçat a la URL. No cal cap marcador al Markdown. Es pot sobreescriure amb `<!-- aside -->`/`<!-- main -->` per aside personalitzat.
+
 ---
 
 ## Sabors (paletes de color)

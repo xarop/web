@@ -1,13 +1,18 @@
 ---
-image: assets/images/screenshot-602-1775045060.webp
+image: assets/images/screenshot-frontend-a-minsait-per-a-la-fundacio-bbva.webp
 title: Frontend a Minsait per a la Fundació BBVA
 date: 2022-09-08
 description: "Desenvolupament avançat per a l&#x27;ecosistema OpenWeb de BBVA, amb Web Components, LitElement i integració amb el framework corporatiu Cells."
+url: https://www.fbbva.es
 tags: [APIs REST, Chai, ES6+, html5, javascript, LitElement, Mocha, Node.js, NPM, SASS/SCSS, Web Components, react]
 categories: [FrontEnd, Portfolio, UI/UX]
 originalUrl: "https://xarop.com/frontend-a-minsait-per-a-la-fundacio-bbva/"
 ---
 
+<!-- aside -->
+<a href="https://www.fbbva.es"><img src="{{root}}assets/images/screenshot-frontend-a-minsait-per-a-la-fundacio-bbva.webp" alt="frontend a minsait per a la fundacio bbva" loading="lazy"></a>
+
+<!-- main -->
 Per a **Minsait**, vaig treballar com a enginyer frontend integrat en el projecte de la **Fundació BBVA** (fbbva.es), contribuint al desenvolupament de l'ecosistema **OpenWeb**, la plataforma digital corporativa del grup.
 
 ## Desenvolupament amb Web Components i LitElement

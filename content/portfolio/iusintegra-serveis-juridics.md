@@ -1,5 +1,5 @@
 ---
-image: assets/images/screenshot-1006-1775044090-scaled.webp
+image: assets/images/screenshot-iusintegra-serveis-juridics.webp
 title: "IusIntegra - Serveis Jurídics"
 date: 2026-02-01
 categories: [Freelance, FrontEnd, KitDigital, Portfolio]
@@ -7,7 +7,10 @@ originalUrl: "https://xarop.com/iusintegra-serveis-juridics/"
 tags: [css3, design, html5, responsive, SEO, usabilitat, WordPress, react, Gutenberg]
 ---
 
+<!-- aside -->
+<a href="https://iusintegra.es"><img src="{{root}}assets/images/screenshot-iusintegra-serveis-juridics.webp" alt="IusIntegra - Serveis Jurídics" loading="lazy"></a>
 
+<!-- main -->
 Projecte centrat en la usabilitat jurídica. Claredat informativa i optimització d'arquitectura sota els estàndards del Kit Digital.
 
 - **Frontend WordPress** desenvolupat amb **Gutenberg blocks natius** en React, sense page builders de tercers.

@@ -91,6 +91,24 @@ Creació de la secció `/cv/` amb variants de CV per a cada perfil professional:
 
 ---
 
+### Screenshots i aside automàtic al portfolio (2026-04)
+
+Nou flux per a les pàgines de projecte del portfolio:
+
+1. **Screenshot full-page en light theme** via Puppeteer: scroll complet per activar lazy load i IntersectionObserver, captura `fullPage: true`, conversió a WebP (1200px, q85). Guardat a `src/assets/images/screenshot-{slug}.webp`.
+2. **Aside automàtic:** qualsevol projecte amb `image:` + `url:` al frontmatter genera automàticament un aside lateral (`aside-layout`) amb el screenshot enllaçat a la URL del projecte. No cal cap marcador al cos del Markdown.
+3. **Aside personalitzat:** si el cos del Markdown conté `<!-- aside -->` + `<!-- main -->`, el contingut entre els marcadors va a l'aside i la resta al `<article>`. Té prioritat sobre l'aside automàtic.
+4. **`buildBlog`** suporta el mateix mecanisme `<!-- aside -->`/`<!-- main -->` per a posts del blog que necessitin un aside personalitzat.
+5. **`object-position: top`** afegit a `.project-thumb` i `.post-thumb` per mostrar la part superior de les imatges als índexs.
+
+**Fitxers afectats:** `scripts/build.js` (lògica `hasAutoAside`), `src/css/main.css` (object-position), `README.md`, `DESIGN.md`.
+
+**Projectes actualitzats en bloc:** xarop-com, xyloo-enginyeria-en-fusta, vaivera-disseny-dinteriors, ludik-studio-produccio-creativa, film-festival-web-redesign, frontend-a-minsait-per-a-la-fundacio-bbva, frontend-senior-a-beedata-analytics, iusintegra-serveis-juridics.
+
+**Projectes nous:** junglemows-com, bandalux-com, landing (xarop.com landing), landing-astro (blog post).
+
+---
+
 ## Convencions per a futures sessions
 
 - **Build sempre al final:** `npm run build` i verificar que acabi amb `✅ Fet!`.

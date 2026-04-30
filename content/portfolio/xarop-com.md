@@ -11,6 +11,10 @@ tags: [a11y, css, design, Git, github-pages, html, javascript, meta, Node.js, xa
 flavor: maduixa
 ---
 
+<!-- aside -->
+<a href="https://web.xarop.com"><img src="{{root}}assets/images/screenshot-xarop-com.webp" alt="xarop com" loading="lazy"></a>
+
+<!-- main -->
 ## El projecte
 
 web.xarop.com és una web personal (blog + portfolio + CV) construïda des de zero el 2026. Funciona sense base de dades, sense runtime de servidor i sense JavaScript obligatori al client. La font de veritat és Markdown al repositori; un script de Node genera HTML estàtic.
