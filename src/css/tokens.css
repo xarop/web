@@ -82,6 +82,12 @@
   --space-16: 4rem;
   --space-24: 6rem;
 
+  /* Breakpoints — referència. Les CSS vars no funcionen dins @media;
+     usar els valors literals a les media queries.
+     Disponibles per a JS via getComputedStyle(root).getPropertyValue('--bp-md') */
+  --bp-md: 768px;   /* mobile → tablet/desktop  (usar com max-width: 767px / min-width: 768px) */
+  --bp-lg: 1024px;  /* tablet → desktop ample   (usar com min-width: 1024px) */
+
   /* Layout */
   --measure: 65ch;
   --radius: 4px;
