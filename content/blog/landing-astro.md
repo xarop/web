@@ -1,12 +1,16 @@
 ---
 title: "landing page amb Astro 5, TypeScript i zero frameworks CSS"
-image: assets/images/screenshot-pott-landing.webp
+image: assets/images/screenshot-landing.webp
 date: 2026-04-30
 url: https://xarop.com
 tags: [Astro, TypeScript, css, design, performance, a11y, cloudflare, javascript, xarop]
 categories: [FrontEnd, Design]
 ---
 
+<!-- aside -->
+<a href="https://xarop.com"><img src="{{root}}assets/images/screenshot-landing.webp" alt="xarop.com — landing page" loading="lazy"></a>
+
+<!-- main -->
 ## Quin problema resolvia
 
 Necessitava una pàgina d'entrada per a xarop.com: ràpida, accessible, multilingüe i fàcil de mantenir. La web principal (web.xarop.com) és un blog/portfolio generat amb Node.js + Markdown, però no és una landing. Necessitava alguna cosa amb més control visual i rendiment de primer nivell.
@@ -40,4 +44,4 @@ El resultat: **~10 KB de JavaScript**, tot ell opcional i progressiu (Intersecti
 
 CSS 37% · TypeScript 34% · Astro 27% · PHP 1% · JS 1%
 
-[Codi a GitHub →](https://github.com/xarop/landing)
+[xarop.com →](https://xarop.com) · [Codi a GitHub →](https://github.com/xarop/landing)

@@ -1,5 +1,5 @@
 ---
-image: assets/images/screenshot-pott-landing.webp
+image: assets/images/screenshot-landing.webp
 title: xarop.com landing
 date: 2026-04-30
 year: 2026
@@ -10,9 +10,13 @@ categories: [Design, FrontEnd, Portfolio]
 tags: [a11y, Astro, cloudflare, css, design, javascript, performance, TypeScript, xarop]
 ---
 
+<!-- aside -->
+<a href="https://xarop.com"><img src="{{root}}assets/images/screenshot-landing.webp" alt="xarop.com — landing page" loading="lazy"></a>
+
+<!-- main -->
 ## El projecte
 
-**pott** és la landing page de [xarop.com](https://xarop.com): una pàgina d'entrada d'alt rendiment construïda amb Astro 5 i TypeScript. Presenta el portfolio, els serveis i el perfil professional en tres idiomes (CA / ES / EN), amb paletes de color intercanviables i suport de tema fosc/clar.
+**landing** page de [xarop.com](https://xarop.com): una pàgina d'entrada d'alt rendiment construïda amb Astro 5 i TypeScript. Presenta el portfolio, els serveis i FAQs en tres idiomes (CA / ES / EN), amb paletes de color intercanviables i suport de tema fosc/clar.
 
 ## Stack
 
@@ -31,4 +35,4 @@ tags: [a11y, Astro, cloudflare, css, design, javascript, performance, TypeScript
 - **Accessible** — WCAG 2.1, focus rings, `prefers-reduced-motion`
 - **Deploy** compatible amb Cloudflare Pages, Vercel i Netlify
 
-[Codi a GitHub](https://github.com/xarop/landing)
+[xarop.com →](https://xarop.com) · [Codi a GitHub](https://github.com/xarop/landing)

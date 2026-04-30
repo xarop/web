@@ -330,18 +330,14 @@ async function buildBlog(template) {
   }, template);
 
   // Posts individuals
+  const ASIDE_MARKER = "<!-- aside -->";
+  const MAIN_MARKER = "<!-- main -->";
   for (const p of posts) {
     const tags = renderTaxonomyLinks(p.meta.tags, "../tags/", "#");
     const cats = renderTaxonomyLinks(p.meta.categories, "../categories/", "", "category");
-    const body = htmlFromMarkdown(p.body);
-    await writePage(join(DIST, "blog", p.slug, "index.html"), {
-      title: p.meta.title,
-      section: "blog",
-      description: p.meta.description || "",
-      flavor: p.meta.flavor || SITE.defaultFlavor,
-      ogType: "article",
-      content: `
-<article>
+    const hasAside = p.body.includes(ASIDE_MARKER) && p.body.includes(MAIN_MARKER);
+
+    const articleHeader = `
   <header>
     <h1>${p.meta.title}</h1>
     <p class="meta">
@@ -349,15 +345,39 @@ async function buildBlog(template) {
       ${cats}
     </p>
     ${tags ? `<p class="meta">${tags}</p>` : ""}
-    ${p.meta.image ? `<figure class="featured-image"><img src="{{root}}${p.meta.image}" alt="${p.meta.title}" loading="lazy"></figure>` : ""}
-  </header>
-  ${body}
+    ${p.meta.image && !hasAside ? `<figure class="featured-image"><img src="{{root}}${p.meta.image}" alt="${p.meta.title}" loading="lazy"></figure>` : ""}
+  </header>`;
+    const articleFooter = `
   <footer class="article-footer">
     <a href="../">← tornar al blog</a>
     <a class="edit-link" href="${SITE.githubRepo}/edit/main/content/blog/${p.slug}.md" rel="noopener" title="Edita a GitHub">${EDIT_ICON} edita</a>
   </footer>
-  ${giscusWidget()}
-</article>`,
+  ${giscusWidget()}`;
+
+    let content;
+    if (hasAside) {
+      const asideStart = p.body.indexOf(ASIDE_MARKER) + ASIDE_MARKER.length;
+      const mainStart = p.body.indexOf(MAIN_MARKER);
+      const asideHtml = htmlFromMarkdown(p.body.slice(asideStart, mainStart).trim());
+      const mainHtml = htmlFromMarkdown(p.body.slice(mainStart + MAIN_MARKER.length).trim());
+      content = `<div class="aside-layout">` +
+        `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
+        `<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>` +
+        `<article>${articleHeader}${mainHtml}${articleFooter}</article>` +
+        `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="Tanca">${CLOSE_ICON}</label>${asideHtml}</aside>` +
+        `</div>`;
+    } else {
+      const body = htmlFromMarkdown(p.body);
+      content = `<article>${articleHeader}${body}${articleFooter}</article>`;
+    }
+
+    await writePage(join(DIST, "blog", p.slug, "index.html"), {
+      title: p.meta.title,
+      section: "blog",
+      description: p.meta.description || "",
+      flavor: p.meta.flavor || SITE.defaultFlavor,
+      ogType: "article",
+      content,
     }, template);
   }
 
@@ -408,20 +428,16 @@ async function buildPortfolio(template) {
 </div>`,
   }, template);
 
+  const ASIDE_MARKER = "<!-- aside -->";
+  const MAIN_MARKER = "<!-- main -->";
   for (const p of projects) {
     const tags = renderTaxonomyLinks(p.meta.tags, "../tags/", "#");
     const cats = renderTaxonomyLinks(p.meta.categories, "../categories/", "", "category");
     const year = p.meta.year || (p.meta.date ? formatDate(p.meta.date).slice(0, 4) : "");
     const dateFull = p.meta.date ? formatDate(p.meta.date) : "";
-    const body = htmlFromMarkdown(p.body);
-    await writePage(join(DIST, "portfolio", p.slug, "index.html"), {
-      title: p.meta.title,
-      section: "portfolio",
-      description: p.meta.description || "",
-      flavor: p.meta.flavor || SITE.defaultFlavor,
-      ogType: "article",
-      content: `
-<article>
+    const hasAside = p.body.includes(ASIDE_MARKER) && p.body.includes(MAIN_MARKER);
+
+    const articleHeader = `
   <header>
     <h1>${p.meta.title}</h1>
     <p class="meta">
@@ -430,15 +446,39 @@ async function buildPortfolio(template) {
     </p>
     ${cats ? `<p class="meta">${cats}</p>` : ""}
     ${tags ? `<p class="meta">${tags}</p>` : ""}
-    ${p.meta.image ? `<figure class="featured-image"><img src="{{root}}${p.meta.image}" alt="${p.meta.title}" loading="lazy"></figure>` : ""}
+    ${p.meta.image && !hasAside ? `<figure class="featured-image"><img src="{{root}}${p.meta.image}" alt="${p.meta.title}" loading="lazy"></figure>` : ""}
     ${dateFull ? `<p class="meta"><time datetime="${dateFull}">${dateFull}</time></p>` : ""}
-  </header>
-  ${body}
+  </header>`;
+    const articleFooter = `
   <footer class="article-footer">
     <a href="../">← tornar al portfolio</a>
     <a class="edit-link" href="${SITE.githubRepo}/edit/main/content/portfolio/${p.slug}.md" rel="noopener" title="Edita a GitHub">${EDIT_ICON} edita</a>
-  </footer>
-</article>`,
+  </footer>`;
+
+    let content;
+    if (hasAside) {
+      const asideStart = p.body.indexOf(ASIDE_MARKER) + ASIDE_MARKER.length;
+      const mainStart = p.body.indexOf(MAIN_MARKER);
+      const asideHtml = htmlFromMarkdown(p.body.slice(asideStart, mainStart).trim());
+      const mainHtml = htmlFromMarkdown(p.body.slice(mainStart + MAIN_MARKER.length).trim());
+      content = `<div class="aside-layout">` +
+        `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
+        `<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>` +
+        `<article>${articleHeader}${mainHtml}${articleFooter}</article>` +
+        `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="Tanca">${CLOSE_ICON}</label>${asideHtml}</aside>` +
+        `</div>`;
+    } else {
+      const body = htmlFromMarkdown(p.body);
+      content = `<article>${articleHeader}${body}${articleFooter}</article>`;
+    }
+
+    await writePage(join(DIST, "portfolio", p.slug, "index.html"), {
+      title: p.meta.title,
+      section: "portfolio",
+      description: p.meta.description || "",
+      flavor: p.meta.flavor || SITE.defaultFlavor,
+      ogType: "article",
+      content,
     }, template);
   }
 
