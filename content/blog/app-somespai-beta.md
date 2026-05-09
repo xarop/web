@@ -28,4 +28,4 @@ Per últim, cal fer un apunt tècnic que m'apassiona. Somespai és de dalt a bai
 
 El projecte necessita més mans per poder anar afegint noves idees i millores. Els qui formeu part del món del *desenvolupament* [**podeu visitar el repositori de codi a Github**](https://github.com/xarop/app.somespai/). Us animo a participar-hi directament llegint els requisits a l'arxiu [**CONTRIBUTING.md**](https://github.com/xarop/app.somespai/blob/main/CONTRIBUTING.md). Segur que hi trobeu *issues* on aportar els vostres *Pull Requests*. Som-hi, construïm coses pràctiques per facilitar-nos la vida!
 
- **[Somespai](https://app.somespai.net/)** 
+ **[app.somespai.net](https://app.somespai.net/)** 
