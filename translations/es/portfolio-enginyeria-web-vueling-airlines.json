@@ -1,0 +1,6 @@
+{
+  "_hash": "010293c2c711dd36",
+  "title": "Ingeniería web y motores de reservas en Vueling Airlines",
+  "description": "Implementación de motores de reserva de hoteles y alquiler de coches, y desarrollo de la interfaz para los principales procesos de reserva de Vueling Airlines.",
+  "body": "\r\nAntes de incorporarme a Newshore, trabajé **directamente para Vueling Airlines** durante una etapa clave del crecimiento de la empresa, contribuyendo al desarrollo de sus servicios digitales complementarios.\r\n\r\n## Motores de reserva de servicios complementarios\n\nUna parte esencial del trabajo consistía en implementar los motores de reserva de **hoteles** y **alquiler de coches**, servicios que Vueling ofrecía a sus clientes como complemento al billete de avión. Necesitábamos integrarnos con proveedores externos y ofrecer una experiencia coherente con el resto del sitio web.\r\n\r\n## Diseño del flujo de reserva\n\nLos **flujos de reserva** eran la parte más crítica de la plataforma: cualquier fricción en el proceso de compra tenía un impacto directo en los ingresos. El diseño y el trabajo en la interfaz de usuario estaban estrechamente vinculados a los objetivos de conversión y usabilidad.\r\n\r\n## Tecnologías\n\n-   HTML\n-   CSS\n-   JavaScript\n-   PHP\n\nCliente: [vueling.com](https://vueling.com)\n"
+}

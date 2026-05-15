@@ -1,0 +1,6 @@
+{
+  "_hash": "4eebdd979bc12fae",
+  "title": "UI/UX Design and Development for adamo.es",
+  "description": "UI engineering with SCSS/Less and JavaScript for adamo.es, integrating complex registration flows with external APIs.",
+  "body": "\r\n**Adamo** is a telecommunications operator that needed a solid digital presence and registration and onboarding flows that worked flawlessly for its end users.\r\n\r\n## UI Engineering with SCSS and JavaScript\n\nThe interface was built on a modular CSS architecture with **SCSS/Less**, ensuring visual consistency across the platform. The interaction layer, implemented with **JavaScript**, covered everything from form validations to transitions and real-time visual feedback.\r\n\r\n## Integration with External APIs\n\nOne of the main challenges was integrating **complex registration flows** with external APIs: coverage verification, data validation, and connecting with customer management systems. The experience needed to be seamless despite the backend complexity.\r\n\r\n## Stack and Platform\n\nThe project combined **WordPress** as a content base with custom components in **Bootstrap**, tailored to the client's branding and functional requirements.\r\n\r\n## Technologies\n\n-   HTML5\n-   CSS3\n-   JavaScript\n-   REST APIs\n-   Bootstrap\n-   WordPress\n\nClient: [adamo.es](https://www.adamo.es/)\n"
+}

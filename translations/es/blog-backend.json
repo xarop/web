@@ -1,0 +1,6 @@
+{
+  "_hash": "643e56808d776174",
+  "title": "Back-end",
+  "description": "",
+  "body": "\r\n## Siguiendo con [WordPress](https://xarop.com/tag/wordpress/)\r\n\r\nEsta página web ha evolucionado con este [CMS](https://xarop.com/tag/cms/).\n\nNo hay mucho que hacer en el *BackEnd*; por ahora, estoy contento con lo que *WordPress* ofrece de serie. Intentaré instalar el menor número posible de extensiones e incluir la funcionalidad directamente en el *[tema](https://xarop.com/tag/theme/)* o en un *[plugin](https://xarop.com/tag/plugin/)* personalizado de mi propia creación.\r\n\r\nAhora, con *[Gutenberg](https://xarop.com/tag/gutenberg/)*, el desarrollo de temas ha cambiado un poco y, aunque el tema está aún en fase de desarrollo, quiero probar estas nuevas funciones y, en teoría, utilizar muy poco PHP.\r\n\r\nComo es habitual, he configurado un [entorno de desarrollo](https://xarop.com/wp/) con una instalación independiente de WordPress y un [repositorio de GitHub](https://github.com/xarop/xarop2020/tree/dev) para el control de versiones. Ahora tengo que ser riguroso con *[GitFlow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)* y ponerme manos a la obra.\n"
+}

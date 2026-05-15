@@ -1,0 +1,6 @@
+{
+  "_hash": "010293c2c711dd36",
+  "title": "Web Engineering and Booking Engines at Vueling Airlines",
+  "description": "Implementation of hotel and car rental booking engines, and development of the interface for Vueling Airlines' main booking flows.",
+  "body": "\r\nBefore my time at Newshore, I worked **directly at Vueling Airlines** during a key phase of the company's growth, contributing to the development of its complementary digital services.\r\n\r\n## Ancillary Booking Engines\n\nAn essential part of the job was implementing the **hotel** and **car rental** booking engines, services that Vueling offered to its customers as a complement to the airline ticket. We needed to integrate with external providers and deliver an experience that was consistent with the rest of the site.\r\n\r\n## Booking Flow Design\n\nThe **booking flows** were the most critical part of the platform: any friction in the purchase process had a direct impact on revenue. The layout and UI work was closely tied to conversion and usability goals.\r\n\r\n## Technologies\n\n-   HTML\n-   CSS\n-   JavaScript\n-   PHP\n\nClient: [vueling.com](https://vueling.com)\n"
+}

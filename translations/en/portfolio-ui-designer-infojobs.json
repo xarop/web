@@ -1,0 +1,6 @@
+{
+  "_hash": "abf57b2dcf8be6b1",
+  "title": "UI Designer at the job portal Infojobs",
+  "description": "Redesign of the Infojobs candidate portal user interface, with modular HTML/CSS structures for the entire application lifecycle.",
+  "body": "\r\n**Infojobs** is one of the leading job portals in Spain, with millions of active users. I participated in the redesign of the **candidate portal** interface, one of the platform's most critical areas.\r\n\r\n## User-Centered Redesign\n\nThe project was based on an analysis of candidate needs: how they navigate, where they get lost, and which actions they perform most frequently. Based on this foundation, a redesign was proposed that prioritized clarity, accessibility, and speed of use.\r\n\r\n## Modular HTML/CSS Structures\n\nSemantic **HTML** and modular **CSS** structures were created to cover the entire application lifecycle: from job searching to profile management, including alerts, applications, and communication with companies.\r\n\r\n## Multidisciplinary Collaboration\n\nThe work was carried out in close collaboration with product, **PHP** backend, and QA teams, ensuring the implementation aligned with technical and business requirements.\r\n\r\n## Technologies\n\n-   UI/UX\n-   HTML\n-   CSS\n-   JavaScript\n-   PHP\n\nClient: [infojobs.net](https://www.infojobs.net/)\n"
+}

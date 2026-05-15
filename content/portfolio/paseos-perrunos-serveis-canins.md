@@ -1,7 +1,7 @@
 ---
 image: assets/images/screenshot-1003-1775044210-scaled.webp
 title: "Paseos Perrunos - Serveis Canins"
-date: 2025-05-01
+date: 2023-05-01
 categories: [KitDigital, Portfolio]
 originalUrl: "https://xarop.com/paseos-perrunos-serveis-canins/"
 ---

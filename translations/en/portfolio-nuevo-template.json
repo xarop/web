@@ -1,0 +1,6 @@
+{
+  "_hash": "dac2613c94acccf3",
+  "title": "New Template",
+  "description": "",
+  "body": "\r\n**We're launching a new design.** ![xarop logo](http://farm3.static.flickr.com/2310/1827477560_8de23ae2b6_m.jpg \"xarop logo\") For this, I used the WordPress theme [Deep Red](http://templates.arcsin.se/deep-red-wordpress-theme/) by the Swedish team [Arcsin](http://arcsin.se/ \"Arcsin\") as a base and made a few adjustments:\r\n\r\n-   I made the theme wider to accommodate 500px photos in the posts.\n-   Larger text to improve readability.\n-   Various adjustments to the PHP templates and CSS stylesheet.\n\nI also took the opportunity to update to WordPress version 2.3.1 and make the theme compatible, including the tags.\n"
+}

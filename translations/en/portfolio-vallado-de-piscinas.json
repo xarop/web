@@ -1,0 +1,6 @@
+{
+  "_hash": "8b6d7e67403b82c8",
+  "title": "Pool fencing",
+  "description": "",
+  "body": "\r\n[![](http://www.xarop.com/wp-content/uploads/2010/10/valladopiscinas-286x300.jpg \"poolfencing\")](http://vallado-piscinas.es/) **Pool Fencing is a product website: Fencing for all types of pools, throughout Spain** A simple website created primarily to rank a specific product in search engines, in this case [pool safety fences](http://vallado-piscinas.es/vallas-seguridad-piscinas.html \"Pool safety fences\"). At first, I thought about building it using a content management system (WordPress), but in the end I chose to build it with PHP, using .htaccess to make the URLs user-friendly. This allowed me to work on SEO with more flexibility and ensure that both the CSS and HTML were validated by W3C. The budget wasn’t very high, and besides, [pool fencing](http://vallado-piscinas.es \"Pool Fencing\") isn’t a very creative topic. In the end, this is what came out: [www.vallado-piscinas.es](http://vallado-piscinas.es \"Pool Fencing\")\n"
+}

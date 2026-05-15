@@ -1,0 +1,6 @@
+{
+  "_hash": "af35c8a45f4f9499",
+  "title": "Plugin för ögonblicksbilder",
+  "description": "",
+  "body": "\r\nSom ett led i arbetet med att förbättra den här webbplatsen har jag installerat ett WordPress-plugin som gör att länkar till externa webbplatser visar en liten förhandsgranskning av själva webbplatsen. Det kan du se på den här länken till [Snap Shots](http://www.snap.com). Om du håller muspekaren över den lilla ikonen som dyker upp bredvid hyperlänken visas en popup med en skärmdump av den sida som länken leder till. Denna funktion finns både som *plugin* för vår *blogg* (WordPress, Blogger och TypePad) och för vår webbläsare (Firefox, Explorer och Safari). [www.snap.com](http://www.snap.com)\n"
+}

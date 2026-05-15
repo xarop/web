@@ -1,0 +1,6 @@
+{
+  "_hash": "5594c0bfc29e7c34",
+  "title": "Hur tar man bort trojanviruset Beagle/Bagle?",
+  "description": "",
+  "body": "\r\nJag trodde att jag inte skulle få virus eftersom jag inte körde något som jag inte litade på. Det var många år sedan min dator smittades, men igår laddade jag ner ett program via eMule som påstods vara ett fjärrskrivbordsprogram... Jag skannade inte det (dumt av mig!!) och fick in detta skadliga virus som saktar ner systemet, hindrar mig från att ansluta till internet, gör att man inte kan köra Windows (XP) på grund av fel... och lite annat... **Troyan Bagle** (trojan-downloader.Win32.bagle)... Det var svårt att upptäcka vilket virus det var eftersom antivirusprogrammen inte fungerade och jag inte kunde komma åt antivirusprogram online, men efter flera timmar identifierade jag det och hittade [den här sidan](http://es.kioskea.net/faq/sujet-447-como-eliminar-el-virus-beagle-bagle#1er-metodo-elibagla) som jag rekommenderar. Jag håller fortfarande på att rensa, men turligt nog har jag fler än en dator så jag kan fortsätta arbeta.\n"
+}

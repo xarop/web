@@ -61,13 +61,13 @@ function chunk(text, maxChars = 4000) {
   return chunks;
 }
 
-async function translateChunked(text, lang, callFn, maxChars = 4000) {
-  if (!text.trim()) return text;
-  const protected_ = protect(text);
-  const parts = chunk(protected_, maxChars);
+async function translateChunked(text, lang, engineFn, maxChars = 4000) {
+  const s = String(text ?? '');
+  if (!s.trim()) return s;
+  const parts = chunk(s, maxChars);
   const out = [];
-  for (const p of parts) out.push(await callFn(p, lang));
-  return restore(out.join('\n\n'));
+  for (const p of parts) out.push(String(await engineFn(p, lang)));
+  return out.join('\n\n');
 }
 
 // ─── Engines ──────────────────────────────────────────────────────────────────
@@ -109,7 +109,9 @@ async function deeplEngine(text, lang) {
   });
   if (!res.ok) throw new Error(`DeepL error ${res.status}: ${await res.text()}`);
   const data = await res.json();
-  return data.translations[0].text;
+  const translated = data.translations?.[0]?.text;
+  if (typeof translated !== 'string') throw new Error(`DeepL resposta inesperada: ${JSON.stringify(data)}`);
+  return translated;
 }
 
 // 3. GOOGLE TRANSLATE (unofficial, gratis, pot bloquejar IPs) -----------------
@@ -192,11 +194,14 @@ export async function translateItem(lang, key, title, description, body) {
   process.stdout.write(`  🌐 [${lang}] ${key}… `);
   try {
     const { fn, maxChars } = getEngine();
-    const callFn = (t, l) => translateChunked(t, l, fn, maxChars);
-    // Seqüencial per minimitzar peticions simultànies
-    const tTitle = await callFn(protect(title), lang).then(restore);
-    const tDesc  = await callFn(protect(description || ''), lang).then(restore);
-    const tBody  = await callFn(protect(body), lang).then(restore);
+    const tr = async (text) => {
+      const s = String(text ?? '');
+      if (!s.trim()) return s;
+      return restore(await translateChunked(protect(s), lang, fn, maxChars));
+    };
+    const tTitle = await tr(title);
+    const tDesc  = await tr(description);
+    const tBody  = await tr(body);
 
     const result = { _hash: hash, title: tTitle, description: tDesc, body: tBody };
     await writeCache(lang, key, result);

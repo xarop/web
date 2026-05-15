@@ -1,0 +1,6 @@
+{
+  "_hash": "85b299fabe7273ef",
+  "title": "Nuevo WordPress Theme",
+  "description": "",
+  "body": "\r\n[![](http://farm3.static.flickr.com/2130/2077093263_319aeda080_m.jpg)](http://www.flickr.com/photos/diluvi/2077093263/ \"diluvi.com v2\")I’ve changed the ***theme*** of my personal blog [**diluvi.com**](http://www.diluvi.com \"A blog by people from Gràcia\"). This time, I based it on the *[Fresh theme by Wolfgang Bartelme](http://www.bartelme.at/)*. To customize it, I added the option to change the *header* image from the admin panel (theme options). I’ve also modified the CSS stylesheet to make the site more user-friendly and have given more prominence to the *Flickr* photos; for this, I used the [*FAlbum plugin*](http://www.randombyte.net/blog/projects/falbum/) that I was already using. Here you can [see how it turned out](http://www.diluvi.com \"Diluvi WordPress blog\"), and if you want to use it, just let me know and I’ll make it available for download.\n"
+}

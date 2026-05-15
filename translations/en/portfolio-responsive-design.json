@@ -1,0 +1,6 @@
+{
+  "_hash": "0e2d831dec1b5bb9",
+  "title": "Responsive design",
+  "description": "",
+  "body": "\r\n**The internet is now everywhere; we no longer access the web exclusively from computers.** We browse on everything from small mobile screens to large monitors or smart TV screens in our living rooms, as well as on the increasingly common tablets. When designing a website, we need to be aware of this. We can create a separate version for each device or use a technique called **Responsive Web Design** (RWD), which involves creating a flexible template that adapts to different screen widths and, using CSS and a bit of JavaScript, repositioning elements based on screen size. For example, on large screens we can display a *layout* with multiple columns, large images, and full menus; on mobile screens, we’ll display the same content in a single column, scaling the images and hiding menus. Here is a simple project using this technique. It is a WordPress site for which I designed a theme based on [1140gs](http://cssgrid.net/). [http://www.ecodigest.cat](http://www.ecodigest.cat \"Management of industrial substrates and waste\")\n"
+}
