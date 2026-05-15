@@ -40,6 +40,18 @@ async function writeCache(lang, key, data) {
   await writeFile(join(CACHE_DIR, lang, `${key}.json`), JSON.stringify(data, null, 2), 'utf8');
 }
 
+// ─── Slug traduït ────────────────────────────────────────────────────────────
+
+function slugifyForUrl(text) {
+  return String(text)
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 70);
+}
+
 // ─── Protecció de la marca ────────────────────────────────────────────────────
 
 const TOKEN = 'XR4P_T0K';
@@ -184,7 +196,13 @@ export async function translateItem(lang, key, title, description, body) {
   const cached = await readCache(lang, key);
   // Si existeix cache amb traducció vàlida, usar-la sempre (evita re-traduccions)
   // Forçar re-traducció: esborra el fitxer de cache o posa TRANSLATE_FORCE=1
-  if (cached?.title && !process.env.TRANSLATE_FORCE) return cached;
+  if (cached?.title && !process.env.TRANSLATE_FORCE) {
+    if (!cached.slug) {
+      cached.slug = slugifyForUrl(cached.title);
+      await writeCache(lang, key, cached);
+    }
+    return cached;
+  }
   // Actualitzar hash si el contingut ha canviat
   if (cached && cached._hash === hash) return cached;
 
@@ -207,7 +225,7 @@ export async function translateItem(lang, key, title, description, body) {
     const tDesc  = await tr(description);
     const tBody  = await tr(body);
 
-    const result = { _hash: hash, title: tTitle, description: tDesc, body: tBody };
+    const result = { _hash: hash, title: tTitle, description: tDesc, body: tBody, slug: slugifyForUrl(tTitle) };
     await writeCache(lang, key, result);
     process.stdout.write('✓\n');
     return result;
@@ -217,11 +235,21 @@ export async function translateItem(lang, key, title, description, body) {
   }
 }
 
+const SLUG_TRANSLATE_TYPES = new Set(['blog', 'portfolio']);
+
 export async function translateAll(lang, items, type) {
   const results = [];
   for (const item of items) {
     const t = await translateItem(lang, `${type}-${item.slug}`, item.meta.title, item.meta.description, item.body);
-    results.push({ ...item, meta: { ...item.meta, title: t.title, description: t.description }, body: t.body });
+    const translateSlug = SLUG_TRANSLATE_TYPES.has(type);
+    const translatedSlug = translateSlug ? (t.slug || item.slug) : item.slug;
+    results.push({
+      ...item,
+      ...(translateSlug ? { originalSlug: item.slug } : {}),
+      slug: translatedSlug,
+      meta: { ...item.meta, title: t.title, description: t.description },
+      body: t.body,
+    });
     await sleep(800);
   }
   return results;

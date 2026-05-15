@@ -16,6 +16,8 @@ import { fileURLToPath } from "node:url";
 import matter from "gray-matter";
 import { marked } from "marked";
 import { LANGS, I18N } from "./i18n.js";
+
+const t = (lang, key) => (I18N[lang] || I18N.ca)[key] ?? I18N.ca[key] ?? key;
 import { translateAll } from "./translate.js";
 
 // Carrega .env si existeix (sense dependències externes)
@@ -53,19 +55,19 @@ const GISCUS = {
 
 const EDIT_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
 
-const HAMBURGER_ICON = `<svg class="icon-hamburger" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="2" y1="4" x2="14" y2="4"/><line x1="2" y1="8" x2="14" y2="8"/><line x1="2" y1="12" x2="14" y2="12"/></svg><svg class="icon-close" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg>`;
+const HAMBURGER_ICON = `<svg class="icon-hamburger" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="2" width="14" height="12" rx="1.5"/><line x1="10" y1="2" x2="10" y2="14"/></svg><svg class="icon-close" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg>`;
 const CLOSE_ICON = `<svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg>`;
 
 // Utilitat: genera aside responsive amb toggle hamburger
-function responsiveAside(asideHtml) {
+function responsiveAside(asideHtml, lang = "ca") {
   return `
 <input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">
-<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>
-<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="Tanca">${CLOSE_ICON}</label>${asideHtml}</aside>
+<label for="aside-toggle-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>
+<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideHtml}</aside>
 `;
 }
 
-function giscusWidget() {
+function giscusWidget(lang = "ca") {
   if (!GISCUS.repoId || !GISCUS.categoryId) return "";
   return `
 <section class="comments" aria-label="Comentaris" translate="no">
@@ -80,7 +82,7 @@ function giscusWidget() {
     data-emit-metadata="0"
     data-input-position="bottom"
     data-theme="light"
-    data-lang="ca"
+    data-lang="${lang}"
     crossorigin="anonymous"
     async><\/script>
 </section>`;
@@ -187,21 +189,42 @@ async function writePage(outPath, opts, template) {
 
   // hreflang per al <head>
   const cleanPath = (p) => p.replace(/\/{2,}/g, "/");
-  const hreflangLines = LANGS.map(l => {
+  // altSlugs: { ca, en, es, sv, it } — per translated posts/portfolio with per-lang slugs
+  const altSlugs = opts.altSlugs || null;
+  const sectionPath = opts.sectionPath || null;
+
+  const pathForLang = (l) => {
+    if (altSlugs && sectionPath) {
+      const slug = altSlugs[l] || altSlugs.ca;
+      return cleanPath(l === "ca" ? `/${sectionPath}/${slug}/` : `/${l}/${sectionPath}/${slug}/`);
+    }
     const suffix = currentRelPath ? `/${currentRelPath}/` : "/";
-    const path = l === "ca" ? suffix : `/${l}${suffix}`;
+    return l === "ca" ? suffix : `/${l}${suffix}`;
+  };
+
+  const hreflangLines = LANGS.map(l => {
+    const path = pathForLang(l);
     return `  <link rel="alternate" hreflang="${l}" href="${SITE.siteUrl}${cleanPath(path)}">`;
   });
-  const defaultPath = cleanPath(currentRelPath ? `/${currentRelPath}/` : "/");
+  const defaultPath = pathForLang("ca");
   hreflangLines.push(`  <link rel="alternate" hreflang="x-default" href="${SITE.siteUrl}${defaultPath}">`);
   const hreflang = hreflangLines.join("\n");
 
   // Lang picker: links a cada versió d'idioma
   const langPicker = LANGS.map(l => {
-    const lDir = l === "ca" ? DIST : join(DIST, l);
-    const targetDir = join(lDir, currentRelPath);
-    const rel = relative(pageDir, targetDir).replace(/\\/g, "/");
-    const href = rel === "" ? "./" : `${rel}/`;
+    let href;
+    if (altSlugs && sectionPath) {
+      const slug = altSlugs[l] || altSlugs.ca;
+      const lDir = l === "ca" ? DIST : join(DIST, l);
+      const targetDir = join(lDir, sectionPath, slug);
+      const rel = relative(pageDir, targetDir).replace(/\\/g, "/");
+      href = rel === "" ? "./" : `${rel}/`;
+    } else {
+      const lDir = l === "ca" ? DIST : join(DIST, l);
+      const targetDir = join(lDir, currentRelPath);
+      const rel = relative(pageDir, targetDir).replace(/\\/g, "/");
+      href = rel === "" ? "./" : `${rel}/`;
+    }
     const isCurrent = l === lang;
     return `<li><a class="lang-btn notranslate" href="${href}" hreflang="${l}"${isCurrent ? ' aria-current="page"' : ""}>${l.toUpperCase()}</a></li>`;
   }).join("\n        ");
@@ -290,8 +313,8 @@ async function buildTaxonomies(items, distSubdir, section, template, allCats = [
     }).join(" ");
     return (catCloud || tagCloud) ? `
 <aside class="sidebar">
-  ${catCloud ? `<section><h2>Categories</h2><div class="taxonomy-cloud">${catCloud}</div></section>` : ""}
-  ${tagCloud ? `<section><h2>Tags</h2><div class="taxonomy-cloud">${tagCloud}</div></section>` : ""}
+  ${catCloud ? `<section><h2>${t(lang, 'categories')}</h2><div class="taxonomy-cloud">${catCloud}</div></section>` : ""}
+  ${tagCloud ? `<section><h2>${t(lang, 'tags')}</h2><div class="taxonomy-cloud">${tagCloud}</div></section>` : ""}
 </aside>` : "";
   };
 
@@ -302,14 +325,14 @@ async function buildTaxonomies(items, distSubdir, section, template, allCats = [
       title: `#${name}`,
       section,
       lang,
-      description: `${tagged.length} entrades etiquetades amb #${name}.`,
+      description: `${tagged.length} ${t(lang, 'entriesTagged')} #${name}.`,
       content: `
 <div class="sidebar-layout">
 <div>
   <header>
     <p class="meta"><a href="../../">← ${section}</a></p>
     <h1><span class="tag" style="font-size:inherit">#${name}</span></h1>
-    <p class="meta">${tagged.length} entrades</p>
+    <p class="meta">${tagged.length} ${t(lang, 'entries')}</p>
   </header>
   <ol class="post-list" reversed>${tagged.map(itemLi).join("")}</ol>
 </div>
@@ -323,14 +346,14 @@ ${makeSidebar(null, slug)}
       title: name,
       section,
       lang,
-      description: `${categorized.length} entrades a la categoria ${name}.`,
+      description: `${categorized.length} ${t(lang, 'entriesInCategory')} ${name}.`,
       content: `
 <div class="sidebar-layout">
 <div>
   <header>
     <p class="meta"><a href="../../">← ${section}</a></p>
     <h1><span class="category" style="font-size:inherit">${name}</span></h1>
-    <p class="meta">${categorized.length} entrades</p>
+    <p class="meta">${categorized.length} ${t(lang, 'entries')}</p>
   </header>
   <ol class="post-list" reversed>${categorized.map(itemLi).join("")}</ol>
 </div>
@@ -368,10 +391,10 @@ async function buildBlog(template, ctx = {}) {
 
   const blogSidebar = `
 <aside class="sidebar">
-  ${catCloud ? `<section><h2>Categories</h2><div class="taxonomy-cloud">${catCloud}</div></section>` : ""}
-  ${tagCloud ? `<section><h2>Tags</h2><div class="taxonomy-cloud">${tagCloud}</div></section>` : ""}
+  ${catCloud ? `<section><h2>${t(lang, 'categories')}</h2><div class="taxonomy-cloud">${catCloud}</div></section>` : ""}
+  ${tagCloud ? `<section><h2>${t(lang, 'tags')}</h2><div class="taxonomy-cloud">${tagCloud}</div></section>` : ""}
   <section>
-    <h2>Recents</h2>
+    <h2>${t(lang, 'recent')}</h2>
     <ol class="post-list">${recentItems}</ol>
   </section>
 </aside>`;
@@ -380,14 +403,14 @@ async function buildBlog(template, ctx = {}) {
     title: "Blog",
     section: "blog",
     lang,
-    description: "Articles sobre front-end, CSS, web i afins.",
+    description: t(lang, 'blogDescription'),
     content: `
 <div class="sidebar-layout">
   <div>
-    <header><h1>Blog</h1><p class="meta">${posts.length} articles</p></header>
+    <header><h1>Blog</h1><p class="meta">${posts.length} ${t(lang, 'articles')}</p></header>
     <ol class="post-list" reversed>${list}</ol>
   </div>
-  ${responsiveAside(blogSidebar.replace(/<aside class=\"sidebar\">|<\/aside>/g, ""))}
+  ${responsiveAside(blogSidebar.replace(/<aside class=\"sidebar\">|<\/aside>/g, ""), lang)}
 </div>`,
   }, template);
 
@@ -411,10 +434,10 @@ async function buildBlog(template, ctx = {}) {
   </header>`;
     const articleFooter = `
   <footer class="article-footer">
-    <a href="../">← tornar al blog</a>
-    <a class="edit-link" href="${SITE.githubRepo}/edit/main/content/blog/${p.slug}.md" rel="noopener" title="Edita a GitHub">${EDIT_ICON} edita</a>
+    <a href="../">${t(lang, 'backToBlog')}</a>
+    <a class="edit-link" href="${SITE.githubRepo}/edit/main/content/blog/${p.slug}.md" rel="noopener" title="${t(lang, 'editOnGitHub')}">${EDIT_ICON} ${t(lang, 'edit')}</a>
   </footer>
-  ${giscusWidget()}`;
+  ${giscusWidget(lang)}`;
 
     let content;
     if (hasAside) {
@@ -424,14 +447,20 @@ async function buildBlog(template, ctx = {}) {
       const mainHtml = htmlFromMarkdown(p.body.slice(mainStart + MAIN_MARKER.length).trim());
       content = `<div class="aside-layout">` +
         `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
-        `<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>` +
+        `<label for="aside-toggle-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>` +
         `<article>${articleHeader}${mainHtml}${articleFooter}</article>` +
-        `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="Tanca">${CLOSE_ICON}</label>${asideHtml}</aside>` +
+        `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideHtml}</aside>` +
         `</div>`;
     } else {
       const body = htmlFromMarkdown(p.body);
       content = `<article>${articleHeader}${body}${articleFooter}</article>`;
     }
+
+    const postAltSlugs = p.originalSlug ? {
+      ca: p.originalSlug,
+      [lang]: p.slug,
+      ...Object.fromEntries(LANGS.filter(l => l !== "ca" && l !== lang).map(l => [l, p.originalSlug])),
+    } : null;
 
     await writePage(join(langDist, "blog", p.slug, "index.html"), {
       title: p.meta.title,
@@ -441,6 +470,8 @@ async function buildBlog(template, ctx = {}) {
       flavor: p.meta.flavor || SITE.defaultFlavor,
       ogType: "article",
       content,
+      altSlugs: postAltSlugs,
+      sectionPath: postAltSlugs ? "blog" : null,
     }, template);
   }
 
@@ -474,22 +505,22 @@ async function buildPortfolio(template, ctx = {}) {
 
   const portfolioSidebar = `
 <aside class="sidebar">
-  ${catCloud ? `<section><h2>Categories</h2><div class="taxonomy-cloud">${catCloud}</div></section>` : ""}
-  ${tagCloud ? `<section><h2>Tags</h2><div class="taxonomy-cloud">${tagCloud}</div></section>` : ""}
+  ${catCloud ? `<section><h2>${t(lang, 'categories')}</h2><div class="taxonomy-cloud">${catCloud}</div></section>` : ""}
+  ${tagCloud ? `<section><h2>${t(lang, 'tags')}</h2><div class="taxonomy-cloud">${tagCloud}</div></section>` : ""}
 </aside>`;
 
   await writePage(join(langDist, "portfolio", "index.html"), {
     title: "Portfolio",
     section: "portfolio",
     lang,
-    description: "Projectes seleccionats.",
+    description: t(lang, 'portfolioDescription'),
     content: `
 <div class="sidebar-layout">
   <div>
-    <header><h1>Portfolio</h1><p class="meta">${projects.length} projectes seleccionats</p></header>
+    <header><h1>Portfolio</h1><p class="meta">${projects.length} ${t(lang, 'selectedProjects')}</p></header>
     <ul class="project-list">${grid}</ul>
   </div>
-  ${responsiveAside(portfolioSidebar.replace(/<aside class=\"sidebar\">|<\/aside>/g, ""))}
+  ${responsiveAside(portfolioSidebar.replace(/<aside class=\"sidebar\">|<\/aside>/g, ""), lang)}
 </div>`,
   }, template);
 
@@ -508,7 +539,7 @@ async function buildPortfolio(template, ctx = {}) {
     <h1>${p.meta.title}</h1>
     <p class="meta">
       ${[p.meta.role, year].filter(Boolean).join(" · ")}
-      ${p.meta.url ? ` · <a href="${p.meta.url}" rel="noopener">visita →</a>` : ""}
+      ${p.meta.url ? ` · <a href="${p.meta.url}" rel="noopener">${t(lang, 'visit')}</a>` : ""}
     </p>
     ${cats ? `<p class="meta">${cats}</p>` : ""}
     ${tags ? `<p class="meta">${tags}</p>` : ""}
@@ -517,16 +548,16 @@ async function buildPortfolio(template, ctx = {}) {
   </header>`;
     const articleFooter = `
   <footer class="article-footer">
-    <a href="../">← tornar al portfolio</a>
-    <a class="edit-link" href="${SITE.githubRepo}/edit/main/content/portfolio/${p.slug}.md" rel="noopener" title="Edita a GitHub">${EDIT_ICON} edita</a>
+    <a href="../">${t(lang, 'backToPortfolio')}</a>
+    <a class="edit-link" href="${SITE.githubRepo}/edit/main/content/portfolio/${p.slug}.md" rel="noopener" title="${t(lang, 'editOnGitHub')}">${EDIT_ICON} ${t(lang, 'edit')}</a>
   </footer>`;
 
     const makeAsideLayout = (articleHtml, asideInnerHtml) =>
       `<div class="aside-layout">` +
       `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
-      `<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>` +
+      `<label for="aside-toggle-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>` +
       `${articleHtml}` +
-      `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="Tanca">${CLOSE_ICON}</label>${asideInnerHtml}</aside>` +
+      `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideInnerHtml}</aside>` +
       `</div>`;
 
     let content;
@@ -545,6 +576,12 @@ async function buildPortfolio(template, ctx = {}) {
       content = `<article>${articleHeader}${body}${articleFooter}</article>`;
     }
 
+    const projAltSlugs = p.originalSlug ? {
+      ca: p.originalSlug,
+      [lang]: p.slug,
+      ...Object.fromEntries(LANGS.filter(l => l !== "ca" && l !== lang).map(l => [l, p.originalSlug])),
+    } : null;
+
     await writePage(join(langDist, "portfolio", p.slug, "index.html"), {
       title: p.meta.title,
       section: "portfolio",
@@ -553,6 +590,8 @@ async function buildPortfolio(template, ctx = {}) {
       flavor: p.meta.flavor || SITE.defaultFlavor,
       ogType: "article",
       content,
+      altSlugs: projAltSlugs,
+      sectionPath: projAltSlugs ? "portfolio" : null,
     }, template);
   }
 
@@ -584,9 +623,9 @@ async function buildCv(template, ctx = {}) {
     const content =
       `<div class="aside-layout">` +
       `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
-      `<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>` +
-      `<article class="cv-page">${body}<footer class="article-footer"><a href="../">← CV</a></footer></article>` +
-      `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="Tanca">${CLOSE_ICON}</label>${asideHtml}</aside>` +
+      `<label for="aside-toggle-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>` +
+      `<article class="cv-page">${body}<footer class="article-footer"><a href="../">${t(lang, 'backToCv')}</a></footer></article>` +
+      `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideHtml}</aside>` +
       `</div>`;
     await writePage(join(langDist, "cv", slug, "index.html"), {
       title: p.meta.title || slug,
@@ -633,18 +672,18 @@ async function buildPages(template, posts = [], projects = [], ctx = {}) {
 
       const asideHtml = `
 <section>
-  <h2>Darrers articles</h2>
+  <h2>${t(lang, 'recentPosts')}</h2>
   <ol class="post-list" reversed>${recentPosts}</ol>
-  <p><a href="./blog/">tots els articles →</a></p>
+  <p><a href="./blog/">${t(lang, 'allArticles')}</a></p>
 </section>
 
 <section>
-  <h2>Darrers projectes</h2>
+  <h2>${t(lang, 'recentProjects')}</h2>
   <ul class="project-list">${recentProjects}</ul>
-  <p><a href="./portfolio/">tots els projectes →</a></p>
+  <p><a href="./portfolio/">${t(lang, 'allProjects')}</a></p>
 </section>`;
 
-      const aside = responsiveAside(asideHtml);
+      const aside = responsiveAside(asideHtml, lang);
 
       await writePage(outPath, {
         title: p.meta.title,
@@ -669,9 +708,9 @@ async function buildPages(template, posts = [], projects = [], ctx = {}) {
       const mainHtml = htmlFromMarkdown(mainMd);
       content = `<div class="aside-layout">` +
         `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
-        `<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>` +
+        `<label for="aside-toggle-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>` +
         `<article>${mainHtml}</article>` +
-        `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="Tanca">${CLOSE_ICON}</label>${asideHtml}</aside>` +
+        `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideHtml}</aside>` +
         `</div>`;
     } else {
       content = `<article>${body}</article>`;
@@ -704,15 +743,15 @@ async function buildHome(template, posts, projects, ctx = {}) {
 
   const asideSections = `${posts.length ? `
 <section>
-  <h2>Darrers articles</h2>
+  <h2>${t(lang, 'recentPosts')}</h2>
   <ol class="post-list">${recent}</ol>
-  <p><a href="./blog/">tots els articles →</a></p>
+  <p><a href="./blog/">${t(lang, 'allArticles')}</a></p>
 </section>` : ""}
 ${projects.length ? `
 <section>
-  <h2>Darrers projectes</h2>
+  <h2>${t(lang, 'recentProjects')}</h2>
   <ul class="project-list">${featured}</ul>
-  <p><a href="./portfolio/">tots els projectes →</a></p>
+  <p><a href="./portfolio/">${t(lang, 'allProjects')}</a></p>
 </section>` : ""}`;
 
   await writePage(indexPath, {
@@ -770,7 +809,7 @@ function escapeXml(s) {
 
 // ---------- Sitemap ----------
 
-async function buildSitemap(posts, projects, cvItems, pages, blogLimit = Infinity, portLimit = Infinity) {
+async function buildSitemap(posts, projects, cvItems, pages, blogLimit = Infinity, portLimit = Infinity, slugMaps = {}) {
   const base = SITE.siteUrl;
   const now = new Date().toISOString().slice(0, 10);
 
@@ -789,6 +828,20 @@ async function buildSitemap(posts, projects, cvItems, pages, blogLimit = Infinit
     const loc = `${base}${path}`;
     return `\n  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
   };
+  // Genera URLs per a un post/projecte amb slug diferent per idioma
+  const slugForLang = (l, caSlug, section) =>
+    l === "ca" ? caSlug : (slugMaps?.[section]?.[l]?.[caSlug] || caSlug);
+  const allLangUrlsSlug = (caSlug, section, lastmod, priority, changefreq) => {
+    const hreflangAttrs = LANGS.map(l => {
+      const slug = slugForLang(l, caSlug, section);
+      return `    <xhtml:link rel="alternate" hreflang="${l}" href="${escapeXml(langUrl(l, `/${section}/${slug}/`))}"/>`;
+    }).join("\n");
+    return LANGS.map(l => {
+      const slug = slugForLang(l, caSlug, section);
+      const loc = langUrl(l, `/${section}/${slug}/`);
+      return `\n  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n${hreflangAttrs}\n  </url>`;
+    }).join("");
+  };
 
   let urls = "";
 
@@ -797,14 +850,14 @@ async function buildSitemap(posts, projects, cvItems, pages, blogLimit = Infinit
   for (let i = 0; i < posts.length; i++) {
     const p = posts[i];
     const lastmod = p.meta.date ? formatDate(p.meta.date) : now;
-    urls += i < blogLimit ? allLangUrls(`/blog/${p.slug}/`, lastmod, "0.7", "monthly") : caOnlyUrl(`/blog/${p.slug}/`, lastmod, "0.7", "monthly");
+    urls += i < blogLimit ? allLangUrlsSlug(p.slug, "blog", lastmod, "0.7", "monthly") : caOnlyUrl(`/blog/${p.slug}/`, lastmod, "0.7", "monthly");
   }
 
   urls += allLangUrls("/portfolio/", now, "0.8", "monthly");
   for (let i = 0; i < projects.length; i++) {
     const p = projects[i];
     const lastmod = p.meta.date ? formatDate(p.meta.date) : now;
-    urls += i < portLimit ? allLangUrls(`/portfolio/${p.slug}/`, lastmod, "0.6", "yearly") : caOnlyUrl(`/portfolio/${p.slug}/`, lastmod, "0.6", "yearly");
+    urls += i < portLimit ? allLangUrlsSlug(p.slug, "portfolio", lastmod, "0.6", "yearly") : caOnlyUrl(`/portfolio/${p.slug}/`, lastmod, "0.6", "yearly");
   }
 
   for (const p of cvItems) {
@@ -897,6 +950,8 @@ async function main() {
 
   // ── Altres idiomes (amb cache de traduccions) ──
   const otherLangs = LANGS.filter(l => l !== "ca");
+  const slugMaps = { blog: {}, portfolio: {} };
+
   for (const lang of otherLangs) {
     const langDist = join(DIST, lang);
     await ensureDir(langDist);
@@ -908,6 +963,16 @@ async function main() {
     const tCvItems  = await translateAll(lang, cvItems, "cv");
     const tPages    = await translateAll(lang, pages, "page");
 
+    // Recollir slug maps per al sitemap
+    slugMaps.blog[lang] = {};
+    for (const tp of tPosts) {
+      if (tp.originalSlug) slugMaps.blog[lang][tp.originalSlug] = tp.slug;
+    }
+    slugMaps.portfolio[lang] = {};
+    for (const tp of tProjects) {
+      if (tp.originalSlug) slugMaps.portfolio[lang][tp.originalSlug] = tp.slug;
+    }
+
     await buildBlog(template, { lang, langDist, posts: tPosts });
     await buildPortfolio(template, { lang, langDist, projects: tProjects });
     await buildCv(template, { lang, langDist, cvItems: tCvItems });
@@ -916,7 +981,7 @@ async function main() {
   }
 
   await buildFeed(posts);
-  await buildSitemap(posts, projects, cvItems, pages, BLOG_LIMIT, PORT_LIMIT);
+  await buildSitemap(posts, projects, cvItems, pages, BLOG_LIMIT, PORT_LIMIT, slugMaps);
   await buildStaticFiles();
   await copyAssets();
 

@@ -130,10 +130,9 @@
     });
   });
 
-  // ---- 7. Lang picker: animació flip al trigger (navegació per links estàtics) ----
+  // ---- 7. Lang picker: habilita l'expansió al hover ----
   const langPickerWrap = document.querySelector(".lang-picker-wrap");
   if (langPickerWrap) {
-    langPickerWrap.dataset.enabled = "true";
     const langPickerEl = langPickerWrap.querySelector(".lang-picker");
     if (langPickerEl) langPickerEl.dataset.enabled = "true";
   }
