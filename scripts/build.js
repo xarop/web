@@ -364,7 +364,7 @@ ${makeSidebar(slug, null)}
 }
 
 async function buildBlog(template, ctx = {}) {
-  const { lang = "ca", langDist = DIST, posts: preloaded } = ctx;
+  const { lang = "ca", langDist = DIST, posts: preloaded, slugMaps } = ctx;
   const posts = preloaded || await readMarkdownDir(join(CONTENT, "blog"));
   console.log(`\n📝 Blog [${lang}]: ${posts.length} posts`);
 
@@ -456,11 +456,13 @@ async function buildBlog(template, ctx = {}) {
       content = `<article>${articleHeader}${body}${articleFooter}</article>`;
     }
 
-    const postAltSlugs = p.originalSlug ? {
-      ca: p.originalSlug,
-      [lang]: p.slug,
-      ...Object.fromEntries(LANGS.filter(l => l !== "ca" && l !== lang).map(l => [l, p.originalSlug])),
-    } : null;
+    const postAltSlugs = p.originalSlug ? Object.fromEntries(
+      LANGS.map(l => {
+        if (l === "ca") return [l, p.originalSlug];
+        if (l === lang) return [l, p.slug];
+        return [l, slugMaps?.blog?.[l]?.[p.originalSlug] || p.originalSlug];
+      })
+    ) : null;
 
     await writePage(join(langDist, "blog", p.slug, "index.html"), {
       title: p.meta.title,
@@ -481,7 +483,7 @@ async function buildBlog(template, ctx = {}) {
 }
 
 async function buildPortfolio(template, ctx = {}) {
-  const { lang = "ca", langDist = DIST, projects: preloaded } = ctx;
+  const { lang = "ca", langDist = DIST, projects: preloaded, slugMaps } = ctx;
   const projects = preloaded || await readMarkdownDir(join(CONTENT, "portfolio"));
   console.log(`\n💼 Portfolio [${lang}]: ${projects.length} projectes`);
 
@@ -576,11 +578,13 @@ async function buildPortfolio(template, ctx = {}) {
       content = `<article>${articleHeader}${body}${articleFooter}</article>`;
     }
 
-    const projAltSlugs = p.originalSlug ? {
-      ca: p.originalSlug,
-      [lang]: p.slug,
-      ...Object.fromEntries(LANGS.filter(l => l !== "ca" && l !== lang).map(l => [l, p.originalSlug])),
-    } : null;
+    const projAltSlugs = p.originalSlug ? Object.fromEntries(
+      LANGS.map(l => {
+        if (l === "ca") return [l, p.originalSlug];
+        if (l === lang) return [l, p.slug];
+        return [l, slugMaps?.portfolio?.[l]?.[p.originalSlug] || p.originalSlug];
+      })
+    ) : null;
 
     await writePage(join(langDist, "portfolio", p.slug, "index.html"), {
       title: p.meta.title,
@@ -991,19 +995,17 @@ async function main() {
   // ── Altres idiomes (amb cache de traduccions) ──
   const otherLangs = LANGS.filter(l => l !== "ca");
   const slugMaps = { blog: {}, portfolio: {} };
+  const allTranslations = {};
 
+  // Pas 1: traduir tots els idiomes i recollir slug maps complets
   for (const lang of otherLangs) {
-    const langDist = join(DIST, lang);
-    await ensureDir(langDist);
-    console.log(`\n🌐 [${lang.toUpperCase()}] Traduint i construint…`);
-
-    // Traduccions seqüencials per evitar saturar l'API
+    console.log(`\n🌐 [${lang.toUpperCase()}] Traduint…`);
     const tPosts    = await translateAll(lang, postsToTranslate, "blog");
     const tProjects = await translateAll(lang, projectsToTranslate, "portfolio");
     const tCvItems  = await translateAll(lang, cvItems, "cv");
     const tPages    = await translateAll(lang, pages, "page");
+    allTranslations[lang] = { tPosts, tProjects, tCvItems, tPages };
 
-    // Recollir slug maps per al sitemap
     slugMaps.blog[lang] = {};
     for (const tp of tPosts) {
       if (tp.originalSlug) slugMaps.blog[lang][tp.originalSlug] = tp.slug;
@@ -1012,9 +1014,16 @@ async function main() {
     for (const tp of tProjects) {
       if (tp.originalSlug) slugMaps.portfolio[lang][tp.originalSlug] = tp.slug;
     }
+  }
 
-    await buildBlog(template, { lang, langDist, posts: tPosts });
-    await buildPortfolio(template, { lang, langDist, projects: tProjects });
+  // Pas 2: construir totes les pàgines amb el slug map complet
+  for (const lang of otherLangs) {
+    const langDist = join(DIST, lang);
+    await ensureDir(langDist);
+    console.log(`\n🔨 [${lang.toUpperCase()}] Construint…`);
+    const { tPosts, tProjects, tCvItems, tPages } = allTranslations[lang];
+    await buildBlog(template, { lang, langDist, posts: tPosts, slugMaps });
+    await buildPortfolio(template, { lang, langDist, projects: tProjects, slugMaps });
     await buildCv(template, { lang, langDist, cvItems: tCvItems });
     await buildPages(template, tPosts, tProjects, { lang, langDist, pages: tPages });
     await buildHome(template, tPosts, tProjects, { lang, langDist });
