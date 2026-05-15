@@ -770,7 +770,7 @@ function escapeXml(s) {
 
 // ---------- Sitemap ----------
 
-async function buildSitemap(posts, projects, cvItems, pages) {
+async function buildSitemap(posts, projects, cvItems, pages, blogLimit = Infinity, portLimit = Infinity) {
   const base = SITE.siteUrl;
   const now = new Date().toISOString().slice(0, 10);
 
@@ -785,17 +785,27 @@ async function buildSitemap(posts, projects, cvItems, pages) {
       return `\n  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n${hreflangAttrs}\n  </url>`;
     }).join("");
   };
+  const caOnlyUrl = (path, lastmod, priority, changefreq) => {
+    const loc = `${base}${path}`;
+    return `\n  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+  };
 
   let urls = "";
 
   urls += allLangUrls("/", now, "1.0", "weekly");
   urls += allLangUrls("/blog/", now, "0.8", "weekly");
-  for (const p of posts)
-    urls += allLangUrls(`/blog/${p.slug}/`, p.meta.date ? formatDate(p.meta.date) : now, "0.7", "monthly");
+  for (let i = 0; i < posts.length; i++) {
+    const p = posts[i];
+    const lastmod = p.meta.date ? formatDate(p.meta.date) : now;
+    urls += i < blogLimit ? allLangUrls(`/blog/${p.slug}/`, lastmod, "0.7", "monthly") : caOnlyUrl(`/blog/${p.slug}/`, lastmod, "0.7", "monthly");
+  }
 
   urls += allLangUrls("/portfolio/", now, "0.8", "monthly");
-  for (const p of projects)
-    urls += allLangUrls(`/portfolio/${p.slug}/`, p.meta.date ? formatDate(p.meta.date) : now, "0.6", "yearly");
+  for (let i = 0; i < projects.length; i++) {
+    const p = projects[i];
+    const lastmod = p.meta.date ? formatDate(p.meta.date) : now;
+    urls += i < portLimit ? allLangUrls(`/portfolio/${p.slug}/`, lastmod, "0.6", "yearly") : caOnlyUrl(`/portfolio/${p.slug}/`, lastmod, "0.6", "yearly");
+  }
 
   for (const p of cvItems) {
     const slug = p.meta.slug || p.slug;
@@ -906,7 +916,7 @@ async function main() {
   }
 
   await buildFeed(posts);
-  await buildSitemap(posts, projects, cvItems, pages);
+  await buildSitemap(posts, projects, cvItems, pages, BLOG_LIMIT, PORT_LIMIT);
   await buildStaticFiles();
   await copyAssets();
 

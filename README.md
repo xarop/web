@@ -13,7 +13,7 @@ Sense WordPress. Sense base de dades. Sense JS obligatori. Només HTML semàntic
 - **Static site** generat des de Markdown amb un script de Node (~320 línies).
 - **Set sabors** de color intercanviables (`maduixa`, `nabiu`, `gerd`, `menta`, `llimona`, `taronja`, `regalessia`).
 - **Mode clar/fosc** automàtic (`prefers-color-scheme`) amb toggle manual sol/lluna al header.
-- **Selector d'idioma** (CA / ES / EN / SV / IT) amb Google Translate i URL `?lang=xx`.
+- **Multilingüe estàtic** (CA / EN / ES / SV / IT): pàgines generades a `/en/`, `/es/`, `/sv/`, `/it/` amb `hreflang` i sitemap complet.
 - **Comentaris** via [giscus](https://giscus.app) (GitHub Discussions) als posts del blog, sincronitzats amb el tema clar/fosc.
 - **Zero JS obligatori**. Millores progressives opcionals via `enhance.js`.
 - **Accessible** (WCAG 2.1 AA), semàntica HTML pura.
@@ -37,8 +37,15 @@ Sense WordPress. Sense base de dades. Sense JS obligatori. Només HTML semàntic
 │   ├── templates/        base.html
 │   └── assets/           logo, fonts, imatges
 ├── scripts/
-│   ├── build.js          Build script
+│   ├── build.js          Build script (genera CA + EN/ES/SV/IT)
+│   ├── i18n.js           Idiomes i etiquetes de navegació
+│   ├── translate.js      Motor de traducció (Claude/DeepL/Google/MyMemory/Libre)
 │   └── import-wp-comments.js  Migració de comentaris WordPress → giscus
+├── translations/         Caché de traduccions (git-ignored)
+│   ├── en/               {slug}.json per cada peça traduïda
+│   ├── es/
+│   ├── sv/
+│   └── it/
 ├── dist/                 Generat (git-ignored)
 ├── DESIGN.md             Sistema de disseny
 ├── AGENTS.md             Ús d'agents IA en el projecte
@@ -150,6 +157,49 @@ Publicat automàticament a `/cv/nom-del-rol/`. La pàgina comparteix el aside de
 
 ---
 
+## Multilingüe
+
+El build genera cinc versions estàtiques del lloc: **CA** (arrel), **EN** (`/en/`), **ES** (`/es/`), **SV** (`/sv/`), **IT** (`/it/`).
+
+### Configuració (`.env`)
+
+```dotenv
+# Motor de traducció
+TRANSLATE_ENGINE=deepl   # claude | deepl | google | mymemory | libre
+
+# Claus d'API (la del engine triat)
+ANTHROPIC_API_KEY=...
+DEEPL_API_KEY=...
+
+# Scope: quants articles/projectes recents traduir
+TRANSLATE_BLOG_LIMIT=10  # "all" per traduir-ho tot
+TRANSLATE_PORTFOLIO_LIMIT=10
+```
+
+| Engine | Qualitat | Límit gratis | Clau necessària |
+|--------|----------|-------------|-----------------|
+| `claude` | Molt alta, entén Markdown | ~quota Anthropic | `ANTHROPIC_API_KEY` |
+| `deepl` | Excel·lent | 500k cars/mes | `DEEPL_API_KEY` |
+| `google` | Bona | Gratis (pot bloquejar IPs) | Cap |
+| `mymemory` | Acceptable | 5k–50k cars/dia | Opcional (`MYMEMORY_EMAIL`) |
+| `libre` | Variable | Depèn instància | `LIBRE_URL` + `LIBRE_API_KEY` |
+
+### Caché
+
+Les traduccions es desen a `translations/{lang}/{tipus}-{slug}.json`. En el pròxim build es reutilitzen directament (sense trucades a l'API). Per forçar una re-traducció: esborra el fitxer de caché o posa `TRANSLATE_FORCE=1`.
+
+### Abast
+
+- **Pàgines, CV i índexos** → sempre traduïts (tots els idiomes).
+- **Blog i portfolio** → els `N` més recents (`TRANSLATE_BLOG_LIMIT` / `TRANSLATE_PORTFOLIO_LIMIT`). Els articles antics queden en català i s'indexen al sitemap sense hreflang d'altres idiomes.
+- **La paraula "xarop"** mai es tradueix (protecció de marca).
+
+### Sitemap i SEO
+
+`dist/sitemap.xml` inclou `<xhtml:link rel="alternate" hreflang="…">` per a cada URL traduïda. Les pàgines no traduïdes apareixen al sitemap en CA sense alternates. `robots.txt` apunta al sitemap.
+
+---
+
 ## Sabors
 
 Set sabors disponibles, cadascun amb la seva paleta CSS completa:
@@ -177,8 +227,7 @@ Quan el JS és actiu, `enhance.js` afegeix:
 - **Flavor picker** al header (punt que s'expandeix al hover)
 - **Theme toggle** sol/lluna al header
 - **Links de tema** al footer (`?theme=dark|light`)
-- **Selector d'idioma** que s'expandeix al hover (CA/ES/EN/SV/IT + Google Translate)
-- **URL `?lang=xx`** per compartir pàgines traduïdes
+- **Selector d'idioma** que s'expandeix al hover (CA/ES/EN/SV/IT → pàgines estàtiques)
 - **Noms de sabor clicables** a la pàgina d'inici
 - **View Transitions** entre pàgines (si el navegador les suporta)
 - **Sincronització de tema amb giscus** (comentaris clar/fosc en temps real)
