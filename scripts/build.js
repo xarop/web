@@ -896,6 +896,39 @@ async function buildStaticFiles() {
   console.log("\n📄 robots.txt · humans.txt");
 }
 
+async function build404(template) {
+  const content = `
+<article class="prose" style="max-width:40rem;padding-block:var(--space-8)">
+  <h1>404</h1>
+  <p>La pàgina que busques no existeix en aquest lloc.</p>
+  <p id="wp-suggestion">
+    Potser la trobaràs a l'arxiu anterior de xarop.com (ara a <strong>wp.xarop.com</strong>):<br>
+    <a id="wp-link" href="https://wp.xarop.com/">https://wp.xarop.com/</a>
+  </p>
+  <p><a href="/">← Tornar a l'inici</a></p>
+  <script>
+    (function () {
+      const path = location.pathname.replace(/\\/+$/, '') || '/';
+      const a = document.getElementById('wp-link');
+      if (path !== '/') {
+        a.href = 'https://wp.xarop.com' + path + '/';
+        a.textContent = 'wp.xarop.com' + path + '/';
+      }
+    })();
+  <\/script>
+</article>`;
+
+  await writePage(join(DIST, "404.html"), {
+    title: "404 — Pàgina no trobada",
+    description: "La pàgina que busques no existeix.",
+    content,
+    lang: "ca",
+    slug: "",
+    ogType: "website",
+  }, template);
+  console.log("\n📄 404.html");
+}
+
 // ---------- Copy assets ----------
 
 async function copyAssets() {
@@ -989,6 +1022,7 @@ async function main() {
   await buildFeed(posts);
   await buildSitemap(posts, projects, cvItems, pages, BLOG_LIMIT, PORT_LIMIT, slugMaps);
   await buildStaticFiles();
+  await build404(template);
   await copyAssets();
 
   // .nojekyll per GitHub Pages
