@@ -182,6 +182,10 @@ function getEngine() {
 export async function translateItem(lang, key, title, description, body) {
   const hash = contentHash(title, description || '', body);
   const cached = await readCache(lang, key);
+  // Si existeix cache amb traducció vàlida, usar-la sempre (evita re-traduccions)
+  // Forçar re-traducció: esborra el fitxer de cache o posa TRANSLATE_FORCE=1
+  if (cached?.title && !process.env.TRANSLATE_FORCE) return cached;
+  // Actualitzar hash si el contingut ha canviat
   if (cached && cached._hash === hash) return cached;
 
   // Sense cap clau/config, retorna contingut original
