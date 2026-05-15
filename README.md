@@ -10,10 +10,11 @@ Sense WordPress. Sense base de dades. Sense JS obligatori. Només HTML semàntic
 
 ## Característiques
 
-- **Static site** generat des de Markdown amb un script de Node (~320 línies).
+- **Static site** generat des de Markdown amb un script de Node.
+- **Topbar sticky** amb 3 columnes (logo · nav · eines): selector d'idioma, selector de sabor i toggle de tema en un menú desplegable. Hamburger CSS-only al mòbil (sense JS).
 - **Set sabors** de color intercanviables (`maduixa`, `nabiu`, `gerd`, `menta`, `llimona`, `taronja`, `regalessia`).
-- **Mode clar/fosc** automàtic (`prefers-color-scheme`) amb toggle manual sol/lluna al header.
-- **Multilingüe estàtic** (CA / EN / ES / SV / IT): pàgines generades a `/en/`, `/es/`, `/sv/`, `/it/` amb `hreflang` i sitemap complet.
+- **Mode clar/fosc** automàtic (`prefers-color-scheme`) amb toggle manual sol/lluna.
+- **Multilingüe estàtic** (CA / EN / ES / SV / IT): pàgines generades a `/en/`, `/es/`, `/sv/`, `/it/` amb `hreflang`, `x-default` i sitemap complet. Els slugs de blog i portfolio es tradueixen per idioma.
 - **Comentaris** via [giscus](https://giscus.app) (GitHub Discussions) als posts del blog, sincronitzats amb el tema clar/fosc.
 - **Zero JS obligatori**. Millores progressives opcionals via `enhance.js`.
 - **Accessible** (WCAG 2.1 AA), semàntica HTML pura.
@@ -190,13 +191,13 @@ Les traduccions es desen a `translations/{lang}/{tipus}-{slug}.json`. En el prò
 
 ### Abast
 
-- **Pàgines, CV i índexos** → sempre traduïts (tots els idiomes).
-- **Blog i portfolio** → els `N` més recents (`TRANSLATE_BLOG_LIMIT` / `TRANSLATE_PORTFOLIO_LIMIT`). Els articles antics queden en català i s'indexen al sitemap sense hreflang d'altres idiomes.
+- **Pàgines, CV i índexos** → sempre traduïts (tots els idiomes). Els slugs no canvien.
+- **Blog i portfolio** → els `N` més recents (`TRANSLATE_BLOG_LIMIT` / `TRANSLATE_PORTFOLIO_LIMIT`). El **slug de la URL es tradueix** per idioma (ex: `/blog/lamistat-sha-tornat-low-cost/` → `/en/blog/friendship-has-become-low-cost/`). Els articles antics queden en català i s'indexen al sitemap sense hreflang d'altres idiomes.
 - **La paraula "xarop"** mai es tradueix (protecció de marca).
 
 ### Sitemap i SEO
 
-`dist/sitemap.xml` inclou `<xhtml:link rel="alternate" hreflang="…">` per a cada URL traduïda. Les pàgines no traduïdes apareixen al sitemap en CA sense alternates. `robots.txt` apunta al sitemap.
+`dist/sitemap.xml` inclou `<xhtml:link rel="alternate" hreflang="…">` (inclòs `x-default → CA`) per a cada URL. Els posts i projectes traduïts fan servir el slug traduït per idioma. Les pàgines no traduïdes apareixen al sitemap en CA sense alternates. `robots.txt` apunta al sitemap.
 
 ---
 
@@ -220,17 +221,16 @@ Cada pàgina pot tenir el seu sabor via front-matter (`flavor: menta`). L'usuari
 
 ## JavaScript opcional
 
-El JS és **100% opcional**. Elimina la línia `<script src="/js/enhance.js" defer>` de `src/templates/base.html` i re-build — la web continua funcionant.
+El JS és **100% opcional** — la web, la navegació i el hamburger del mòbil funcionen sense ell.
 
 Quan el JS és actiu, `enhance.js` afegeix:
 
-- **Flavor picker** al header (punt que s'expandeix al hover)
-- **Theme toggle** sol/lluna al header
-- **Links de tema** al footer (`?theme=dark|light`)
-- **Selector d'idioma** que s'expandeix al hover (CA/ES/EN/SV/IT → pàgines estàtiques)
-- **Noms de sabor clicables** a la pàgina d'inici
-- **View Transitions** entre pàgines (si el navegador les suporta)
+- **Flavor picker** al topbar (desplegable, persit a localStorage)
+- **Theme toggle** sol/lluna (persit a localStorage; `?theme=dark|light` via URL)
+- **Selector d'idioma** desplegable al topbar (amaga l'idioma actiu)
 - **Sincronització de tema amb giscus** (comentaris clar/fosc en temps real)
+
+El hamburger del mòbil funciona **sense JS** (CSS-only via `<input type="checkbox">`).
 
 ---
 

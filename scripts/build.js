@@ -816,9 +816,11 @@ async function buildSitemap(posts, projects, cvItems, pages, blogLimit = Infinit
   // Genera URLs per tots els idiomes d'un path donat
   const langUrl = (l, path) => l === "ca" ? `${base}${path}` : `${base}/${l}${path}`;
   const allLangUrls = (path, lastmod, priority, changefreq) => {
-    const hreflangAttrs = LANGS.map(l =>
-      `    <xhtml:link rel="alternate" hreflang="${l}" href="${escapeXml(langUrl(l, path))}"/>`
-    ).join("\n");
+    const caUrl = escapeXml(langUrl("ca", path));
+    const hreflangAttrs = [
+      `    <xhtml:link rel="alternate" hreflang="x-default" href="${caUrl}"/>`,
+      ...LANGS.map(l => `    <xhtml:link rel="alternate" hreflang="${l}" href="${escapeXml(langUrl(l, path))}"/>`),
+    ].join("\n");
     return LANGS.map(l => {
       const loc = langUrl(l, path);
       return `\n  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n${hreflangAttrs}\n  </url>`;
@@ -832,10 +834,14 @@ async function buildSitemap(posts, projects, cvItems, pages, blogLimit = Infinit
   const slugForLang = (l, caSlug, section) =>
     l === "ca" ? caSlug : (slugMaps?.[section]?.[l]?.[caSlug] || caSlug);
   const allLangUrlsSlug = (caSlug, section, lastmod, priority, changefreq) => {
-    const hreflangAttrs = LANGS.map(l => {
-      const slug = slugForLang(l, caSlug, section);
-      return `    <xhtml:link rel="alternate" hreflang="${l}" href="${escapeXml(langUrl(l, `/${section}/${slug}/`))}"/>`;
-    }).join("\n");
+    const caUrl = escapeXml(langUrl("ca", `/${section}/${caSlug}/`));
+    const hreflangAttrs = [
+      `    <xhtml:link rel="alternate" hreflang="x-default" href="${caUrl}"/>`,
+      ...LANGS.map(l => {
+        const slug = slugForLang(l, caSlug, section);
+        return `    <xhtml:link rel="alternate" hreflang="${l}" href="${escapeXml(langUrl(l, `/${section}/${slug}/`))}"/>`;
+      }),
+    ].join("\n");
     return LANGS.map(l => {
       const slug = slugForLang(l, caSlug, section);
       const loc = langUrl(l, `/${section}/${slug}/`);
