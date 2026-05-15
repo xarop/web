@@ -908,11 +908,12 @@ async function build404(template) {
   <p><a href="/">← Tornar a l'inici</a></p>
   <script>
     (function () {
-      const path = location.pathname.replace(/\\/+$/, '') || '/';
+      const parts = location.pathname.replace(/^\\/+|\\/+$/g, '').split('/').filter(Boolean);
+      const slug = parts[parts.length - 1] || '';
       const a = document.getElementById('wp-link');
-      if (path !== '/') {
-        a.href = 'https://wp.xarop.com' + path + '/';
-        a.textContent = 'wp.xarop.com' + path + '/';
+      if (slug) {
+        a.href = 'https://wp.xarop.com/' + slug + '/';
+        a.textContent = 'wp.xarop.com/' + slug + '/';
       }
     })();
   <\/script>
