@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ca" data-flavor="{{flavor}}">
+<html lang="{{lang}}" data-flavor="{{flavor}}">
 
 <head>
   <meta charset="utf-8">
@@ -9,30 +9,14 @@
   <meta name="author" content="xarop">
   <link rel="icon" type="image/svg+xml" href="{{root}}assets/favicon.svg">
   <link rel="alternate" type="application/rss+xml" title="xarop — RSS" href="{{root}}feed.xml">
-
+{{hreflang}}
   <!-- Open Graph -->
   <meta property="og:title" content="{{title}} — xarop">
   <meta property="og:description" content="{{description}}">
   <meta property="og:type" content="{{ogType}}">
-  <meta property="og:locale" content="ca_ES">
-
-  <!-- Pico CSS (classless, minimalista) -->
-  <!-- No el fem servir directament: en prenem prestada la filosofia. Si es vol, descomenta: -->
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"> -->
+  <meta property="og:locale" content="{{ogLocale}}">
 
   <link rel="stylesheet" href="{{root}}css/main.css">
-
-  <!-- Google Translate (inicialitzat per enhance.js) -->
-  <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'ca',
-        includedLanguages: 'ca,es,en,sv,it',
-        autoDisplay: false
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 
   <!-- JS opcional (millores progressives). Elimina aquesta línia per desactivar-lo. -->
   <script src="{{root}}js/enhance.js" defer></script>
@@ -54,11 +38,11 @@
 
     <nav aria-label="Principal">
       <ul class="site-nav">
-        <li><a href="{{root}}" {{navHome}}>inici</a></li>
-        <li><a href="{{root}}blog/" {{navBlog}}>blog</a></li>
-        <li><a href="{{root}}portfolio/" {{navPortfolio}}>portfolio</a></li>
-        <li><a href="{{root}}cv/" {{navCv}}>cv</a></li>
-        <li><a href="{{root}}contacte/" {{navContact}}>contacte</a></li>
+        <li><a href="{{langRoot}}" {{navHome}}>{{nav_home}}</a></li>
+        <li><a href="{{langRoot}}blog/" {{navBlog}}>{{nav_blog}}</a></li>
+        <li><a href="{{langRoot}}portfolio/" {{navPortfolio}}>{{nav_portfolio}}</a></li>
+        <li><a href="{{langRoot}}cv/" {{navCv}}>{{nav_cv}}</a></li>
+        <li><a href="{{langRoot}}contacte/" {{navContact}}>{{nav_contact}}</a></li>
       </ul>
     </nav>
 
@@ -100,19 +84,13 @@
 
   <main>
     <div class="lang-picker-wrap" translate="no">
-      <span class="lang-trigger notranslate" aria-hidden="true">CA</span>
+      <span class="lang-trigger notranslate">{{langCode}}</span>
       <ul class="lang-picker" aria-label="Seleccionar idioma">
-        <li><button type="button" class="lang-btn notranslate" data-lang="CA" aria-pressed="true">CA</button></li>
-        <li><button type="button" class="lang-btn notranslate" data-lang="ES">ES</button></li>
-        <li><button type="button" class="lang-btn notranslate" data-lang="EN">EN</button></li>
-        <li><button type="button" class="lang-btn notranslate" data-lang="SV">SV</button></li>
-        <li><button type="button" class="lang-btn notranslate" data-lang="IT">IT</button></li>
+        {{langPicker}}
       </ul>
     </div>
     {{content}}
   </main>
-
-  <div id="google_translate_element" style="display:none" aria-hidden="true"></div>
 
   <footer class="site-footer">
     <p>

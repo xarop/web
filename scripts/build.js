@@ -9,12 +9,23 @@
  * Requereix Node >= 18. Usa `marked` i `gray-matter` (dev deps).
  */
 
-import { readFile, writeFile, mkdir, readdir, copyFile, cp, rm } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { readFile, writeFile, mkdir, readdir, copyFile, cp } from "node:fs/promises";
+import { existsSync, readFileSync } from "node:fs";
 import { join, dirname, basename, extname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import matter from "gray-matter";
 import { marked } from "marked";
+import { LANGS, I18N } from "./i18n.js";
+import { translateAll } from "./translate.js";
+
+// Carrega .env si existeix (sense dependències externes)
+const envPath = join(dirname(fileURLToPath(import.meta.url)), "..", ".env");
+if (existsSync(envPath)) {
+  for (const line of readFileSync(envPath, "utf8").split("\n")) {
+    const m = line.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.*)$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^['"]|['"]$/g, "");
+  }
+}
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -27,6 +38,7 @@ const SITE = {
   description: "Front-end engineer. Blog, portfolio i xarop.",
   defaultFlavor: "maduixa",
   baseUrl: "/",
+  siteUrl: "https://web.xarop.com",
   githubRepo: "https://github.com/xarop/web",
 };
 
@@ -157,9 +169,43 @@ async function readMarkdownDir(dir) {
 
 async function writePage(outPath, opts, template) {
   await ensureDir(dirname(outPath));
-  const relToDist = relative(dirname(outPath), DIST).replace(/\\/g, "/");
+  const lang = opts.lang || "ca";
+  const i18n = I18N[lang] || I18N["ca"];
+  const pageDir = dirname(outPath);
+
+  // root: sempre apunta a DIST (per assets: CSS, imatges)
+  const relToDist = relative(pageDir, DIST).replace(/\\/g, "/");
   const root = relToDist === "" ? "./" : `${relToDist}/`;
-  // Permet usar {{root}} dins del contingut generat
+
+  // langRoot: apunta al directori de l'idioma (per nav)
+  const langDistDir = lang === "ca" ? DIST : join(DIST, lang);
+  const relToLangDist = relative(pageDir, langDistDir).replace(/\\/g, "/");
+  const langRoot = relToLangDist === "" ? "./" : `${relToLangDist}/`;
+
+  // Ruta relativa al langDistDir (per lang switcher)
+  const currentRelPath = relative(langDistDir, pageDir).replace(/\\/g, "/");
+
+  // hreflang per al <head>
+  const cleanPath = (p) => p.replace(/\/{2,}/g, "/");
+  const hreflangLines = LANGS.map(l => {
+    const suffix = currentRelPath ? `/${currentRelPath}/` : "/";
+    const path = l === "ca" ? suffix : `/${l}${suffix}`;
+    return `  <link rel="alternate" hreflang="${l}" href="${SITE.siteUrl}${cleanPath(path)}">`;
+  });
+  const defaultPath = cleanPath(currentRelPath ? `/${currentRelPath}/` : "/");
+  hreflangLines.push(`  <link rel="alternate" hreflang="x-default" href="${SITE.siteUrl}${defaultPath}">`);
+  const hreflang = hreflangLines.join("\n");
+
+  // Lang picker: links a cada versió d'idioma
+  const langPicker = LANGS.map(l => {
+    const lDir = l === "ca" ? DIST : join(DIST, l);
+    const targetDir = join(lDir, currentRelPath);
+    const rel = relative(pageDir, targetDir).replace(/\\/g, "/");
+    const href = rel === "" ? "./" : `${rel}/`;
+    const isCurrent = l === lang;
+    return `<li><a class="lang-btn notranslate" href="${href}" hreflang="${l}"${isCurrent ? ' aria-current="page"' : ""}>${l.toUpperCase()}</a></li>`;
+  }).join("\n        ");
+
   const content = (opts.content || "").replaceAll("{{root}}", root);
   const nav = {
     navHome: opts.section === "home" ? 'aria-current="page"' : "",
@@ -173,6 +219,17 @@ async function writePage(outPath, opts, template) {
     description: opts.description || SITE.description,
     flavor: opts.flavor || SITE.defaultFlavor,
     ogType: opts.ogType || "website",
+    ogLocale: i18n.ogLocale,
+    lang: i18n.htmlLang,
+    langRoot,
+    langCode: lang.toUpperCase(),
+    langPicker,
+    hreflang,
+    nav_home: i18n.home,
+    nav_blog: i18n.blog,
+    nav_portfolio: i18n.portfolio,
+    nav_cv: i18n.cv,
+    nav_contact: i18n.contact,
     content,
     root,
     ...nav,
@@ -190,7 +247,8 @@ function renderTaxonomyLinks(items, basePath, prefix = "", cssClass = "tag") {
   ).join(" ");
 }
 
-async function buildTaxonomies(items, distSubdir, section, template, allCats = [], allTags = []) {
+async function buildTaxonomies(items, distSubdir, section, template, allCats = [], allTags = [], ctx = {}) {
+  const { lang = "ca", langDist = DIST } = ctx;
   const tagMap = new Map();
   const catMap = new Map();
 
@@ -240,9 +298,10 @@ async function buildTaxonomies(items, distSubdir, section, template, allCats = [
   console.log(`   🏷️  Tags: ${tagMap.size} · Categories: ${catMap.size}`);
 
   for (const [slug, { name, items: tagged }] of tagMap) {
-    await writePage(join(DIST, distSubdir, "tags", slug, "index.html"), {
+    await writePage(join(langDist, distSubdir, "tags", slug, "index.html"), {
       title: `#${name}`,
       section,
+      lang,
       description: `${tagged.length} entrades etiquetades amb #${name}.`,
       content: `
 <div class="sidebar-layout">
@@ -260,9 +319,10 @@ ${makeSidebar(null, slug)}
   }
 
   for (const [slug, { name, items: categorized }] of catMap) {
-    await writePage(join(DIST, distSubdir, "categories", slug, "index.html"), {
+    await writePage(join(langDist, distSubdir, "categories", slug, "index.html"), {
       title: name,
       section,
+      lang,
       description: `${categorized.length} entrades a la categoria ${name}.`,
       content: `
 <div class="sidebar-layout">
@@ -280,9 +340,10 @@ ${makeSidebar(slug, null)}
   }
 }
 
-async function buildBlog(template) {
-  const posts = await readMarkdownDir(join(CONTENT, "blog"));
-  console.log(`\n📝 Blog: ${posts.length} posts`);
+async function buildBlog(template, ctx = {}) {
+  const { lang = "ca", langDist = DIST, posts: preloaded } = ctx;
+  const posts = preloaded || await readMarkdownDir(join(CONTENT, "blog"));
+  console.log(`\n📝 Blog [${lang}]: ${posts.length} posts`);
 
   // Índex
   const list = posts.map(p => `
@@ -315,9 +376,10 @@ async function buildBlog(template) {
   </section>
 </aside>`;
 
-  await writePage(join(DIST, "blog", "index.html"), {
+  await writePage(join(langDist, "blog", "index.html"), {
     title: "Blog",
     section: "blog",
+    lang,
     description: "Articles sobre front-end, CSS, web i afins.",
     content: `
 <div class="sidebar-layout">
@@ -371,9 +433,10 @@ async function buildBlog(template) {
       content = `<article>${articleHeader}${body}${articleFooter}</article>`;
     }
 
-    await writePage(join(DIST, "blog", p.slug, "index.html"), {
+    await writePage(join(langDist, "blog", p.slug, "index.html"), {
       title: p.meta.title,
       section: "blog",
+      lang,
       description: p.meta.description || "",
       flavor: p.meta.flavor || SITE.defaultFlavor,
       ogType: "article",
@@ -381,14 +444,15 @@ async function buildBlog(template) {
     }, template);
   }
 
-  await buildTaxonomies(posts, "blog", "blog", template, allCats, allTags);
+  await buildTaxonomies(posts, "blog", "blog", template, allCats, allTags, { lang, langDist });
 
   return posts;
 }
 
-async function buildPortfolio(template) {
-  const projects = await readMarkdownDir(join(CONTENT, "portfolio"));
-  console.log(`\n💼 Portfolio: ${projects.length} projectes`);
+async function buildPortfolio(template, ctx = {}) {
+  const { lang = "ca", langDist = DIST, projects: preloaded } = ctx;
+  const projects = preloaded || await readMarkdownDir(join(CONTENT, "portfolio"));
+  console.log(`\n💼 Portfolio [${lang}]: ${projects.length} projectes`);
 
   const grid = projects.map(p => {
     const year = p.meta.year || (p.meta.date ? formatDate(p.meta.date).slice(0, 4) : "");
@@ -414,9 +478,10 @@ async function buildPortfolio(template) {
   ${tagCloud ? `<section><h2>Tags</h2><div class="taxonomy-cloud">${tagCloud}</div></section>` : ""}
 </aside>`;
 
-  await writePage(join(DIST, "portfolio", "index.html"), {
+  await writePage(join(langDist, "portfolio", "index.html"), {
     title: "Portfolio",
     section: "portfolio",
+    lang,
     description: "Projectes seleccionats.",
     content: `
 <div class="sidebar-layout">
@@ -480,9 +545,10 @@ async function buildPortfolio(template) {
       content = `<article>${articleHeader}${body}${articleFooter}</article>`;
     }
 
-    await writePage(join(DIST, "portfolio", p.slug, "index.html"), {
+    await writePage(join(langDist, "portfolio", p.slug, "index.html"), {
       title: p.meta.title,
       section: "portfolio",
+      lang,
       description: p.meta.description || "",
       flavor: p.meta.flavor || SITE.defaultFlavor,
       ogType: "article",
@@ -490,7 +556,7 @@ async function buildPortfolio(template) {
     }, template);
   }
 
-  await buildTaxonomies(projects, "portfolio", "portfolio", template, allCats, allTags);
+  await buildTaxonomies(projects, "portfolio", "portfolio", template, allCats, allTags, { lang, langDist });
 
   return projects;
 }
@@ -504,10 +570,11 @@ const CV_ASIDE_MD = `<img src="{{root}}assets/images/ajl.jpg" alt="Adrià Julià
 - [github.com/xarop](https://github.com/xarop)
 - [+34 620 58 26 26](https://wa.me/34620582626)`;
 
-async function buildCv(template) {
-  const allFiles = await readMarkdownDir(join(CONTENT, "cv"));
-  const cvItems = allFiles.filter(p => p.filename.startsWith("cv-"));
-  console.log(`\n📋 CV: ${cvItems.length} variants`);
+async function buildCv(template, ctx = {}) {
+  const { lang = "ca", langDist = DIST, cvItems: preloaded } = ctx;
+  const allFiles = preloaded || await readMarkdownDir(join(CONTENT, "cv"));
+  const cvItems = preloaded ? allFiles : allFiles.filter(p => p.filename.startsWith("cv-"));
+  console.log(`\n📋 CV [${lang}]: ${cvItems.length} variants`);
 
   const asideHtml = htmlFromMarkdown(CV_ASIDE_MD);
 
@@ -518,12 +585,13 @@ async function buildCv(template) {
       `<div class="aside-layout">` +
       `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
       `<label for="aside-toggle-cb" class="aside-toggle" aria-label="Info">${HAMBURGER_ICON}</label>` +
-      `<article class="cv-page">${body}<footer class="article-footer"><a href="../">← tots els CVs</a></footer></article>` +
+      `<article class="cv-page">${body}<footer class="article-footer"><a href="../">← CV</a></footer></article>` +
       `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="Tanca">${CLOSE_ICON}</label>${asideHtml}</aside>` +
       `</div>`;
-    await writePage(join(DIST, "cv", slug, "index.html"), {
+    await writePage(join(langDist, "cv", slug, "index.html"), {
       title: p.meta.title || slug,
       section: "cv",
+      lang,
       description: p.meta.description || "",
       content,
     }, template);
@@ -532,16 +600,17 @@ async function buildCv(template) {
   return cvItems;
 }
 
-async function buildPages(template, posts = [], projects = []) {
-  const pages = await readMarkdownDir(join(CONTENT, "pages"));
-  console.log(`\n📄 Pàgines: ${pages.length}`);
+async function buildPages(template, posts = [], projects = [], ctx = {}) {
+  const { lang = "ca", langDist = DIST, pages: preloaded } = ctx;
+  const pages = preloaded || await readMarkdownDir(join(CONTENT, "pages"));
+  console.log(`\n📄 Pàgines [${lang}]: ${pages.length}`);
 
   for (const p of pages) {
     let body = htmlFromMarkdown(p.body);
     const isHome = p.slug === "index" || p.slug === "home";
     const outPath = isHome
-      ? join(DIST, "index.html")
-      : join(DIST, p.slug, "index.html");
+      ? join(langDist, "index.html")
+      : join(langDist, p.slug, "index.html");
 
     if (isHome) {
       const recentPosts = posts.slice(0, 3).map(post => `
@@ -580,6 +649,7 @@ async function buildPages(template, posts = [], projects = []) {
       await writePage(outPath, {
         title: p.meta.title,
         section: p.meta.section || p.slug,
+        lang,
         description: p.meta.description || "",
         flavor: p.meta.flavor || SITE.defaultFlavor,
         content: `<div class="home-layout"><article>${body}</article>${aside}</div>`,
@@ -609,16 +679,19 @@ async function buildPages(template, posts = [], projects = []) {
     await writePage(outPath, {
       title: p.meta.title,
       section: p.meta.section || p.slug,
+      lang,
       description: p.meta.description || "",
       flavor: p.meta.flavor || SITE.defaultFlavor,
       content,
     }, template);
   }
+  return pages;
 }
 
-async function buildHome(template, posts, projects) {
+async function buildHome(template, posts, projects, ctx = {}) {
+  const { lang = "ca", langDist = DIST } = ctx;
   // Si hi ha un pages/index.md no tornem a generar
-  const indexPath = join(DIST, "index.html");
+  const indexPath = join(langDist, "index.html");
   if (existsSync(indexPath)) return;
 
   const recent = posts.slice(0, 3).map(p => `
@@ -645,6 +718,7 @@ ${projects.length ? `
   await writePage(indexPath, {
     title: SITE.title,
     section: "home",
+    lang,
     description: SITE.description,
     content: `
 <div class="home-layout">
@@ -662,11 +736,12 @@ ${asideSections ? `<aside class="home-aside">${asideSections}
 // ---------- RSS ----------
 
 async function buildFeed(posts) {
+  const base = SITE.siteUrl;
   const items = posts.slice(0, 20).map(p => `
     <item>
       <title>${escapeXml(p.meta.title)}</title>
-      <link>${SITE.baseUrl}blog/${p.slug}/</link>
-      <guid>${SITE.baseUrl}blog/${p.slug}/</guid>
+      <link>${base}/blog/${p.slug}/</link>
+      <guid>${base}/blog/${p.slug}/</guid>
       <pubDate>${new Date(p.meta.date || 0).toUTCString()}</pubDate>
       <description>${escapeXml(p.meta.description || "")}</description>
     </item>`).join("");
@@ -675,7 +750,7 @@ async function buildFeed(posts) {
 <rss version="2.0">
 <channel>
 <title>${SITE.title}</title>
-<link>${SITE.baseUrl}</link>
+<link>${base}/</link>
 <description>${SITE.description}</description>
 <language>ca</language>
 <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
@@ -691,6 +766,65 @@ function escapeXml(s) {
   return String(s).replace(/[<>&'"]/g, c =>
     ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", '"': "&quot;" }[c])
   );
+}
+
+// ---------- Sitemap ----------
+
+async function buildSitemap(posts, projects, cvItems, pages) {
+  const base = SITE.siteUrl;
+  const now = new Date().toISOString().slice(0, 10);
+
+  // Genera URLs per tots els idiomes d'un path donat
+  const langUrl = (l, path) => l === "ca" ? `${base}${path}` : `${base}/${l}${path}`;
+  const allLangUrls = (path, lastmod, priority, changefreq) => {
+    const hreflangAttrs = LANGS.map(l =>
+      `    <xhtml:link rel="alternate" hreflang="${l}" href="${escapeXml(langUrl(l, path))}"/>`
+    ).join("\n");
+    return LANGS.map(l => {
+      const loc = langUrl(l, path);
+      return `\n  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n${hreflangAttrs}\n  </url>`;
+    }).join("");
+  };
+
+  let urls = "";
+
+  urls += allLangUrls("/", now, "1.0", "weekly");
+  urls += allLangUrls("/blog/", now, "0.8", "weekly");
+  for (const p of posts)
+    urls += allLangUrls(`/blog/${p.slug}/`, p.meta.date ? formatDate(p.meta.date) : now, "0.7", "monthly");
+
+  urls += allLangUrls("/portfolio/", now, "0.8", "monthly");
+  for (const p of projects)
+    urls += allLangUrls(`/portfolio/${p.slug}/`, p.meta.date ? formatDate(p.meta.date) : now, "0.6", "yearly");
+
+  for (const p of cvItems) {
+    const slug = p.meta.slug || p.slug;
+    urls += allLangUrls(`/cv/${slug}/`, now, "0.5", "monthly");
+  }
+
+  for (const p of pages) {
+    if (p.slug === "index" || p.slug === "home") continue;
+    urls += allLangUrls(`/${p.slug}/`, now, "0.6", "monthly");
+  }
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls}
+</urlset>`;
+  await writeFile(join(DIST, "sitemap.xml"), xml, "utf8");
+  console.log("\n🗺️  sitemap.xml (multilingual)");
+}
+
+// ---------- Static files ----------
+
+async function buildStaticFiles() {
+  const robots = `User-agent: *\nAllow: /\nSitemap: ${SITE.siteUrl}/sitemap.xml\n`;
+  await writeFile(join(DIST, "robots.txt"), robots, "utf8");
+
+  const humans = `/* TEAM */\nDeveloper: Adrià Julià Lundgren\nSite: ${SITE.siteUrl}\nContact: ajl@xarop.com\nLocation: Barcelona, Spain\n\n/* THANKS */\nNode.js, marked, gray-matter\n\n/* SITE */\nLanguage: Catalan / Spanish / English\nDoctype: HTML5\nIDE: Visual Studio Code\n`;
+  await writeFile(join(DIST, "humans.txt"), humans, "utf8");
+
+  console.log("\n📄 robots.txt · humans.txt");
 }
 
 // ---------- Copy assets ----------
@@ -723,20 +857,43 @@ async function copyAssets() {
 // ---------- Main ----------
 
 async function main() {
-  console.log("🍓 Construint xarop.com…");
-
-  // Ensure dist exists. No clean — evitem problemes amb muntatges read-only
-  // sobre arxius existents. El build sobreescriu els fitxers generats.
+  console.log("🍓 Construint web.xarop.com…");
   await ensureDir(DIST);
 
   const template = await readTemplate();
 
+  // ── Català (source, sense traducció) ──
+  console.log("\n🟡 [CA] Catalan");
   const posts = await buildBlog(template);
   const projects = await buildPortfolio(template);
-  await buildCv(template);
-  await buildPages(template, posts, projects);
+  const cvItems = await buildCv(template);
+  const pages = await buildPages(template, posts, projects);
   await buildHome(template, posts, projects);
+
+  // ── Altres idiomes (amb cache de traduccions) ──
+  const otherLangs = LANGS.filter(l => l !== "ca");
+  for (const lang of otherLangs) {
+    const langDist = join(DIST, lang);
+    await ensureDir(langDist);
+    console.log(`\n🌐 [${lang.toUpperCase()}] Traduint i construint…`);
+
+    const [tPosts, tProjects, tCvItems, tPages] = await Promise.all([
+      translateAll(lang, posts, "blog"),
+      translateAll(lang, projects, "portfolio"),
+      translateAll(lang, cvItems, "cv"),
+      translateAll(lang, pages, "page"),
+    ]);
+
+    await buildBlog(template, { lang, langDist, posts: tPosts });
+    await buildPortfolio(template, { lang, langDist, projects: tProjects });
+    await buildCv(template, { lang, langDist, cvItems: tCvItems });
+    await buildPages(template, tPosts, tProjects, { lang, langDist, pages: tPages });
+    await buildHome(template, tPosts, tProjects, { lang, langDist });
+  }
+
   await buildFeed(posts);
+  await buildSitemap(posts, projects, cvItems, pages);
+  await buildStaticFiles();
   await copyAssets();
 
   // .nojekyll per GitHub Pages
