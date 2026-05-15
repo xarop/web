@@ -1,0 +1,6 @@
+{
+  "_hash": "0e65d28933dbd2b6",
+  "title": "IusIntegra - Servizi Giuridici",
+  "description": "",
+  "body": "<!-- aside -->\n<a href=\"https://iusintegra.es\"><img src=\"{{root}}assets/images/screenshot-iusintegra-serveis-juridics.webp\" alt=\"IusIntegra - Servizi Legali\" loading=\"lazy\"></a>\n\n<!-- main -->\nProgetto incentrato sull'usabilità legale. Chiarezza informativa e ottimizzazione dell'architettura secondo gli standard del Kit Digitale.\n\n- **Frontend WordPress** sviluppato con **Gutenberg blocks nativi** in React, senza page builder di terze parti.\n- **Design 100% personalizzato**: struttura modulare, componenti riutilizzabili, e stile CSS moderno ottimizzato per Core Web Vitals.\n- **SEO tecnico** e accessibilità: etichettatura semantica, navigazione chiara, e caricamento veloce.\n- **Responsivo**: adattato a mobile, tablet e desktop.\n- **Kit Digitale**: conformità ai requisiti ufficiali per gli aiuti digitali.\n\n**Codice sorgente:**  \n[github.com/xarop/iusintegra](https://github.com/xarop/iusintegra)\n\n**Web:**  \n[iusintegra.es](https://iusintegra.es)"
+}

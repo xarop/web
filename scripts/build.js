@@ -870,6 +870,21 @@ async function main() {
   const pages = await buildPages(template, posts, projects);
   await buildHome(template, posts, projects);
 
+  // ── Scope de traducció (configurable via .env) ──
+  const limit = (val, fallback) => {
+    const v = process.env[val];
+    if (v === "all" || v === "0") return Infinity;
+    const n = parseInt(v ?? fallback);
+    return isNaN(n) ? fallback : n;
+  };
+  const BLOG_LIMIT = limit("TRANSLATE_BLOG_LIMIT", 10);
+  const PORT_LIMIT = limit("TRANSLATE_PORTFOLIO_LIMIT", 10);
+  // Posts i projectes a traduir (els més recents primer, ja estan ordenats per data)
+  const postsToTranslate    = posts.slice(0, BLOG_LIMIT === Infinity ? undefined : BLOG_LIMIT);
+  const projectsToTranslate = projects.slice(0, PORT_LIMIT === Infinity ? undefined : PORT_LIMIT);
+  const engine = process.env.TRANSLATE_ENGINE || "claude";
+  console.log(`\n⚙️  Traducció: engine=${engine} · blog=${BLOG_LIMIT === Infinity ? "tots" : BLOG_LIMIT} · portfolio=${PORT_LIMIT === Infinity ? "tots" : PORT_LIMIT} · pàgines=totes`);
+
   // ── Altres idiomes (amb cache de traduccions) ──
   const otherLangs = LANGS.filter(l => l !== "ca");
   for (const lang of otherLangs) {
@@ -877,12 +892,11 @@ async function main() {
     await ensureDir(langDist);
     console.log(`\n🌐 [${lang.toUpperCase()}] Traduint i construint…`);
 
-    const [tPosts, tProjects, tCvItems, tPages] = await Promise.all([
-      translateAll(lang, posts, "blog"),
-      translateAll(lang, projects, "portfolio"),
-      translateAll(lang, cvItems, "cv"),
-      translateAll(lang, pages, "page"),
-    ]);
+    // Traduccions seqüencials per evitar saturar l'API
+    const tPosts    = await translateAll(lang, postsToTranslate, "blog");
+    const tProjects = await translateAll(lang, projectsToTranslate, "portfolio");
+    const tCvItems  = await translateAll(lang, cvItems, "cv");
+    const tPages    = await translateAll(lang, pages, "page");
 
     await buildBlog(template, { lang, langDist, posts: tPosts });
     await buildPortfolio(template, { lang, langDist, projects: tProjects });
