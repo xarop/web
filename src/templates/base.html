@@ -24,6 +24,8 @@
 
 <body>
 
+  <a href="#main-content" class="skip-link">Saltar al contingut principal</a>
+
   <header class="topbar">
     <input type="checkbox" id="nav-toggle" class="nav-toggle-cb" aria-hidden="true">
     <div class="topbar__inner">
@@ -97,7 +99,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     {{content}}
   </main>
 
@@ -108,8 +110,7 @@
     </p>
     <p>
       <a href="https://github.com/xarop/web">codi</a> ·
-      <a href="{{root}}feed.xml">RSS</a> ·
-      <span>Sense analítica ni cookies de seguiment.</span>
+      <a href="{{root}}feed.xml">RSS</a>
     </p>
   </footer>
 

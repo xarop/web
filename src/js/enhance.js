@@ -40,7 +40,16 @@
     }
   } catch (_) { }
 
-  // ---- 3. Helpers de tema ----
+  // ---- 3. View Transitions helper ----
+  const withViewTransition = (fn) => {
+    if (document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.startViewTransition(fn);
+    } else {
+      fn();
+    }
+  };
+
+  // ---- 4. Helpers de tema ----
   const getCurrentTheme = () => {
     if (html.dataset.theme === "light" || html.dataset.theme === "dark") return html.dataset.theme;
     return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -67,17 +76,12 @@
   };
 
   const applyTheme = (theme) => {
-    const apply = () => {
+    withViewTransition(() => {
       html.dataset.theme = theme;
       try { localStorage.setItem(THEME_KEY, theme); } catch (_) { }
       syncThemeToggle();
       sendGiscusTheme(theme);
-    };
-    if (document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      document.startViewTransition(apply);
-    } else {
-      apply();
-    }
+    });
   };
 
   // Quan giscus carrega, sincronitzar el tema actual del lloc
@@ -92,18 +96,13 @@
     picker.dataset.enabled = "true";
 
     const applyFlavor = (flavor) => {
-      const apply = () => {
+      withViewTransition(() => {
         html.dataset.flavor = flavor;
         try { localStorage.setItem(FLAVOR_KEY, flavor); } catch (_) { }
         document.querySelectorAll("button[data-flavor]").forEach(b => {
           b.setAttribute("aria-pressed", b.dataset.flavor === flavor ? "true" : "false");
         });
-      };
-      if (document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        document.startViewTransition(apply);
-      } else {
-        apply();
-      }
+      });
     };
 
     const current = html.dataset.flavor || "maduixa";

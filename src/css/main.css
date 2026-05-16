@@ -214,19 +214,13 @@ body>.full {
 @media (min-width: 1024px) {
   .home-layout {
     grid-template-columns: minmax(0, 3fr) minmax(16rem, 1fr);
+    align-items: start;
   }
 
   .sidebar,
   #page-aside {
     position: sticky;
     top: var(--space-6);
-  }
-}
-
-@media (min-width: 1024px) {
-  .home-layout {
-    grid-template-columns: minmax(0, 3fr) minmax(16rem, 1fr);
-    align-items: start;
   }
 
   .home-aside {
@@ -726,44 +720,6 @@ blockquote {
   font-weight: 700;
 }
 
-.flavor-maduixa {
-  color: #ff0000;
-}
-
-.flavor-nabiu {
-  color: #3b4cca;
-}
-
-.flavor-gerd {
-  color: #cf255e;
-}
-
-.flavor-menta {
-  color: #00a878;
-}
-
-.flavor-llimona {
-  color: #d4a300;
-}
-
-.flavor-taronja {
-  color: #ff6b35;
-}
-
-.flavor-regalessia {
-  color: #1a1a1a;
-}
-
-:root[data-theme="dark"] .flavor-regalessia {
-  color: #f0efe9;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .flavor-regalessia {
-    color: #f0efe9;
-  }
-}
-
 /* ----- Flavor picker — punt al header, dropdown per sota ----- */
 .flavor-picker-wrap {
   display: flex;
@@ -1164,6 +1120,26 @@ button.flavor-name:hover {
   margin-top: var(--space-12);
   padding-top: var(--space-8);
   border-top: var(--border);
+}
+
+/* ----- Skip link (accessibility) ----- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: 1100;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-accent);
+  color: var(--color-bg);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  border-radius: var(--radius);
+  transition: top var(--duration) var(--ease);
+}
+
+.skip-link:focus {
+  top: var(--space-2);
 }
 
 /* ----- Utils (poques, intencionals) ----- */

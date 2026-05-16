@@ -20,6 +20,8 @@ import { LANGS, I18N } from "./i18n.js";
 const t = (lang, key) => (I18N[lang] || I18N.ca)[key] ?? I18N.ca[key] ?? key;
 import { translateAll } from "./translate.js";
 
+let asideIdCounter = 0;
+
 // Carrega .env si existeix (sense dependències externes)
 const envPath = join(dirname(fileURLToPath(import.meta.url)), "..", ".env");
 if (existsSync(envPath)) {
@@ -60,10 +62,12 @@ const CLOSE_ICON = `<svg viewBox="0 0 16 16" width="16" height="16" fill="none" 
 
 // Utilitat: genera aside responsive amb toggle hamburger
 function responsiveAside(asideHtml, lang = "ca") {
+  asideIdCounter++;
+  const asideId = `aside-toggle-${asideIdCounter}`;
   return `
-<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">
-<label for="aside-toggle-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>
-<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideHtml}</aside>
+<input type="checkbox" id="${asideId}-cb" class="aside-toggle-cb">
+<label for="${asideId}-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>
+<aside class="sidebar" id="page-aside"><label for="${asideId}-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideHtml}</aside>
 `;
 }
 
@@ -445,11 +449,13 @@ async function buildBlog(template, ctx = {}) {
       const mainStart = p.body.indexOf(MAIN_MARKER);
       const asideHtml = htmlFromMarkdown(p.body.slice(asideStart, mainStart).trim());
       const mainHtml = htmlFromMarkdown(p.body.slice(mainStart + MAIN_MARKER.length).trim());
+      asideIdCounter++;
+      const asideId = `aside-toggle-${asideIdCounter}`;
       content = `<div class="aside-layout">` +
-        `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
-        `<label for="aside-toggle-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>` +
+        `<input type="checkbox" id="${asideId}-cb" class="aside-toggle-cb">` +
+        `<label for="${asideId}-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>` +
         `<article>${articleHeader}${mainHtml}${articleFooter}</article>` +
-        `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideHtml}</aside>` +
+        `<aside class="sidebar" id="page-aside"><label for="${asideId}-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideHtml}</aside>` +
         `</div>`;
     } else {
       const body = htmlFromMarkdown(p.body);
@@ -554,13 +560,16 @@ async function buildPortfolio(template, ctx = {}) {
     <a class="edit-link" href="${SITE.githubRepo}/edit/main/content/portfolio/${p.slug}.md" rel="noopener" title="${t(lang, 'editOnGitHub')}">${EDIT_ICON} ${t(lang, 'edit')}</a>
   </footer>`;
 
-    const makeAsideLayout = (articleHtml, asideInnerHtml) =>
-      `<div class="aside-layout">` +
-      `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
-      `<label for="aside-toggle-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>` +
-      `${articleHtml}` +
-      `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideInnerHtml}</aside>` +
-      `</div>`;
+    const makeAsideLayout = (articleHtml, asideInnerHtml) => {
+      asideIdCounter++;
+      const asideId = `aside-toggle-${asideIdCounter}`;
+      return `<div class="aside-layout">` +
+        `<input type="checkbox" id="${asideId}-cb" class="aside-toggle-cb">` +
+        `<label for="${asideId}-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>` +
+        `${articleHtml}` +
+        `<aside class="sidebar" id="page-aside"><label for="${asideId}-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideInnerHtml}</aside>` +
+        `</div>`;
+    };
 
     let content;
     if (hasAside) {
@@ -624,12 +633,14 @@ async function buildCv(template, ctx = {}) {
   for (const p of cvItems) {
     const slug = p.meta.slug || p.slug;
     const body = htmlFromMarkdown(p.body);
+    asideIdCounter++;
+    const asideId = `aside-toggle-${asideIdCounter}`;
     const content =
       `<div class="aside-layout">` +
-      `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
-      `<label for="aside-toggle-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>` +
+      `<input type="checkbox" id="${asideId}-cb" class="aside-toggle-cb">` +
+      `<label for="${asideId}-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>` +
       `<article class="cv-page">${body}<footer class="article-footer"><a href="../">${t(lang, 'backToCv')}</a></footer></article>` +
-      `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideHtml}</aside>` +
+      `<aside class="sidebar" id="page-aside"><label for="${asideId}-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideHtml}</aside>` +
       `</div>`;
     await writePage(join(langDist, "cv", slug, "index.html"), {
       title: p.meta.title || slug,
@@ -710,11 +721,13 @@ async function buildPages(template, posts = [], projects = [], ctx = {}) {
       const mainMd = p.body.slice(mainStart + MAIN_MARKER.length).trim();
       const asideHtml = htmlFromMarkdown(asideMd);
       const mainHtml = htmlFromMarkdown(mainMd);
+      asideIdCounter++;
+      const asideId = `aside-toggle-${asideIdCounter}`;
       content = `<div class="aside-layout">` +
-        `<input type="checkbox" id="aside-toggle-cb" class="aside-toggle-cb">` +
-        `<label for="aside-toggle-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>` +
+        `<input type="checkbox" id="${asideId}-cb" class="aside-toggle-cb">` +
+        `<label for="${asideId}-cb" class="aside-toggle" aria-label="${t(lang, 'asideOpen')}">${HAMBURGER_ICON}</label>` +
         `<article>${mainHtml}</article>` +
-        `<aside class="sidebar" id="page-aside"><label for="aside-toggle-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideHtml}</aside>` +
+        `<aside class="sidebar" id="page-aside"><label for="${asideId}-cb" class="aside-close" aria-label="${t(lang, 'asideClose')}">${CLOSE_ICON}</label>${asideHtml}</aside>` +
         `</div>`;
     } else {
       content = `<article>${body}</article>`;
